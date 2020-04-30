@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ArticleStoreRequest;
-use App\Http\Requests\ArticleUpdateRequest;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Http\Resources\ArticleResource;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -21,39 +21,36 @@ class ArticleController extends Controller
     {
         if ($num = request()->get('count')) {
             return [
-                'data' => ArticleResource::collection(Article::with('tags')->orderBy('updated_at', 'desc')->limit($num)->get()),
+                'data' => ArticleResource::collection(Article::orderBy('updated_at', 'desc')->limit($num)->get()),
                 'status' => true,
-                'message' => 'All results retrived'
+                'message' => 'All results retrieved'
             ];
         }
         return [
-            'data' => ArticleResource::collection(Article::with('tags')->orderBy('updated_at', 'desc')->get()),
+            'data' => ArticleResource::collection(Article::orderBy('updated_at', 'desc')->get()),
             'status' => true,
-            'message' => 'All results retrived'
+            'message' => 'All results retrieved'
         ];
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Article $article
+     * @return Response
      */
-    public function store(ArticleStoreRequest $request)
+    public function store(Request $request, Article $article)
     {
-        $article = new Article;
-        $article->slug = str_slug($request->slug, '-');
+        $article->slug = Str::slug($request->title, '-');
         $article->title = $request->title;
+        $article->tag = $request->tag;
         $article->content = $request->content;
-
-        $img = $request->file('image_link');
-        $name = time() . '.' . $img->getClientOriginalExtension();
-        $img->move(public_path('/images/articles'), $name);
-        $article->image_link = env('APP_URL') . '/images/articles/' . $name;
-
+        $article->date = $request->date;
+        $article->image_link = 'uploads/'.$request->image->storeAs('articles/images', time().'.'.$request->image->getClientOriginalExtension());
         $article->save();
 
-        return response()->json($article, 201);
+        return response()->json(['success' => true, 'message' => 'Success']);
     }
 
     /**
@@ -70,40 +67,40 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param Request $request
+     * @param Article $article
      * @return ArticleResource
      */
-    public function update(ArticleUpdateRequest $request, Article $article)
+    public function update(Request $request, Article $article)
     {
-        $article->slug = str_slug($request->slug, '-');
+
+        if ($request->hasFile('image')) {
+            File::delete(public_path($article->image_link));
+            $imageLink = 'uploads/'.$request->image->storeAs('articles/images', time().'.'.$request->image->getClientOriginalExtension());
+            $article->image_link = $imageLink;
+        }
+
+        $article->slug = Str::slug($request->slug, '-');
         $article->title = $request->title;
         $article->content = $request->content;
-
-        if ($request->hasFile('imagel_link')) {
-            $deleteOldImg = Str::replaceFirst(env('APP_URL'), public_path(), $article->image_link);
-            Storage::delete($deleteOldImg);
-            $img = $request->file('image_link');
-            $name = time() . '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('/images/articles'), $name);
-            $article->image_link = env('APP_URL') . '/images/articles/' . $name;
-        }
+        $article->date = $request->date;
+        $article->tag = $request->tag;
         $article->save();
 
-        return new ArticleResource($article);
+        return response()->json(['success' => true, 'message' => 'Success']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Article $article
+     * @return Response
      * @throws \Exception
      */
     public function destroy(Article $article)
     {
-        if ($article->delete()) {
-            return response()->json(['success' => true, 'message' => 'Удалено']);
-        }
+        File::delete(public_path($article->image_link));
+        $article->delete();
+        return response()->json([ 'success' => true ]);
     }
 }

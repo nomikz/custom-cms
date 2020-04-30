@@ -14,8 +14,8 @@ class Member extends Model
         'regional_id',
     ];
 
-    public function regional()
+    public function region()
     {
-        return $this->belongsTo('App\Regional', 'regional_id', 'id');
+        return $this->belongsTo('App\Region', 'region_id', 'id');
     }
 }

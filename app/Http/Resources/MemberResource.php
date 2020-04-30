@@ -22,7 +22,7 @@ class MemberResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'image_url' => $this->image_url,
-            'regional' => new RegionalResource($this->whenLoaded('regional'))
+            'region' => new RegionResource($this->whenLoaded('region'))
         ];
     }
 }

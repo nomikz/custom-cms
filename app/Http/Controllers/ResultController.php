@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ResultResource;
 use App\Result;
-use App\StaticContent;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class ResultController extends Controller
@@ -21,54 +21,35 @@ class ResultController extends Controller
         return [
             'data' => ResultResource::collection(Result::get()),
             'status' => true,
-            'message' => 'All results retrived'
+            'message' => 'All results retrieved'
         ];
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     *
-     * $filename = substr($request->input('date'), 0, 10) . '.' . $request->file('image')->getClientOriginalExtension();
-       $link = Storage::url($request->image->storeAs('tournament-results', $filename));
-       $link = str_ireplace(env('APP_URL'), '', $link);
-       Storage::delete($link);
-       dd($link);
-     *
-     *
-     *
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request, Result $result)
     {
-        // download_link
-        // image_link
         $result->title = $request->title;
         $result->date = $request->date;
         $result->content = addslashes($request->content); //stripslashes()
         $result->slug = Str::slug($request->title, '-');;
 
-
-
-        $imageName = substr($request->input('date'), 0, 10);
-        $imageName .= '.' . $request->file('image')->getClientOriginalExtension();
-        $result->image_link = Storage::url($request->image->storeAs('tournament-results/img', $imageName));
-
-        $fileNme = substr($request->input('date'), 0, 10);
-        $fileNme .= '.' . $request->file('image')->getClientOriginalExtension();
-        $result->download_link = Storage::url($request->document->storeAs('tournament-results/doc', $fileNme));
+        $result->image_link = 'uploads/'.$request->image->storeAs('results/images', time().'.'.$request->image->getClientOriginalExtension());
+        $result->download_link = 'uploads/'.$request->document->storeAs('results/documents', time().'.'.$request->document->getClientOriginalExtension());
 
         if($result->save()) {
             return response()->json([ 'success' => true, 'message' => 'New publication added' ]);
         }
+        return response()->json(['success' => false, 'message'=> 'Unsuccessful']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Result $result
      * @return ResultResource
      */
     public function show(Result $result)
@@ -79,23 +60,45 @@ class ResultController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Result $result
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Result $result)
     {
-        //
+        if ($request->hasFile('image')) {
+            File::delete(public_path($result->image_link));
+            $imageLink = 'uploads/'.$request->image->storeAs('results/images', time().'.'.$request->image->getClientOriginalExtension());
+            $result->image_link = $imageLink;
+        }
+
+        if ($request->hasFile('document')) {
+            File::delete(public_path($result->download_link));
+            $downloadLink = 'uploads/'.$request->document->storeAs('results/documents', time().'.'.$request->document->getClientOriginalExtension());
+            $result->download_link = $downloadLink;
+        }
+
+        $result->title = $request->title;
+        $result->date = $request->date;
+        $result->content = $request->content;
+        $result->slug = Str::slug($request->title, '-');;
+        if ($result->save()) {
+            return response()->json(['success' => true, 'message' => 'Updated']);
+        }
+        return response()->json(['success' => false, 'message' => 'Unsuccessful']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Result $result
+     * @return Response
+     * @throws \Exception
      */
     public function destroy(Result $result)
     {
+        File::delete(public_path($result->download_link));
+        File::delete(public_path($result->image_link));
         $result->delete();
         return response()->json([ 'success' => true ]);
     }

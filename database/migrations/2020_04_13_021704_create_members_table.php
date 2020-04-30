@@ -20,8 +20,8 @@ class CreateMembersTable extends Migration
             $table->string('description');
             $table->string('image_url')->nullable();
             $table->timestamps();
-            $table->unsignedBigInteger('regional_id');
-            $table->foreign('regional_id')->references('id')->on('regionals')->onDelete('cascade');
+            $table->unsignedBigInteger('region_id');
+            $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
         });
     }
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\GovernanceMember;
 use App\Http\Resources\GovernanceMemberResource;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 
 class GovernanceController extends Controller
 {
@@ -25,45 +27,73 @@ class GovernanceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param GovernanceMember $governanceMember
+     * @return void
      */
-    public function store(Request $request)
+    public function store(Request $request, GovernanceMember $governanceMember)
     {
-        //
+        $governanceMember->image_url = 'uploads/'.$request->image->storeAs('governance-members/images', time().'.'.$request->image->getClientOriginalExtension());
+
+        $governanceMember->name = $request->name;
+        $governanceMember->title = $request->title;
+        $governanceMember->email = $request->email;
+        $governanceMember->description = $request->description;
+
+        if ($governanceMember->save()) {
+            return response()->json(['success' => true, 'message' => 'Success']);
+        }
+        return response()->json(['success' => false, 'message' => 'Fail']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param GovernanceMember $governanceMember
+     * @return GovernanceMemberResource
      */
-    public function show($id)
+    public function show(GovernanceMember $governanceMember)
     {
-        //
+        return new GovernanceMemberResource($governanceMember);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param GovernanceMember $governanceMember
+     * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, GovernanceMember $governanceMember)
     {
-        //
+        if ($request->hasFile('image')) {
+            File::delete(public_path($governanceMember->image_url));
+            $governanceMember->image_url = 'uploads/'.$request->image->storeAs('governance-members/images', time().'.'.$request->image->getClientOriginalExtension());
+        }
+
+        $governanceMember->name = $request->name;
+        $governanceMember->title = $request->title;
+        $governanceMember->email = $request->email;
+        $governanceMember->order_number = 2;
+        $governanceMember->description = $request->description;
+
+        if($governanceMember->save()) {
+            return response()->json(['success' => true, 'message' => 'Success']);
+        }
+        return response()->json(['success' => false, 'message' => 'Fail']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param GovernanceMember $governanceMember
+     * @return Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(GovernanceMember $governanceMember)
     {
-        //
+        File::delete(public_path($governanceMember->image_url));
+        $governanceMember->delete();
+        return response()->json(['success' => true]);
     }
 }

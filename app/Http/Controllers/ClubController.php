@@ -21,45 +21,67 @@ class ClubController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return void
      */
-    public function store(Request $request)
+    public function store(Request $request, Club $club)
     {
-        //
+        $club->description = $request->description;
+        $club->site = $request->site;
+        $club->phone_number = $request->phone_number;
+        $club->email = $request->email;
+        $club->region_id = $request->region_id;
+        $club->latitude = $request->latitude;
+        $club->longitude = $request->longitude;
+        if ($club->save()) {
+            return response()->json(['success' => true, 'message' => 'Updated']);
+        }
+        return response()->json(['success' => false, 'message' => 'Unsuccessful']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Club $club
+     * @return ClubResource
      */
-    public function show($id)
+    public function show(Club $club)
     {
-        //
+        return new ClubResource($club->load('region'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Club $club
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Club $club)
     {
-        //
+        $club->description = $request->description;
+        $club->site = $request->site;
+        $club->phone_number = $request->phone_number;
+        $club->region_id = $request->region_id;
+        $club->latitude = $request->latitude;
+        $club->longitude = $request->longitude;
+
+        if ($club->save()) {
+            return response()->json(['success' => true, 'message' => 'Updated']);
+        }
+        return response()->json(['success' => false, 'message' => 'Unsuccessful']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Club $club
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Club $club)
     {
-        //
+        $club->delete();
+        return response()->json(['success' => true]);
     }
 }

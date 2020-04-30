@@ -14,16 +14,7 @@ class ArticleTagSeeder extends Seeder
 
     public function run()
     {
-        $competitionTag = Tag::create(['name' => 'Competition']);
-        $coachingTag = Tag::create(['name' => 'Coaching Council']);
-        $aucklandTag = Tag::create(['name' => 'Auckland and Northland']);
-        $centeralTag = Tag::create(['name' => 'Central North Island']);
-        $lowerTag = Tag::create(['name' => 'Lower North Island']);
-        $canterburyTag = Tag::create(['name' => 'Canterbury Westland']);
-        $otgoTag = Tag::create(['name' => 'Otago Southland']);
-        $refereesTag = Tag::create(['name' => 'Referees Council']);
-        $tournamentTag = Tag::create(['name' => 'Tournament Results']);
-        $announcementTag = Tag::create(['name' => 'Announcement']);
+
 
         //1
         Article::create([
@@ -32,7 +23,8 @@ class ArticleTagSeeder extends Seeder
             'content' => '<p>WKF are streaming all of the medal bouts of the next World Cadet, Junior & U21 Championship to be held in Chile from October 23 to 27 live and free on the WKF YouTube channel.</p><a href=""https://www.youtube.com/user/WKFKarateWorldChamps"" target=""_blank"">https://www.youtube.com/user/WKFKarateWorldChamps</a>"',
             'updated_at' => '2019-10-09',
             'image_link' => 'phpbEZGqp.png',
-        ])->tags()->sync([$competitionTag->id]);
+            'tag' => 'Competition'
+        ]);
 
         //2
         Article::create([
@@ -83,7 +75,8 @@ class ArticleTagSeeder extends Seeder
 </div>',
             'updated_at' => '2019-09-24',
             'image_link' => 'phpVMdftH.jpg',
-        ])->tags()->sync([$competitionTag->id]);
+            'tag' => 'Competition'
+        ]);
 
         //3
         Article::create([
@@ -182,14 +175,7 @@ KUMITE</h3>
 <div class="fb-comments fb_iframe_widget fb_iframe_widget_fluid_desktop" style="box-sizing: border-box; display: inline-block; position: relative; max-width: 100%; color: rgb(47, 47, 47); font-family: Muli, sans-serif; background-color: rgb(247, 247, 247); width: 750px;">&nbsp;</div>',
             'updated_at' => '2019-03-22',
             'image_link' => 'phpixcQrs.png',
-        ])->tags()->sync([
-            $competitionTag->id,
-            $coachingTag->id,
-            $aucklandTag->id,
-            $centeralTag->id,
-            $lowerTag->id,
-            $canterburyTag->id,
-            $otgoTag->id
+            'tag' => 'Competition'
         ]);
 
         //4
@@ -220,14 +206,7 @@ KUMITE</h3>
 </div>',
             'updated_at' => '2019-03-08',
             'image_link' => 'phpPx5P12.png',
-        ])->tags()->sync([
-            $competitionTag->id,
-            $coachingTag->id,
-            $aucklandTag->id,
-            $centeralTag->id,
-            $lowerTag->id,
-            $canterburyTag->id,
-            $otgoTag->id
+            'tag' => 'Competition'
         ]);
 
 
@@ -329,14 +308,7 @@ KUMITE</h3>
 </div>',
             'updated_at' => '2019-02-02',
             'image_link' => 'phpxf3iFA.jpg',
-        ])->tags()->sync([
-            $competitionTag->id,
-            $coachingTag->id,
-            $aucklandTag->id,
-            $centeralTag->id,
-            $lowerTag->id,
-            $canterburyTag->id,
-            $otgoTag->id
+            'tag' => 'Competition'
         ]);
 
 
@@ -359,14 +331,7 @@ KUMITE</h3>
 </div>',
             'updated_at' => '2019-02-17',
             'image_link' => 'phpq1cnvK.jpg',
-        ])->tags()->sync([
-            $competitionTag->id,
-            $coachingTag->id,
-            $aucklandTag->id,
-            $centeralTag->id,
-            $lowerTag->id,
-            $canterburyTag->id,
-            $otgoTag->id
+            'tag' => 'Competition'
         ]);
 
 
@@ -387,14 +352,7 @@ KUMITE</h3>
 </div>',
             'updated_at' => '2020-02-17',
             'image_link' => 'phptSHm4F.jpg',
-        ])->tags()->sync([
-            $competitionTag->id,
-            $coachingTag->id,
-            $aucklandTag->id,
-            $centeralTag->id,
-            $lowerTag->id,
-            $canterburyTag->id,
-            $otgoTag->id
+            'tag' => 'Competition'
         ]);
 
 
@@ -415,14 +373,7 @@ KUMITE</h3>
 </div>',
             'updated_at' => '2020-02-16',
             'image_link' => 'phpV8Bo7l.jpg',
-        ])->tags()->sync([
-            $competitionTag->id,
-            $coachingTag->id,
-            $aucklandTag->id,
-            $centeralTag->id,
-            $lowerTag->id,
-            $canterburyTag->id,
-            $otgoTag->id
+            'tag' => 'Competition'
         ]);
 
 
@@ -448,15 +399,7 @@ KUMITE</h3>
 <p><a title="Tournament results" href="https://www.sportdata.org/wkf/set-online/veranstaltung_info_main.php?active_menu=calendar&amp;vernr=188&amp;ver_info_action=catmitlist#a_eventheadend" target="_blank" rel="noopener">Tournament results</a></p>',
             'updated_at' => '2020-02-16',
             'image_link' => 'phpjBuIfN.jpg',
-        ])->tags()->sync([
-            $competitionTag->id,
-            $coachingTag->id,
-            $aucklandTag->id,
-            $centeralTag->id,
-            $lowerTag->id,
-            $canterburyTag->id,
-            $otgoTag->id,
-            $tournamentTag->id
+            'tag' => 'Competition'
         ]);
 
 
@@ -482,15 +425,7 @@ KUMITE</h3>
 </div>',
             'updated_at' => '2018-09-03',
             'image_link' => 'phpoEveJU.jpg',
-        ])->tags()->sync([
-            $competitionTag->id,
-            $coachingTag->id,
-            $aucklandTag->id,
-            $centeralTag->id,
-            $lowerTag->id,
-            $canterburyTag->id,
-            $otgoTag->id,
-            $tournamentTag->id
+            'tag' => 'Competition'
         ]);
 
 
@@ -504,14 +439,7 @@ KUMITE</h3>
 <p><strong>Downloads<br /></strong><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=4026&amp;active_menu=calendar" target="_blank" rel="noopener">Tournament Results</a>&nbsp;<br /><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=medals&amp;vernr=4026&amp;active_menu=calendar" target="_blank" rel="noopener">Medals by Club</a></p>',
             'updated_at' => '2018-08-20',
             'image_link' => 'phpliONPT.jpg',
-        ])->tags()->sync([
-            $coachingTag->id,
-            $refereesTag->id,
-            $aucklandTag->id,
-            $centeralTag->id,
-            $lowerTag->id,
-            $canterburyTag->id,
-            $otgoTag->id
+            'tag' => 'Competition'
         ]);
 
 
@@ -526,14 +454,7 @@ KUMITE</h3>
 </div>',
             'updated_at' => '2018-08-20',
             'image_link' => 'phpThnkok.jpg',
-        ])->tags()->sync([
-            $coachingTag->id,
-            $refereesTag->id,
-            $aucklandTag->id,
-            $centeralTag->id,
-            $lowerTag->id,
-            $canterburyTag->id,
-            $otgoTag->id
+            'tag' => 'Competition'
         ]);
 
 
@@ -548,14 +469,7 @@ KUMITE</h3>
 </div>',
             'updated_at' => '2018-08-20',
             'image_link' => 'phpwGBzcA.jpg',
-        ])->tags()->sync([
-            $coachingTag->id,
-            $refereesTag->id,
-            $aucklandTag->id,
-            $centeralTag->id,
-            $lowerTag->id,
-            $canterburyTag->id,
-            $otgoTag->id
+            'tag' => 'Competition'
         ]);
 
 
@@ -568,8 +482,7 @@ KUMITE</h3>
 We would like to thank those clubs that entered their students, and to the officials and the referees for their support leading up to this day. Refunds to players will be made available soon via your club.</p>',
             'updated_at' => '2020-03-16',
             'image_link' => 'phpb2KGdC.png',
-        ])->tags()->sync([
-            $announcementTag->id,
+            'tag' => 'Announcement'
         ]);
 
 
@@ -581,8 +494,7 @@ We would like to thank those clubs that entered their students, and to the offic
             'content' => '<p>I appreciate if people are anything like me, you are overloaded with change and bombarded with CV-19 related challenges and communications...<br /><br />Here\'s something positive we at Karate New Zealand can do that may just help our members and wider, anyone involved in karate everywhere...if we can save just 1 dojo from closing down, it\'s a good thing...Tactics and Strategy for Karate Dojo\'s re Covid-19<br /><br />Dojo\'s, clubs and traditional Karate schools across the country will be understandably concerned about the effect Covid-19 may have on their dojo\'s and clubs. We offer some guidance, in both Tactics and a Strategy in preparedness for all Karate, everywhere, in the hope this helps you stay in health and in fitness and \'Keep Karate Alive\'...After all, the country and the world needs Karate...Tactics- Eliminate direct contact in keeping separation of personal training space<br />- Personal hygiene, wash hands or sanitise hands immediately before and immediately after class<br />- Anyone feeling unwell should stay at home , teachers/sensei included<br />- Kihon, Kihon, Kihon....Basics, basics,basic<br />- Kata, Kata, Kata....<br />- Stop kumite, self defence any contact / partnered work for now ( these can be emulated in personal training space )<br />- Clean the floors<br />- Consider/Increase 1:1 sessions<br />- In the event that government ban gatherings of groups and you cannot run a regular dojo class, don\'t close down...change and adapt.Strategy- Prepare for and instigate remote virtual classes using zoom, skype or what\'s app<br />- laptops, tablets and smartphones have video conference capability and all we need then is connection to the internet<br />- From your own homes or space to move around in, everyone logs into class online and we commence training<br />- Many businesses run meetings and workshops like this, works the same for Karate.Grant Holland<br />Board Chair and President<br />Karate New Zealand</p>',
             'updated_at' => '2020-03-20',
             'image_link' => 'phpwQomrD.png',
-        ])->tags()->sync([
-            $announcementTag->id,
+            'tag' => 'Announcement'
         ]);
     }
 }

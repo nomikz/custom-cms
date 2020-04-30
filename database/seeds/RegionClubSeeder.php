@@ -16,6 +16,8 @@ class RegionClubSeeder extends Seeder
         $auckland = Region::create([
             'name' => 'AUCKLAND AND NORTHLAND',
             'slug' => 'AUCKLAND-AND-NORTHLAND',
+            'description' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
+            'content' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
             'image_link' => '',
         ]);
 
@@ -23,6 +25,8 @@ class RegionClubSeeder extends Seeder
         $centeral = Region::create([
             'name' => 'CENTRAL NORTH ISLAND',
             'slug' => 'CENTRAL-NORTH-ISLAND',
+            'description' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
+            'content' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
             'image_link' => '',
         ]);
 
@@ -30,6 +34,8 @@ class RegionClubSeeder extends Seeder
         $lower = Region::create([
             'name' => 'LOWER NORTH ISLAND',
             'slug' => 'LOWER-NORTH-ISLAND',
+            'description' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
+            'content' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
             'image_link' => '',
         ]);
 
@@ -38,12 +44,16 @@ class RegionClubSeeder extends Seeder
         $caterbury = Region::create([
             'name' => 'CANTERBURY WESTLAND',
             'slug' => 'CANTERBURY-WESTLAND',
+            'description' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
+            'content' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
             'image_link' => '',
         ]);
 
         $otago = Region::create([
             'name' => 'OTAGO SOUTHLAND',
             'slug' => 'OTAGO-SOUTHLAND',
+            'description' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
+            'content' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
             'image_link' => '',
         ]);
 

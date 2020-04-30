@@ -21,7 +21,7 @@ class ArticleResource extends JsonResource
             'body' => $this->content,
             'filename' => $this->image_link,
             'date' => (string) $this->updated_at,
-            'tags' => TagResource::collection($this->whenLoaded('tags')),
+            'tag' => $this->tag,
         ];
     }
 }

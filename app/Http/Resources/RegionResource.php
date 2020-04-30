@@ -16,10 +16,11 @@ class RegionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
             'slug' => $this->slug,
-            'image_link' => $this->image_link,
-            'clubs' => ClubResource::collection($this->whenLoaded('clubs'))
+            'title' => $this->name,
+            'content' => $this->content,
+            'description' => $this->description,
+            'filename' => $this->image_link,
         ];
     }
 }

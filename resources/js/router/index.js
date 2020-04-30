@@ -1,20 +1,68 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+
 import LoginPage from './../views/LoginPage'
 import MainLayout from './../views/MainLayout'
 
-import MainDashboard from './../components/MainDashboard'
-import NewsPage from './../components/NewsPage'
-import EventsPage from './../components/EventsPage'
+
+// results
 import ResultsPage from '../components/results/ResultsPage'
 import ResultList from '../components/results/ResultList'
-import ResultCreate from '../components/results/ResultCreate'
-import ResultEdit from '../components/results/ResultEdit'
-import ResultShow from '../components/results/ResultShow'
-import ClubsPage from './../components/ClubsPage'
-import GovernancePage from './../components/GovernancePage'
-import RegionalsPage from './../components/RegionalsPage'
+import ResultListCreate from '../components/results/ResultListCreate'
+import ResultListEdit from '../components/results/ResultListEdit'
+
+
+// news
+import NewsPage from '../components/news/NewsPage'
+import NewsList from '../components/news/NewsList'
+import NewsListCreate from '../components/news/NewsListCreate'
+import NewsListEdit from '../components/news/NewsListEdit'
+
+
+// events
+import EventsPage from '../components/events/EventsPage'
+import EventList from '../components/events/EventList'
+import EventListCreate from '../components/events/EventListCreate'
+import EventListEdit from '../components/events/EventListEdit'
+
+
+// supporters
+import SupportersPage from '../components/supporters/SupportersPage'
+import SupporterList from '../components/supporters/SupporterList'
+import SupporterListCreate from '../components/supporters/SupporterListCreate'
+import SupporterListEdit from '../components/supporters/SupporterListEdit'
+
+
+// regions
+import RegionsPage from '../components/regions/RegionsPage'
+import RegionList from '../components/regions/RegionsList'
+import RegionListCreate from '../components/regions/RegionListCreate'
+import RegionListEdit from '../components/regions/RegionListEdit'
+
+// clubs
+import ClubsPage from './../components/clubs/ClubsPage'
+import ClubList from '../components/clubs/ClubList'
+import ClubListCreate from '../components/clubs/ClubListCreate'
+import ClubListEdit from '../components/clubs/ClubListEdit'
+
+
+// members
+import MembersPage from './../components/members/MembersPage'
+import MemberList from '../components/members/MemberList'
+import MemberListCreate from '../components/members/MemberListCreate'
+import MemberListEdit from '../components/members/MemberListEdit'
+
+
+// members
+import GovernancePage from './../components/governance-members/GovernanceMembersPage'
+import GovernanceMemberList from '../components/governance-members/GovernanceMemberList'
+import GovernanceMemberListCreate from '../components/governance-members/GovernanceMemberListCreate'
+import GovernanceMemberListEdit from '../components/governance-members/GovernanceMemberListEdit'
+
+
+import MainDashboard from './../components/MainDashboard'
+
 
 Vue.use(VueRouter);
 
@@ -28,6 +76,11 @@ const routes = [
         path: '/',
         component: MainLayout,
         children: [
+            { // dashboard
+                name: 'dash',
+                path: '/',
+                component: MainDashboard
+            },
             { // results
                 path: '/results',
                 component: ResultsPage,
@@ -40,49 +93,163 @@ const routes = [
                     {
                         name: 'result-create',
                         path: 'create',
-                        component: ResultCreate
-                    },
-                    {
-                        name: 'result-show',
-                        path: ':id',
-                        component: ResultShow
+                        component: ResultListCreate
                     },
                     {
                         name: 'result-edit',
                         path: ':id/edit',
-                        component: ResultEdit
+                        component: ResultListEdit
+                    },
+                ]
+            },
+            { // news
+                path: '/news',
+                component: NewsPage,
+                children: [
+                    {
+                        name: 'news',
+                        path: '/',
+                        component: NewsList
+                    },
+                    {
+                        name: 'news-create',
+                        path: 'create',
+                        component: NewsListCreate
+                    },
+                    {
+                        name: 'news-edit',
+                        path: ':id/edit',
+                        component: NewsListEdit
+                    },
+                ]
+            },
+            { // events
+                path: '/events',
+                component: EventsPage,
+                children: [
+                    {
+                        name: 'events',
+                        path: '/',
+                        component: EventList
+                    },
+                    {
+                        name: 'event-create',
+                        path: 'create',
+                        component: EventListCreate
+                    },
+                    {
+                        name: 'event-edit',
+                        path: ':id/edit',
+                        component: EventListEdit
+                    },
+                ]
+            },
+            { // supporters
+                path: '/supporters',
+                component: SupportersPage,
+                children: [
+                    {
+                        name: 'supporters',
+                        path: '/',
+                        component: SupporterList
+                    },
+                    {
+                        name: 'supporter-create',
+                        path: 'create',
+                        component: SupporterListCreate
+                    },
+                    {
+                        name: 'supporter-edit',
+                        path: ':id/edit',
+                        component: SupporterListEdit
+                    },
+                ]
+            },
+            { // regions
+                path: '/regions',
+                component: RegionsPage,
+                children: [
+                    {
+                        name: 'regions',
+                        path: '/',
+                        component: RegionList
+                    },
+                    {
+                        name: 'region-create',
+                        path: 'create',
+                        component: RegionListCreate
+                    },
+                    {
+                        name: 'region-edit',
+                        path: ':id/edit',
+                        component: RegionListEdit
+                    },
+                ]
+            },
+            { // clubs
+                path: '/clubs',
+                component: ClubsPage,
+                children: [
+                    {
+                        name: 'clubs',
+                        path: '/',
+                        component: ClubList
+                    },
+                    {
+                        name: 'club-create',
+                        path: 'create',
+                        component: ClubListCreate
+                    },
+                    {
+                        name: 'club-edit',
+                        path: ':id/edit',
+                        component: ClubListEdit
+                    },
+                ]
+            },
+
+
+            {
+                path: '/members',
+                component: MembersPage,
+                children: [
+                    {
+                        name: 'members',
+                        path: '/',
+                        component: MemberList
+                    },
+                    {
+                        name: 'member-create',
+                        path: 'create',
+                        component: MemberListCreate
+                    },
+                    {
+                        name: 'member-edit',
+                        path: ':id/edit',
+                        component: MemberListEdit
                     },
                 ]
             },
             {
-                name: 'home-page',
-                path: '',
-                component: MainDashboard
-            },
-            {
-                name: 'news',
-                path: '/news',
-                component: NewsPage
-            },
-            {
-                name: 'events',
-                path: '/events',
-                component: EventsPage
-            },
-            {
-                name: 'clubs',
-                path: '/clubs',
-                component: ClubsPage
-            },
-            {
-                name: 'governance-members',
                 path: '/governance-members',
-                component: GovernancePage
-            },
-            {
-                name: 'regionals',
-                path: '/regionals',
-                component: RegionalsPage
+                component: GovernancePage,
+                children: [
+                    {
+                        name: 'governance-members',
+                        path: '/',
+                        component: GovernanceMemberList
+                    },
+                    {
+                        name: 'governance-member-create',
+                        path: 'create',
+                        component: GovernanceMemberListCreate
+                    },
+                    {
+                        name: 'governance-member-edit',
+                        path: ':id/edit',
+                        component: GovernanceMemberListEdit
+                    },
+                ]
             },
             // to do for each page
         ]

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Resources\MemberResource;
 use App\Member;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 
 class MemberController extends Controller
 {
@@ -16,54 +18,80 @@ class MemberController extends Controller
     public function index()
     {
         return [
-            'data' => MemberResource::collection(Member::with('regional')->get()),
+            'data' => MemberResource::collection(Member::with('region')->get()),
             'status' => true,
-            'message' => 'All results retrived'
+            'message' => 'All results retrieved'
         ];
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return void
      */
-    public function store(Request $request)
+    public function store(Request $request, Member $member)
     {
-        //
+        $member->image_url = 'uploads/'.$request->image->storeAs('members/images', time().'.'.$request->image->getClientOriginalExtension());
+
+        $member->name = $request->name;
+        $member->title = $request->title;
+        $member->region_id = $request->region;
+        $member->description = $request->description;
+
+        if ($member->save()) {
+            return response()->json(['success' => true, 'message' => 'Success']);
+        }
+        return response()->json(['success' => false, 'message' => 'Fail']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Member $member
+     * @return MemberResource
      */
-    public function show($id)
+    public function show(Member $member)
     {
-        //
+        return new MemberResource($member->load('region'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Member $member
+     * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Member $member)
     {
-        //
+        if ($request->hasFile('image')) {
+            File::delete(public_path($member->image_url));
+            $member->image_url = 'uploads/'.$request->image->storeAs('members/images', time().'.'.$request->image->getClientOriginalExtension());
+        }
+
+        $member->name = $request->name;
+        $member->title = $request->title;
+        $member->region_id = $request->region;
+        $member->description = $request->description;
+
+        if($member->save()) {
+            return response()->json(['success' => true, 'message' => 'Success']);
+        }
+        return response()->json(['success' => false, 'message' => 'Fail']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Member $member
+     * @return void
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Member $member)
     {
-        //
+        File::delete(public_path($member->image_url));
+        $member->delete();
+        return response()->json(['success' => true]);
     }
 }

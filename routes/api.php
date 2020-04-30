@@ -19,15 +19,45 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+// result routes
+Route::post('results/{result}', 'ResultController@update');
+Route::apiResource('results', 'ResultController');
+
+
+// result routes
+Route::post('articles/{article}', 'ArticleController@update');
 Route::apiResource('articles', 'ArticleController');
-Route::apiResource('clubs', 'ClubController');
+
+
+// event routes
+Route::post('events/{event}', 'EventController@update');
 Route::apiResource('events', 'EventController');
 Route::get('events-by-date', 'EventController@getSortedByDate');
-Route::apiResource('governance-members', 'GovernanceController');
-Route::apiResource('members', 'MemberController');
-Route::apiResource('regions', 'RegionController');
-Route::apiResource('regionals', 'RegionalController');
-Route::apiResource('results', 'ResultController');
-Route::apiResource('tags', 'TagController');
+
+
+
+// supporter routes
+Route::post('supporters/{supporter}', 'SupporterController@update');
 Route::apiResource('supporters', 'SupporterController');
+
+// Region routes
+Route::post('regions/{region}', 'RegionController@update');
+Route::apiResource('regions', 'RegionController');
+
+// cLub routes
+Route::post('clubs/{club}', 'ClubController@update');
+Route::apiResource('clubs', 'ClubController');
+
+// member routes
+Route::post('members/{member}', 'MemberController@update');
+Route::apiResource('members', 'MemberController');
+
+// governance member routes
+Route::post('governance-members/{governanceMember}', 'GovernanceController@update');
+Route::apiResource('governance-members', 'GovernanceController');
+
+
+
 Route::get('/static/about-page', 'StaticContentController@aboutPage');
+

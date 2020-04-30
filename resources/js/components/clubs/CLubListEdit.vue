@@ -3,117 +3,58 @@
         <v-container class="fill-height">
             <v-row justfiy="center">
 
-                <v-col cols="9">
+                <v-col cols="12">
                     <v-card
                             ref="form"
                             color="rgba(242, 242, 242, 0.53)"
                     >
-
                         <v-card-text>
+
+                            <p class="title black--text">Club information</p>
+
+
+
                             <!--title-->
-                            <v-text-field
-                                    ref="title"
-                                    v-model="title"
-                                    label="Title"
-                                    placeholder="Event name"
-                                    :rules="[rules.required]"
-                            ></v-text-field>
-
-                            <!-- date time-start time-finish -->
                             <v-row>
-                                <v-col>
-
-                                    <!--date-->
-                                    <v-menu
-                                            v-model="datePicker"
-                                            :close-on-content-click="false"
-                                            :nudge-right="40"
-                                            transition="scale-transition"
-                                            offset-y
-                                            min-width="200px"
-                                    >
-                                        <template v-slot:activator="{ on }">
-                                            <v-text-field
-                                                    v-model="date"
-                                                    label="Date of the event"
-                                                    prepend-icon="mdi-calendar"
-                                                    readonly
-                                                    v-on="on"
-                                                    :rules="[rules.required]"
-                                            ></v-text-field>
-                                        </template>
-                                        <v-date-picker v-model="date" @input="datePicker = false"></v-date-picker>
-                                    </v-menu>
+                                <v-col cols="3">
+                                    <v-text-field
+                                            ref="site"
+                                            v-model="site"
+                                            label="URL of the website"
+                                            placeholder="https:://..."
+                                            :rules="[rules.required]"
+                                    ></v-text-field>
                                 </v-col>
 
-
-                                <v-col>
-                                    <!--time start-->
-                                    <v-menu
-                                            ref="startTime"
-                                            v-model="startTimePicker"
-                                            :close-on-content-click="false"
-                                            :nudge-right="40"
-                                            :return-value.sync="startTime"
-                                            transition="scale-transition"
-                                            offset-y
-                                            max-width="200px"
-                                            min-width="200px"
-
-                                    >
-                                        <template v-slot:activator="{ on }">
-                                            <v-text-field
-                                                    v-model="startTime"
-                                                    label="Start time"
-                                                    prepend-icon="mdi-watch"
-                                                    readonly
-                                                    v-on="on"
-                                                    :rules="[rules.required]"
-                                            ></v-text-field>
-                                        </template>
-                                        <v-time-picker
-                                                v-if="startTimePicker"
-                                                v-model="startTime"
-                                                full-width
-                                                @click:minute="$refs.startTime.save(startTime)"
-                                        ></v-time-picker>
-                                    </v-menu>
+                                <v-col cols="3">
+                                    <!--description-->
+                                    <v-text-field
+                                            ref="phone"
+                                            v-model="phone"
+                                            label="Phone number"
+                                            placeholder="Phone number"
+                                            :rules="[rules.required]"
+                                    ></v-text-field>
                                 </v-col>
-
-
-
-                                <v-col>
-                                    <!--time finish-->
-                                    <v-menu
-                                            ref="finishTime"
-                                            v-model="finishTimePicker"
-                                            :close-on-content-click="false"
-                                            :nudge-right="40"
-                                            :return-value.sync="finishTime"
-                                            transition="scale-transition"
-                                            offset-y
-                                            max-width="200px"
-                                            min-width="200px"
-                                    >
-                                        <template v-slot:activator="{ on }">
-                                            <v-text-field
-                                                    v-model="finishTime"
-                                                    label="Finish time"
-                                                    prepend-icon="mdi-watch"
-                                                    readonly
-                                                    v-on="on"
-                                                    :rules="[rules.required]"
-                                            ></v-text-field>
-                                        </template>
-                                        <v-time-picker
-                                                v-if="finishTimePicker"
-                                                v-model="finishTime"
-                                                full-width
-                                                @click:minute="$refs.finishTime.save(finishTime)"
-                                        ></v-time-picker>
-                                    </v-menu>
+                                <v-col cols="3">
+                                    <!--description-->
+                                    <v-text-field
+                                            ref="email"
+                                            v-model="email"
+                                            label="Email"
+                                            placeholder="Email"
+                                            :rules="[rules.required]"
+                                    ></v-text-field>
                                 </v-col>
-
+                                <v-col cols="3">
+                                    <v-select
+                                            v-model="region"
+                                            :items="regions"
+                                            item-text="title"
+                                            item-value="id"
+                                            label="Region"
+                                    ></v-select>
+                                </v-col>
                             </v-row>
 
 
@@ -238,39 +179,61 @@
                                 </v-col>
                             </v-row>
 
-                            <!--heroimage-->
-                            <v-file-input
-                                    ref="heroImage"
-                                    v-on:change="handleImage"
-                                    accept="image/png, image/jpeg, image/bmp"
-                                    placeholder="Upload the Image"
-                                    prepend-icon="mdi-camera"
-                                    label="Hero image"
-                                    :rules="[rules.required]"
-                            ></v-file-input>
 
 
-                            <!--result document-->
-                            <v-file-input
-                                    ref="resultDocument"
-                                    @change="handleDocument"
-                                    label="Document"
-                                    outlined
-                                    dense
-                                    :rules="[rules.required]"
-                            ></v-file-input>
+                            <!--latitude -->
+                            <v-row>
+
+                                <v-col>
+                                    <v-alert
+                                            border="bottom"
+                                            colored-border
+                                            type="warning"
+                                            elevation="2"
+                                            dense
+                                    >
+                                        <p class="font-weight-light">To indicate latitude and longitude, please, click view larger map, find the exact building and copy its coordinates to the fields.</p>
+                                        <p class="font-weight-light">Example: <strong>-43.632499</strong> (Latitude), <strong>171.650930</strong> (Logitude).</p>
+                                    </v-alert>
+                                </v-col>
+
+                                <v-col cols="3" class="my-auto">
+                                    <v-text-field
+                                            ref="latitude"
+                                            v-model="latitude"
+                                            label="Latitude"
+                                            placeholder="Latitude"
+                                            :rules="[rules.required]"
+                                    ></v-text-field>
+                                </v-col>
+
+                                <v-col cols="3" class="my-auto">
+                                    <!--description-->
+                                    <v-text-field
+                                            ref="longitude"
+                                            v-model="longitude"
+                                            label="Longitude"
+                                            placeholder="Longitude"
+                                            :rules="[rules.required]"
+                                    ></v-text-field>
+                                </v-col>
+                            </v-row>
+
+                            <v-row>
+                                <v-col>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1481931.664611119!2d170.69520657173433!3d-43.494036713144396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d2dd8337875d903%3A0x337764303169e281!2sCanterbury%2C%20New%20Zealand!5e0!3m2!1sen!2skz!4v1588192394175!5m2!1sen!2skz" width="700" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                </v-col>
+                            </v-row>
                         </v-card-text>
-
                         <v-divider class="mt-4"></v-divider>
                         <v-card-actions>
-                            <router-link tag="v-btn" :to="{ name: 'results' }" text>Cancel</router-link>
+                            <router-link tag="v-btn" :to="{ name: 'clubs' }" text>Cancel</router-link>
                             <v-spacer></v-spacer>
                             <v-btn color="primary" text @click="submit">Submit</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>
 
-                <v-col cols="3"></v-col>
             </v-row>
         </v-container>
     </div>
@@ -298,32 +261,50 @@
             EditorMenuBar,
             EditorMenuBubble
         },
+        created() {
+            axios.get('/api/clubs/' + this.$route.params.id).then(response => {
+                let data = response.data.data;
+                this.site = data.site;
+                this.email = data.email;
+                this.phone = data.phone_number;
+                this.region = data.region.id;
+                this.latitude = data.latitude;
+                this.longitude = data.longitude;
+                this.description = data.description;
+            });
+            axios.get('/api/regions').then(respnose => {
+                this.regions = respnose.data.data;
+                this.region = this.regions[0].id;
+
+            });
+
+            setTimeout( () => {
+                this.editor.setContent(this.description);
+                window.editorHtmlContent = this.description;
+            }, 1000);
+        },
         data: () => ({
+
+            site: '',
+            email: '',
+            phone: '',
+            region: null,
+            regions: [],
+            latitude: '',
+            longitude: '',
 
             rules: {
                 required: value => !!value || 'Required.'
             },
-            title: '',
 
-            datePicker: false,
-            date: new Date().toISOString().substr(0, 10),
-
-            startTime: null,
-            startTimePicker: false,
-
-            finishTime: null,
-            finishTimePicker: false,
-
-            content: '',
-
-
+            // editor related
             linkUrl: null,
             linkMenuIsActive: false,
             editor: new Editor({
                 onUpdate: ( { getHTML } ) => {
                     window.editorHtmlContent = getHTML();
                 },
-                content: 'Text here ... ',
+                content: '',
                 extensions: [
                     new BulletList(),
                     new Heading({ levels: [1, 2, 3] }),
@@ -342,13 +323,10 @@
             handleImage(file) {
                 this.heroImage = file;
             },
-            handleDocument(file) {
-                this.resultDocument = file;
-            },
 
             showLinkMenu(attrs) {
-                this.linkUrl = attrs.href
-                this.linkMenuIsActive = true
+                this.linkUrl = attrs.href;
+                this.linkMenuIsActive = true;
                 this.$nextTick(() => {
                     this.$refs.linkInput.focus()
                 })
@@ -363,27 +341,21 @@
             },
 
             submit() {
-                // formData.title = this.title;
-                let date = this.date;
-                date += ' ' + this.finishTime;
-                date += ' ' + this.startTime;
-                // formData.content = window.editorHtmlContent;
-// console.log(formData.document.get('file'), formData.image.get('file'));
-
-
-
                 let formData = new FormData();
-                formData.append('title', this.title);
-                formData.append('date', date);
-                formData.append('content', window.editorHtmlContent);
-                formData.append('image', this.heroImage);
-                formData.append('document', this.heroImage);
+                formData.append('site', this.site);
+                formData.append('phone_number', this.phone);
+                formData.append('email', this.email);
+                formData.append('description', window.editorHtmlContent);
+                formData.append('region_id', this.region);
+                formData.append('latitude', this.latitude);
+                formData.append('longitude', this.longitude);
 
-                axios.post('/api/results', formData, {
+
+                axios.post('/api/clubs/' + this.$route.params.id, formData, {
                     headers: {'Content-Type': 'multipart/form-data'}
                 }).then(response => {
                     if (response.data.success) {
-                        this.$router.push({ name: 'results' });
+                        this.$router.push({ name: 'clubs' });
                     }
                 });
             },

@@ -18,6 +18,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        input {
+            border: 1px solid gray;
+        }
+    </style>
 </head>
 <body>
 {{--todo--}}

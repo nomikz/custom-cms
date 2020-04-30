@@ -10,107 +10,29 @@
                     >
 
                         <v-card-text>
+
                             <!--title-->
-                            <v-text-field
-                                    ref="title"
-                                    v-model="title"
-                                    label="Title"
-                                    placeholder="Event name"
-                                    required
-                            ></v-text-field>
-
-                            <!-- date time-start time-finish -->
                             <v-row>
-                                <v-col>
-
-                                    <!--date-->
-                                    <v-menu
-                                            v-model="datePicker"
-                                            :close-on-content-click="false"
-                                            :nudge-right="40"
-                                            transition="scale-transition"
-                                            offset-y
-                                            min-width="200px"
-                                    >
-                                        <template v-slot:activator="{ on }">
-                                            <v-text-field
-                                                    v-model="date"
-                                                    label="Date of the event"
-                                                    prepend-icon="mdi-calendar"
-                                                    readonly
-                                                    v-on="on"
-                                            ></v-text-field>
-                                        </template>
-                                        <v-date-picker v-model="date" @input="datePicker = false"></v-date-picker>
-                                    </v-menu>
+                                <v-col cols="5">
+                                    <v-text-field
+                                            ref="title"
+                                            v-model="title"
+                                            label="Title"
+                                            placeholder="Event name"
+                                            :rules="[rules.required]"
+                                    ></v-text-field>
                                 </v-col>
-
-
-                                <v-col>
-                                    <!--time start-->
-                                    <v-menu
-                                            ref="startTime"
-                                            v-model="startTimePicker"
-                                            :close-on-content-click="false"
-                                            :nudge-right="40"
-                                            :return-value.sync="startTime"
-                                            transition="scale-transition"
-                                            offset-y
-                                            max-width="200px"
-                                            min-width="200px"
-                                    >
-                                        <template v-slot:activator="{ on }">
-                                            <v-text-field
-                                                    v-model="startTime"
-                                                    label="Start time"
-                                                    prepend-icon="mdi-watch"
-                                                    readonly
-                                                    v-on="on"
-                                            ></v-text-field>
-                                        </template>
-                                        <v-time-picker
-                                                v-if="startTimePicker"
-                                                v-model="startTime"
-                                                full-width
-                                                @click:minute="$refs.startTime.save(startTime)"
-                                        ></v-time-picker>
-                                    </v-menu>
-                                </v-col>
-
-
-
-                                <v-col>
-                                    <!--time finish-->
-                                    <v-menu
-                                            ref="finishTime"
-                                            v-model="finishTimePicker"
-                                            :close-on-content-click="false"
-                                            :nudge-right="40"
-                                            :return-value.sync="finishTime"
-                                            transition="scale-transition"
-                                            offset-y
-                                            max-width="200px"
-                                            min-width="200px"
-                                    >
-                                        <template v-slot:activator="{ on }">
-                                            <v-text-field
-                                                    v-model="finishTime"
-                                                    label="Finish time"
-                                                    prepend-icon="mdi-watch"
-                                                    readonly
-                                                    v-on="on"
-                                            ></v-text-field>
-                                        </template>
-                                        <v-time-picker
-                                                v-if="finishTimePicker"
-                                                v-model="finishTime"
-                                                full-width
-                                                @click:minute="$refs.finishTime.save(finishTime)"
-                                        ></v-time-picker>
-                                    </v-menu>
-                                </v-col>
-
                             </v-row>
+
+
+                            <!--description-->
+                            <v-text-field
+                                    ref="description"
+                                    v-model="description"
+                                    label="Description"
+                                    placeholder="Short description text"
+                                    :rules="[rules.required]"
+                            ></v-text-field>
 
 
 
@@ -244,20 +166,11 @@
                                     label="Hero image"
                             ></v-file-input>
 
-
-                            <!--result document-->
-                            <v-file-input
-                                    ref="resultDocument"
-                                    @change="handleDocument"
-                                    label="Document"
-                                    outlined
-                                    dense
-                            ></v-file-input>
                         </v-card-text>
 
                         <v-divider class="mt-4"></v-divider>
                         <v-card-actions>
-                            <router-link tag="v-btn" :to="{ name: 'results' }" text>Cancel</router-link>
+                            <router-link tag="v-btn" :to="{ name: 'news' }" text>Cancel</router-link>
                             <v-spacer></v-spacer>
                             <v-btn color="primary" text @click="submit">Submit</v-btn>
                         </v-card-actions>
@@ -293,37 +206,31 @@
             EditorMenuBubble
         },
         created() {
-            axios.get('/api/results/' + this.$route.params.id).then(response => {
+            axios.get('/api/regions/' + this.$route.params.id).then(response => {
 
                 let data = response.data.data;
                 this.title = data.title;
-                this.date = data.date;
-                this.startTime = data.date.substr(11, 5);
-                this.finishTime = data.date.substr(16, 5);
-                this.body = data.body;
-                console.log(this.date, this.startTime, this.finishTime);
+                this.description = data.description;
+                this.content = data.content;
             });
 
             setTimeout( () => {
-                this.editor.setContent(this.body);
+                this.editor.setContent(this.content);
+                window.editorHtmlContent = this.content;
             }, 1000);
-
         },
         data: () => ({
+
             title: '',
-
-            datePicker: false,
-            date: new Date().toISOString().substr(0, 10),
-
-            startTime: null,
-            startTimePicker: false,
-
-            finishTime: null,
-            finishTimePicker: false,
-
+            description: '',
             content: '',
+            heroImage: null,
 
+            rules: {
+                required: value => !!value || 'Required.'
+            },
 
+            // editor related
             linkUrl: null,
             linkMenuIsActive: false,
             editor: new Editor({
@@ -349,13 +256,10 @@
             handleImage(file) {
                 this.heroImage = file;
             },
-            handleDocument(file) {
-                this.resultDocument = file;
-            },
 
             showLinkMenu(attrs) {
-                this.linkUrl = attrs.href
-                this.linkMenuIsActive = true
+                this.linkUrl = attrs.href;
+                this.linkMenuIsActive = true;
                 this.$nextTick(() => {
                     this.$refs.linkInput.focus()
                 })
@@ -370,24 +274,18 @@
             },
 
             submit() {
-                // formData.title = this.title;
-                let date = this.date;
-                date += ' ' + this.finishTime;
-                date += ' ' + this.startTime;
-
-
                 let formData = new FormData();
                 formData.append('title', this.title);
-                formData.append('date', date);
+                formData.append('description', this.description);
                 formData.append('content', window.editorHtmlContent);
                 formData.append('image', this.heroImage);
-                formData.append('document', this.heroImage);
 
-                axios.post('/api/results', formData, {
+
+                axios.post('/api/regions/' + this.$route.params.id, formData, {
                     headers: {'Content-Type': 'multipart/form-data'}
                 }).then(response => {
                     if (response.data.success) {
-                        this.$router.push({ name: 'results' });
+                        this.$router.push({ name: 'regions' });
                     }
                 });
             },

@@ -16,4 +16,9 @@ class Region extends Model
     {
         return $this->hasMany('App\Club', 'region_id');
     }
+
+    public function members()
+    {
+        return $this->hasMany('App\Member', 'region_id');
+    }
 }
