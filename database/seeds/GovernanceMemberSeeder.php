@@ -10,7 +10,7 @@ class GovernanceMemberSeeder extends Seeder
      *
      * @return void
      */
-    // todo
+
     public function run()
     {
         GovernanceMember::create([
@@ -20,7 +20,9 @@ class GovernanceMemberSeeder extends Seeder
             'description' => 'KNZ Referees Council Member WKF Kumite Referee A & OKF - Kata Judge A',
             'image_url' => '',
             'email' => 'gholland@karatenz.org.nz',
-        ],[
+        ]);
+
+        GovernanceMember::create([
             'title' => 'Treasurer',
             'name' => 'Christopher Bennett',
             'order_number' => '1',

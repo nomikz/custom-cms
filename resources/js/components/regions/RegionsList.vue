@@ -7,10 +7,10 @@
                 <v-data-table
                         :headers="headers"
                         :items="regions"
-                        sort-by="date"
                         class="elevation-2"
                         @click:row="showItem"
                         :items-per-page="10"
+                        sort-by="title"
                 >
 
                     <template v-slot:item.filename="{ item }">

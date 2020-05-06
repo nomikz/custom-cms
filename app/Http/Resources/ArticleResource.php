@@ -20,7 +20,7 @@ class ArticleResource extends JsonResource
             'slug' => $this->slug,
             'body' => $this->content,
             'filename' => $this->image_link,
-            'date' => (string) $this->updated_at,
+            'date' => (string) $this->date,
             'tag' => $this->tag,
         ];
     }

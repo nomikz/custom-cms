@@ -13,15 +13,42 @@ class StaticContentSeeder extends Seeder
     public function run()
     {
         StaticContent::create([
-            'key' => 'about-page_description',
+            'key' => 'governance_page_short_description',
+            'value' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.'
+        ]);
+
+        StaticContent::create([
+            'key' => 'governance_page_information',
+            'value' => '<p>The administration of the business of Karate New Zealand shall be vested in a National Executive Board of Management to be called the Executive Board.
+The Executive Board of Karate New Zealand works to ensure the best interests of all our members.</p> <p>The Executive Board consists of the following office bearers:</p> <ul><li>President who shall be the Chairperson</li><li>Secretary-General</li><li>Treasurer</li><li>Four Board members</li></ul><p>The full description of the Executive Board, including duties and powers are available in <a href="#">our Constitution</a> . They are further extended in <a href="#">our Bylaws</a>.</p>'
+        ]);
+
+
+        StaticContent::create([
+            'key' => 'governance_page_policy',
+            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
+        ]);
+
+        StaticContent::create([
+            'key' => 'governance_page_policy_document',
+            'value' => 'Download version 1.0'
+        ]);
+
+        StaticContent::create([
+            'key' => 'governance_page_policy_document_link_location',
+            'value' => '#'
+        ]);
+
+
+
+        StaticContent::create([
+            'key' => 'about_page_short_description',
             'value' => 'Karate NZ is a voluntary, non profit organization committed to fostering and developing opportunities'
         ]);
 
         StaticContent::create([
-            'key' => 'about-page_what_we_do',
-            'value' => '<h2>What we do</h2><img src="http://www.karatenz.co.nz/static/media/logo.cb8d0d87.png" /><p>What is Karate New Zealand?</p>
-<p>Karate NZ is a voluntary, non profit organization committed to fostering and developing opportunities for all New Zealanders to participate in traditional and sports karate at all levels. Karate NZ is recognized by Sport New Zealand as the national governing body for Karate in New Zealand.</p>
-
+            'key' => 'about_page_what_we_do',
+            'value' => '<p>Karate NZ is a voluntary, non profit organization committed to fostering and developing opportunities for all New Zealanders to participate in traditional and sports karate at all levels. Karate NZ is recognized by Sport New Zealand as the national governing body for Karate in New Zealand.</p>
 <p>What Are It\'s Aims?</p>
 <p>Karate NZ aims to promote and facilitate the development of the highest standards in, and the fullest understanding of traditional and sport karate.</p>
 
@@ -42,5 +69,27 @@ class StaticContentSeeder extends Seeder
 
 <p>Karate NZ aims at financial self sufficiency. It does not seek to accumulate profit, but only to have it\'s activities meet their cost with sufficient resources to ensure adequate working capital and financial stability through time.</p>'
         ]);
+
+        StaticContent::create([
+            'key' => 'about_page_contact_us',
+            'value' => '<p>This is the text for contact us section of about us page</p>'
+        ]);
+
+        StaticContent::create([
+            'key' => 'about_page_club_membership',
+            'value' => '<p>This is the text for club membership section of about us page</p>'
+        ]);
+
+        StaticContent::create([
+            'key' => 'regional_page_short_description',
+            'value' => '<p>The organisation and running of Karate New Zealand is handled by the overall Board and also by various specialist councils.</p>'
+        ]);
+
+        StaticContent::create([
+            'key' => 'regional_information',
+            'value' => '<p>The administration of the business of Karate New Zealand shall be vested in a National Executive Board of Management to be called the Executive Board.
+The Executive Board of Karate New Zealand works to ensure the best interests of all our members.</p> <p>The Executive Board consists of the following office bearers:</p> <ul><li>President who shall be the Chairperson</li><li>Secretary-General</li><li>Treasurer</li><li>Four Board members</li></ul><p>The full description of the Executive Board, including duties and powers are available in <a href="#">our Constitution</a> . They are further extended in <a href="#">our Bylaws</a>.</p>'
+        ]);
+
     }
 }

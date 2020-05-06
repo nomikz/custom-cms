@@ -7,10 +7,11 @@
                 <v-data-table
                         :headers="headers"
                         :items="results"
-                        sort-by="date"
                         class="elevation-2"
                         @click:row="showItem"
-                        items-per-page="10"
+                        :items-per-page="15"
+                        sort-by="date"
+                        :sortDesc="true"
                 >
 
                     <template v-slot:item.filename="{ item }">
@@ -81,7 +82,6 @@
         mounted() {
             axios.get('/api/results').then(response => {
                 this.results = response.data.data;
-                console.log(this.results);
             });
         },
         methods: {
@@ -101,7 +101,8 @@
             },
             newItem () {
                 this.$router.push({ name: 'result-create' });
-            }
+            },
+
 
         },
     }

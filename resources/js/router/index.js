@@ -60,8 +60,12 @@ import GovernanceMemberList from '../components/governance-members/GovernanceMem
 import GovernanceMemberListCreate from '../components/governance-members/GovernanceMemberListCreate'
 import GovernanceMemberListEdit from '../components/governance-members/GovernanceMemberListEdit'
 
-
 import MainDashboard from './../components/MainDashboard'
+
+// static
+import StaticGovernancePage from '../components/static/StaticGovernancePage'
+import StaticAboutUsPage from '../components/static/StaticAboutUsPage'
+import StaticRegionalPage from '../components/static/StaticRegionalPage'
 
 
 Vue.use(VueRouter);
@@ -76,6 +80,21 @@ const routes = [
         path: '/',
         component: MainLayout,
         children: [
+            { // static governance
+                name: 'static-governance',
+                path: '/static-governance',
+                component: StaticGovernancePage
+            },
+            { // static About us page
+                name: 'static-about-us',
+                path: '/static-about-us',
+                component: StaticAboutUsPage
+            },
+            { // static regional page
+                name: 'static-regional',
+                path: '/static-regional',
+                component: StaticRegionalPage
+            },
             { // dashboard
                 name: 'dash',
                 path: '/',

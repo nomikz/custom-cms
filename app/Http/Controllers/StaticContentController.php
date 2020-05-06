@@ -7,8 +7,25 @@ use Illuminate\Http\Request;
 
 class StaticContentController extends Controller
 {
-    public function aboutPage()
+    public function get(Request $request)
     {
-        return StaticContent::whereIn('key', ['about-page_description', 'about-page_what_we_do'])->get();
+        $collection = StaticContent::when($request->page === 'regional', function ($q) {
+                $q->whereIn('key', ['regional_page_short_description', 'regional_information']);
+            })
+            ->get();
+
+        $data = [];
+
+        foreach($collection as $item) {
+            $data[$item->key] = $item->value;
+        }
+
+        return response()->json(['data' => $data]);
     }
+
+    public function update(Request $request)
+    {
+//        return StaticContent;
+    }
+
 }

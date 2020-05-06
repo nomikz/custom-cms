@@ -63,8 +63,8 @@ class RegionClubSeeder extends Seeder
             'phone_number' => '021 778 640',
             'email' => 'gary@karatechristchurch.co.nz',
             'site' => 'www.karatechristchurch.co.nz',
-            'latitude' => '94324234',
-            'longitude' => '94324234',
+            'latitude' => '-43.535411',
+            'longitude' => '172.656317',
             'region_id' => $auckland->id
         ]);
 
@@ -74,8 +74,8 @@ class RegionClubSeeder extends Seeder
             'phone_number' => '(029) 982 6014',
             'email' => 'greg.burgess2@vodafone.com',
             'site' => 'gkrkarate.com',
-            'latitude' => '94324234',
-            'longitude' => '94324234',
+            'latitude' => '-43.538493',
+            'longitude' => '172.647200',
             'region_id' => $centeral->id
         ]);
 
@@ -84,8 +84,8 @@ class RegionClubSeeder extends Seeder
             'phone_number' => '(029) 982 6014',
             'email' => 'greg.burgess2@vodafone.com',
             'site' => 'gkrkarate.com',
-            'latitude' => '94324234',
-            'longitude' => '94324234',
+            'latitude' => '-43.513591',
+            'longitude' => '172.590470',
             'region_id' => $lower->id
         ]);
 

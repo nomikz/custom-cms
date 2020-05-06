@@ -7,10 +7,10 @@
                 <v-data-table
                         :headers="headers"
                         :items="members"
-                        sort-by="date"
+                        items-per-page="15"
                         class="elevation-2"
                         @click:row="showItem"
-                        items-per-page="10"
+                        sort-by="name"
                 >
                     <template v-slot:item.image_url="{ item }">
                         <div>
@@ -63,6 +63,11 @@
                 this.regions = response.data.data;
             });
         },
+        mounted() {
+            axios.get('/api/members').then(response => {
+                this.members = response.data.data;
+            });
+        },
         data: () => ({
             members: [],
             headers: [
@@ -79,18 +84,12 @@
             ],
             regions: [],
         }),
-        mounted() {
-            axios.get('/api/members').then(response => {
-                this.members = response.data.data;
-            });
-
-        },
         methods: {
             showItem (row) {
                 this.$router.push({ name: 'member-edit', params: { id: row.id } })
             },
             editItem (item) {
-                this.$router.push({ name: 'member-edit', params: { id: item.id}})
+                this.$router.push({name: 'member-edit', params: {id: item.id}})
             },
             deleteItem (item) {
                 const index = this.members.indexOf(item);
