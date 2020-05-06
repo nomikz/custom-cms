@@ -17,17 +17,17 @@ class ArticleController extends Controller
      *
      * @return array
      */
-    public function index()
+    public function index(Request $request)
     {
-        if ($num = request()->get('count')) {
-            return [
-                'data' => ArticleResource::collection(Article::orderBy('updated_at', 'desc')->limit($num)->get()),
-                'status' => true,
-                'message' => 'All results retrieved'
-            ];
-        }
+
+        $aricles = Article::orderBy('updated_at', 'desc')
+            ->when($request->count > 0, function($q) use ($request) {
+                $q->limit($request->count);
+            })
+            ->get();
+
         return [
-            'data' => ArticleResource::collection(Article::orderBy('updated_at', 'desc')->get()),
+            'data' => ArticleResource::collection($aricles),
             'status' => true,
             'message' => 'All results retrieved'
         ];
