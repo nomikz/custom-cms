@@ -41,6 +41,10 @@ The Executive Board of Karate New Zealand works to ensure the best interests of 
 
 
 
+
+
+
+
         StaticContent::create([
             'key' => 'about_page_short_description',
             'value' => 'Karate NZ is a voluntary, non profit organization committed to fostering and developing opportunities'
@@ -79,6 +83,10 @@ The Executive Board of Karate New Zealand works to ensure the best interests of 
             'key' => 'about_page_club_membership',
             'value' => '<p>This is the text for club membership section of about us page</p>'
         ]);
+
+
+
+
 
         StaticContent::create([
             'key' => 'regional_page_short_description',

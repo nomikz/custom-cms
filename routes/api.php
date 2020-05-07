@@ -60,5 +60,6 @@ Route::apiResource('governance-members', 'GovernanceController');
 
 
 Route::get('/static', 'StaticContentController@get');
-Route::put('/static', 'StaticContentController@update');
+Route::post('/static', 'StaticContentController@update');
+Route::post('/static-policy-document', 'StaticContentController@updateDocument');
 

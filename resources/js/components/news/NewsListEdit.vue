@@ -289,6 +289,7 @@
                 this.heroImage = file;
             },
 
+            // editor related
             showLinkMenu(attrs) {
                 this.linkUrl = attrs.href;
                 this.linkMenuIsActive = true;

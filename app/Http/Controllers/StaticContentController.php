@@ -4,15 +4,13 @@ namespace App\Http\Controllers;
 
 use App\StaticContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class StaticContentController extends Controller
 {
     public function get(Request $request)
     {
-        $collection = StaticContent::when($request->page === 'regional', function ($q) {
-                $q->whereIn('key', ['regional_page_short_description', 'regional_information']);
-            })
-            ->get();
+        $collection = StaticContent::all();
 
         $data = [];
 
@@ -25,7 +23,26 @@ class StaticContentController extends Controller
 
     public function update(Request $request)
     {
-//        return StaticContent;
+        $row = StaticContent::where('key', $request->parameter)->first();
+        $row->value = $request->value;
+        $row->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function updateDocument(Request $request)
+    {
+
+        $policyLink = StaticContent::where('key', 'governance_page_policy_document_link_location')->first();
+        File::delete(public_path($policyLink->value));
+
+        $policyLink->value = 'uploads/'.$request->document->storeAs('policy', time().'.'.$request->document->getClientOriginalExtension());
+        $policyLink->save();
+
+        $policyDomumentText = StaticContent::where('key', 'governance_page_policy_document')->first();
+        $policyDomumentText->value = $request->governance_page_policy_document;
+        $policyDomumentText->save();
+
     }
 
 }
