@@ -129,6 +129,13 @@
                                         :rules="[rules.required]"
                                 ></v-file-input>
                             </v-card-text>
+
+                            <v-divider class="mt-4"></v-divider>
+                            <v-card-actions>
+                                <router-link tag="v-btn" :to="{ name: 'events' }" text>Cancel</router-link>
+                                <v-spacer></v-spacer>
+                                <v-btn color="primary" text @click="submit">Submit</v-btn>
+                            </v-card-actions>
                         </v-form>
 
 

@@ -12,6 +12,7 @@ class StaticContentSeeder extends Seeder
      */
     public function run()
     {
+        // governance page
         StaticContent::create([
             'key' => 'governance_page_short_description',
             'value' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.'
@@ -43,8 +44,7 @@ The Executive Board of Karate New Zealand works to ensure the best interests of 
 
 
 
-
-
+        // about us page
         StaticContent::create([
             'key' => 'about_page_short_description',
             'value' => 'Karate NZ is a voluntary, non profit organization committed to fostering and developing opportunities'
@@ -87,12 +87,7 @@ The Executive Board of Karate New Zealand works to ensure the best interests of 
 
 
 
-
-        StaticContent::create([
-            'key' => 'regional_page_short_description',
-            'value' => '<p>The organisation and running of Karate New Zealand is handled by the overall Board and also by various specialist councils.</p>'
-        ]);
-
+        // regional information
         StaticContent::create([
             'key' => 'regional_information',
             'value' => '<p>The administration of the business of Karate New Zealand shall be vested in a National Executive Board of Management to be called the Executive Board.
