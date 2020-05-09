@@ -39,7 +39,8 @@
                                                 ref="email"
                                                 v-model="email"
                                                 label="Email"
-                                                :rules="[rules.required]"
+                                                hint="Optional"
+                                                persistent-hint
                                         ></v-text-field>
                                     </v-col>
                                 </v-row>

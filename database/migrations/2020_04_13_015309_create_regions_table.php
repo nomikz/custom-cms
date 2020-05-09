@@ -17,7 +17,6 @@ class CreateRegionsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->nullable();
-            $table->string('image_link')->nullable();
             $table->string('description');
             $table->text('content');
             $table->timestamps();

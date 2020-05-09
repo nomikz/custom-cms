@@ -40,6 +40,8 @@
                                         prepend-icon="mdi-camera"
                                         label="Hero image"
                                         :rules="[rules.required]"
+                                        persistent-hint
+                                        hint="Recommended image size: 180*80 or 360*160 pixels. File format: PNG or JPG."
                                 ></v-file-input>
 
 

@@ -19,8 +19,7 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
-
-        $aricles = Article::orderBy('updated_at', 'desc')
+        $aricles = Article::orderBy('date', 'desc')
             ->when($request->count > 0, function($q) use ($request) {
                 $q->limit($request->count);
             })

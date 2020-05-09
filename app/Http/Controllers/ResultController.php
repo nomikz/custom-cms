@@ -19,7 +19,7 @@ class ResultController extends Controller
     public function index()
     {
         return [
-            'data' => ResultResource::collection(Result::get()),
+            'data' => ResultResource::collection(Result::orderBy('date', 'desc')->get()),
             'status' => true,
             'message' => 'All results retrieved'
         ];

@@ -157,15 +157,6 @@
                                     </v-col>
                                 </v-row>
 
-                                <!--heroimage-->
-                                <v-file-input
-                                        ref="heroImage"
-                                        v-on:change="handleImage"
-                                        accept="image/png, image/jpeg, image/bmp"
-                                        placeholder="Upload the Image"
-                                        prepend-icon="mdi-camera"
-                                        label="Hero image"
-                                ></v-file-input>
 
                             </v-card-text>
 
@@ -226,7 +217,8 @@
             title: '',
             description: '',
             content: '',
-            heroImage: null,
+
+            valid: true,
 
             rules: {
                 required: value => !!value || 'Required.'
@@ -255,9 +247,6 @@
             }),
         }),
         methods: {
-            handleImage(file) {
-                this.heroImage = file;
-            },
 
             showLinkMenu(attrs) {
                 this.linkUrl = attrs.href;
@@ -282,12 +271,9 @@
                     formData.append('title', this.title);
                     formData.append('description', this.description);
                     formData.append('content', window.editorHtmlContent);
-                    formData.append('image', this.heroImage);
 
 
-                    axios.post('/api/regions/' + this.$route.params.id, formData, {
-                        headers: {'Content-Type': 'multipart/form-data'}
-                    }).then(response => {
+                    axios.post('/api/regions/' + this.$route.params.id, formData).then(response => {
                         if (response.data.success) {
                             this.$router.push({name: 'regions'});
                         }

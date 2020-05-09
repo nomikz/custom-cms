@@ -17,7 +17,7 @@ class Event extends Model
 
     public function getSortedByDate()
     {
-        $events = Event::all();
+        $events = Event::orderBy('date', 'desc')->all();
 
         $dates = $events->map(function ($event) {
             return $event->date;

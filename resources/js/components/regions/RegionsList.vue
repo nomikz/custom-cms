@@ -28,7 +28,6 @@
                                     vertical
                             ></v-divider>
                             <v-spacer></v-spacer>
-                            <v-btn color="primary" dark class="mb-2" @click="newItem">Add new region</v-btn>
                         </v-toolbar>
                     </template>
 
@@ -40,13 +39,7 @@
                         >
                             <v-icon class="mr-2">mdi-pencil</v-icon>
                         </v-btn>
-                        <v-btn
-                                @click.stop="deleteItem(item)"
-                                small
-                                color="red lighten-2"
-                        >
-                            <v-icon>mdi-delete</v-icon>
-                        </v-btn>
+
                     </template>
 
                 </v-data-table>
@@ -62,20 +55,9 @@
         data: () => ({
             regions: [],
             headers: [
-                {
-                    text: 'Image',
-                    align: 'start',
-                    sortable: true,
-                    value: 'filename',
-                },
                 { text: 'Title', value: 'title'},
                 { text: 'Actions', value: 'actions', sortable: false },
             ],
-            defaultItem: {
-                filename: '',
-                title: '',
-                date: '',
-            },
         }),
         mounted() {
             axios.get('/api/regions').then(response => {
@@ -89,19 +71,6 @@
             editItem (item) {
                 this.$router.push({ name: 'region-edit', params: { id: item.id}})
             },
-            deleteItem (item) {
-                const index = this.regions.indexOf(item);
-                if (confirm('Are you sure you want to delete this publication?')) {
-                    axios.delete('/api/regions/' + item.id).then(response => {
-                        if (response.data.success) {
-                            this.regions.splice(index, 1);
-                        }
-                    });
-                }
-            },
-            newItem () {
-                this.$router.push({ name: 'region-create' });
-            }
 
         },
     }

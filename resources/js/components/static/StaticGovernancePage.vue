@@ -31,27 +31,6 @@
                     </v-card>
 
 
-                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6" width="60%">
-                        <p class="title">Information section</p>
-                        <p class="body-1">Location: Above the Council members sections</p>
-
-                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                            <div v-html="governance_page_information"></div>
-                        </v-card-text>
-
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn
-                                    color="primary"
-                                    dark
-                                    @click="editInformation"
-                            >
-                                Edit text
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-
-
 
 
                     <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6" width="60%">
@@ -310,7 +289,6 @@
                 parameter: '',
 
                 governance_page_policy: '',
-                governance_page_information: '',
                 governance_page_short_description: '',
                 governance_page_policy_document: '',
 
@@ -354,12 +332,6 @@
                 this.dialog = true;
             },
 
-            editInformation() {
-                this.editor.setContent(this.governance_page_information);
-                window.editorHtmlContent = this.governance_page_information;
-                this.parameter = 'governance_page_information';
-                this.dialog = true;
-            },
 
 
             editPolicy() {

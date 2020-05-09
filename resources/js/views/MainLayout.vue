@@ -127,7 +127,7 @@
                 {icon: 'mdi-home-group', text: 'Supporters', link: '/supporters'},
                 {icon: 'mdi-store', text: 'Regions', link: '/regions'},
                 {icon: 'mdi-home-group', text: 'Clubs', link: '/clubs'},
-                {icon: 'mdi-account-group', text: 'Members', link: '/members'},
+                {icon: 'mdi-account-group', text: 'Region Members', link: '/members'},
                 {icon: 'mdi-shield-account', text: 'Governance Members', link: '/governance-members'},
                 {
                     icon: 'mdi-chevron-up',

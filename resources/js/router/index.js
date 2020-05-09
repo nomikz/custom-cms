@@ -37,7 +37,6 @@ import SupporterListEdit from '../components/supporters/SupporterListEdit'
 // regions
 import RegionsPage from '../components/regions/RegionsPage'
 import RegionList from '../components/regions/RegionsList'
-import RegionListCreate from '../components/regions/RegionListCreate'
 import RegionListEdit from '../components/regions/RegionListEdit'
 
 // clubs
@@ -192,11 +191,6 @@ const routes = [
                         name: 'regions',
                         path: '/',
                         component: RegionList
-                    },
-                    {
-                        name: 'region-create',
-                        path: 'create',
-                        component: RegionListCreate
                     },
                     {
                         name: 'region-edit',

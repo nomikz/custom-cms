@@ -20,7 +20,6 @@ class RegionResource extends JsonResource
             'title' => $this->name,
             'content' => $this->content,
             'description' => $this->description,
-            'filename' => $this->image_link,
         ];
     }
 }

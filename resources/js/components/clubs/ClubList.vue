@@ -13,9 +13,9 @@
                         :items-per-page="10"
                 >
 
-                    <template v-slot:item.filename="{ item }">
+                    <template v-slot:item.description="{ item }">
                         <div>
-                            <v-img :src="'/' + item.filename" height="70" width="70"></v-img>
+                            <div class="cntr-text" v-html="shortenText(item.description)"></div>
                         </div>
                     </template>
 
@@ -63,13 +63,12 @@
             clubs: [],
             headers: [
                 {
-                    text: 'Site',
+                    text: 'Name',
                     align: 'start',
-                    sortable: true,
-                    value: 'site',
+                    value: 'description',
                 },
                 { text: 'Region', value: 'region.title'},
-                { text: 'Actions', value: 'actions', sortable: false },
+                { text: 'Actions', value: 'actions' },
             ],
         }),
         mounted() {
@@ -78,6 +77,11 @@
             });
         },
         methods: {
+            shortenText(text) {
+                let index = text.indexOf('>', 4) + 1;
+                console.log(text, index);
+                return text.slice(0, index);
+            },
             showItem (row) {
                 this.$router.push({ name: 'club-edit', params: { id: row.id } })
             },
@@ -106,5 +110,7 @@
 tbody tr {
     cursor: pointer;
 }
-
+.cntr-text p { // this is for vertical centering
+    margin-bottom: 0 !important;
+}
 </style>

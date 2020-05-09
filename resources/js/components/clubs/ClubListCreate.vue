@@ -21,7 +21,8 @@
                                                 v-model="site"
                                                 label="URL of the website"
                                                 placeholder="https:://..."
-                                                :rules="[rules.required]"
+                                                hint="Optional"
+                                                persistent-hint
                                         ></v-text-field>
                                     </v-col>
 
@@ -220,7 +221,7 @@
 
                                 <v-row>
                                     <v-col>
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1481931.664611119!2d170.69520657173433!3d-43.494036713144396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d2dd8337875d903%3A0x337764303169e281!2sCanterbury%2C%20New%20Zealand!5e0!3m2!1sen!2skz!4v1588192394175!5m2!1sen!2skz" width="700" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5615022.731462329!2d169.94308905838426!3d-40.89658646667975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d2c200e17779687%3A0xb1d618e2756a4733!2sNew%20Zealand!5e0!3m2!1sen!2skz!4v1588987096788!5m2!1sen!2skz" width="700" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                                     </v-col>
                                 </v-row>
 

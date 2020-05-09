@@ -191,7 +191,10 @@
                                         accept="image/png, image/jpeg, image/bmp"
                                         placeholder="Upload the Image"
                                         prepend-icon="mdi-camera"
+                                        loader-height="3"
+                                        :loading='false'
                                         label="Hero image"
+                                        show-size
                                         :rules="[rules.required]"
                                 ></v-file-input>
 
@@ -201,7 +204,7 @@
                             <v-card-actions>
                                 <router-link tag="v-btn" :to="{ name: 'news' }" text>Cancel</router-link>
                                 <v-spacer></v-spacer>
-                                <v-btn color="primary" text @click="submit">Submit</v-btn>
+                                <v-btn color="primary"  text @click="submit">Submit</v-btn>
                             </v-card-actions>
                         </v-form>
                     </v-card>
@@ -242,10 +245,17 @@
             },
             valid: true,
 
+            color: 'warning',
+            tooBig: false,
+            stopped: false,
+
+
             title: '',
             tag: '',
             heroImage: null,
             content: '',
+
+
 
             datePicker: false,
             date: new Date().toISOString().substr(0, 10),
@@ -275,7 +285,7 @@
         }),
         methods: {
             handleImage(file) {
-                this.heroImage = file;
+                    this.heroImage = file;
             },
 
             // editor related
@@ -321,6 +331,7 @@
         beforeDestroy() { // lifecycle hook
             this.editor.destroy()
         },
+
     }
 </script>
 

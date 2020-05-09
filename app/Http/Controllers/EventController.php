@@ -19,7 +19,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return EventResource::collection(Event::get());
+        return EventResource::collection(Event::orderBy('date', 'desc')->get());
     }
 
     public function getSortedByDate(Event $event)

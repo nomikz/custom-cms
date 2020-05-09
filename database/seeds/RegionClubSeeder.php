@@ -17,8 +17,7 @@ class RegionClubSeeder extends Seeder
             'name' => 'AUCKLAND AND NORTHLAND',
             'slug' => 'AUCKLAND-AND-NORTHLAND',
             'description' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
-            'content' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
-            'image_link' => '',
+            'content' => '<p>The administration of the business of Karate New Zealand shall be vested in a National Executive Board of Management to be called the Executive Board.</p><p>The Executive Board of Karate New Zealand works to ensure the best interests of all our members.</p><p>The Executive Board consists of the following office bearers:</p><ul><li>The Executive Board consists of the following office bearers:</li><li>Secretary-General</li><li>Treasurer</li><li>Four Board members</li></ul><p>The full description of the Executive Board, including duties and powers are available in <a href="#">our Constitution</a>. They are further extended in <a href="#">our Bylaws</a>.</p>',
         ]);
 
 
@@ -26,8 +25,7 @@ class RegionClubSeeder extends Seeder
             'name' => 'CENTRAL NORTH ISLAND',
             'slug' => 'CENTRAL-NORTH-ISLAND',
             'description' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
-            'content' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
-            'image_link' => '',
+            'content' => '<p>The administration of the business of Karate New Zealand shall be vested in a National Executive Board of Management to be called the Executive Board.</p><p>The Executive Board of Karate New Zealand works to ensure the best interests of all our members.</p><p>The Executive Board consists of the following office bearers:</p><ul><li>The Executive Board consists of the following office bearers:</li><li>Secretary-General</li><li>Treasurer</li><li>Four Board members</li></ul><p>The full description of the Executive Board, including duties and powers are available in <a href="#">our Constitution</a>. They are further extended in <a href="#">our Bylaws</a>.</p>',
         ]);
 
 
@@ -35,8 +33,7 @@ class RegionClubSeeder extends Seeder
             'name' => 'LOWER NORTH ISLAND',
             'slug' => 'LOWER-NORTH-ISLAND',
             'description' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
-            'content' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
-            'image_link' => '',
+            'content' => '<p>The administration of the business of Karate New Zealand shall be vested in a National Executive Board of Management to be called the Executive Board.</p><p>The Executive Board of Karate New Zealand works to ensure the best interests of all our members.</p><p>The Executive Board consists of the following office bearers:</p><ul><li>The Executive Board consists of the following office bearers:</li><li>Secretary-General</li><li>Treasurer</li><li>Four Board members</li></ul><p>The full description of the Executive Board, including duties and powers are available in <a href="#">our Constitution</a>. They are further extended in <a href="#">our Bylaws</a>.</p>',
         ]);
 
 
@@ -45,16 +42,15 @@ class RegionClubSeeder extends Seeder
             'name' => 'CANTERBURY WESTLAND',
             'slug' => 'CANTERBURY-WESTLAND',
             'description' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
-            'content' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
-            'image_link' => '',
+            'content' => '<p>The administration of the business of Karate New Zealand shall be vested in a National Executive Board of Management to be called the Executive Board.</p><p>The Executive Board of Karate New Zealand works to ensure the best interests of all our members.</p><p>The Executive Board consists of the following office bearers:</p><ul><li>The Executive Board consists of the following office bearers:</li><li>Secretary-General</li><li>Treasurer</li><li>Four Board members</li></ul><p>The full description of the Executive Board, including duties and powers are available in <a href="#">our Constitution</a>. They are further extended in <a href="#">our Bylaws</a>.</p>',
+
         ]);
 
         $otago = Region::create([
             'name' => 'OTAGO SOUTHLAND',
             'slug' => 'OTAGO-SOUTHLAND',
             'description' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
-            'content' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.',
-            'image_link' => '',
+            'content' => '<p>The administration of the business of Karate New Zealand shall be vested in a National Executive Board of Management to be called the Executive Board.</p><p>The Executive Board of Karate New Zealand works to ensure the best interests of all our members.</p><p>The Executive Board consists of the following office bearers:</p><ul><li>The Executive Board consists of the following office bearers:</li><li>Secretary-General</li><li>Treasurer</li><li>Four Board members</li></ul><p>The full description of the Executive Board, including duties and powers are available in <a href="#">our Constitution</a>. They are further extended in <a href="#">our Bylaws</a>.</p>',
         ]);
 
 

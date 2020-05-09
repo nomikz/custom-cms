@@ -18,11 +18,7 @@ class StaticContentSeeder extends Seeder
             'value' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.'
         ]);
 
-        StaticContent::create([
-            'key' => 'governance_page_information',
-            'value' => '<p>The administration of the business of Karate New Zealand shall be vested in a National Executive Board of Management to be called the Executive Board.
-The Executive Board of Karate New Zealand works to ensure the best interests of all our members.</p> <p>The Executive Board consists of the following office bearers:</p> <ul><li>President who shall be the Chairperson</li><li>Secretary-General</li><li>Treasurer</li><li>Four Board members</li></ul><p>The full description of the Executive Board, including duties and powers are available in <a href="#">our Constitution</a> . They are further extended in <a href="#">our Bylaws</a>.</p>'
-        ]);
+
 
 
         StaticContent::create([

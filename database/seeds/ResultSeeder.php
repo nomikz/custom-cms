@@ -39,7 +39,7 @@ class ResultSeeder extends Seeder
 </div>',
             'download_link' => 'https://www.sportdata.org/wkf/set-online/veranstaltung_info_main.php?active_menu=calendar&amp;vernr=188&amp;ver_info_action=catmitlist#a_eventheadend',
             'image_link' => 'php8Nk42n.jpg',
-            'date' => '2018-11-12 09:45 12:30',
+            'date' => '2018-11-12',
         ]);
 
         //2
@@ -55,7 +55,7 @@ class ResultSeeder extends Seeder
 </div>',
             'download_link' => 'https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=4026&amp;active_menu=calendar',
             'image_link' => 'phppGjeVP.jpg',
-            'date' => '2018-08-20 09:45 12:30',
+            'date' => '2018-08-20',
         ]);
 
 
@@ -70,7 +70,7 @@ class ResultSeeder extends Seeder
 </div>',
             'download_link' => 'https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=4028&amp;active_menu=calendar',
             'image_link' => 'phpMX0t3Q.jpg',
-            'date' => '2018-08-20 09:45 12:30',
+            'date' => '2018-08-20',
         ]);
 
 
@@ -108,7 +108,7 @@ Repechage - Lost to Taipei 1-4</p>
 <a href="https://www.sportdata.org/wkf/set-online/popup_main.php?popup_action=results&amp;vernr=177&amp;active_menu=calendar" style="box-sizing: border-box; background: transparent; color: rgb(220, 42, 11); text-decoration-line: none;" target="_blank">2018 FISU World University Karate Championship</a></p>',
             'download_link' => 'https://www.sportdata.org/wkf/set-online/popup_main.php?popup_action=results&amp;vernr=177&amp;active_menu=calendar',
             'image_link' => 'phpjk0I7z.jpg',
-            'date' => '2018-07-22 09:45 12:30',
+            'date' => '2018-07-22',
         ]);
 
 
@@ -123,7 +123,7 @@ Repechage - Lost to Taipei 1-4</p>
 <p><strong>Link to Photo Albums:</strong><br /><a href="https://www.facebook.com/pg/KarateNZ/photos/?tab=album&amp;album_id=2165552620425209" target="_blank" rel="noopener">Facebook - Day 1 - 18th May</a><br /><a href="https://www.facebook.com/pg/KarateNZ/photos/?tab=album&amp;album_id=2165556537091484" target="_blank" rel="noopener">Facebook - Day 2 - 19th May</a><br /><a href="https://www.facebook.com/pg/KarateNZ/photos/?tab=album&amp;album_id=2165576240422847" target="_blank" rel="noopener">Facebook - Day 3 - 20th May</a><br /><a href="https://lucio.smugmug.com/" target="_blank" rel="noopener">Lucio Ferri - Special: Oceania Karate Championships 2018</a></p>',
             'download_link' => 'https://www.sportdata.org/wkf/set-online/veranstaltung_info_main.php?active_menu=calendar&amp;vernr=188&amp;ver_info_action=catmitlist#a_eventheadend',
             'image_link' => 'phpnHEtvq.jpg',
-            'date' => '2018-05-31 09:45 12:30',
+            'date' => '2018-05-31',
         ]);
 
 
@@ -141,7 +141,7 @@ Repechage - Lost to Taipei 1-4</p>
 <p><strong>Links to Sportdata:<br /></strong><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=3823&amp;active_menu=calendar" target="_blank" rel="noopener">Results of New Zealand Open 2018</a>&nbsp;<br /><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=medals&amp;vernr=3823&amp;active_menu=calendar" target="_blank" rel="noopener">Medals by Club</a></p>',
             'download_link' => 'https://www.sportdata.org/wkf/set-online/veranstaltung_info_main.php?active_menu=calendar&amp;vernr=188&amp;ver_info_action=catmitlist#a_eventheadend',
             'image_link' => 'phpcRV9ci.jpeg',
-            'date' => '2018-05-31 09:45 12:30',
+            'date' => '2018-05-31',
         ]);
 
 
@@ -159,7 +159,7 @@ Repechage - Lost to Taipei 1-4</p>
 <p><strong>Links to Sportdata:<br /></strong><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=3823&amp;active_menu=calendar" target="_blank" rel="noopener">Results of New Zealand Open 2018</a>&nbsp;<br /><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=medals&amp;vernr=3823&amp;active_menu=calendar" target="_blank" rel="noopener">Medals by Club</a></p>',
             'download_link' => '#',
             'image_link' => 'phpcRV9ci.jpeg',
-            'date' => '2018-05-31 09:45 12:30',
+            'date' => '2018-05-31',
         ]);
 
         //6
@@ -189,7 +189,7 @@ Repechage - Lost to Taipei 1-4</p>
 </div>',
             'download_link' => 'https://www.sportdata.org/wkf/set-online/veranstaltung_info_main.php?active_menu=calendar&amp;vernr=188&amp;ver_info_action=catmitlist#a_eventheadend',
             'image_link' => 'php8Nk42n.jpg',
-            'date' => '2018-11-12 09:45 12:30',
+            'date' => '2018-11-12',
         ]);
 
         //7
@@ -202,7 +202,7 @@ Repechage - Lost to Taipei 1-4</p>
 <p><strong>Full tournament results on Sportdata -&nbsp;<br /></strong><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=3826&amp;active_menu=calendar" target="_blank" rel="noopener">Northland Open 2018</a></p>',
             'download_link' => 'https://www.sportdata.org/wkf/set-online/veranstaltung_info_main.php?active_menu=calendar&amp;vernr=188&amp;ver_info_action=catmitlist#a_eventheadend',
             'image_link' => 'phpvL66UO.jpg',
-            'date' => '2018-04-09 09:45 12:30',
+            'date' => '2018-04-09',
         ]);
 
         //8
@@ -214,7 +214,7 @@ Repechage - Lost to Taipei 1-4</p>
 <p><strong>Downloads</strong><br /><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=3772&amp;active_menu=calendar" target="_blank" rel="noopener">CNI Karate Championships 2018 - Results</a><br /><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=medals&amp;vernr=3772&amp;active_menu=calendar" target="_blank" rel="noopener">Medals By Club</a></p>',
             'download_link' => 'https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=3772&amp;active_menu=calendar',
             'image_link' => 'phpJJx3Py.jpg',
-            'date' => '2018-03-25 09:45 12:30',
+            'date' => '2018-03-25',
         ]);
 
 
@@ -230,7 +230,7 @@ Repechage - Lost to Taipei 1-4</p>
 <p><strong><br />Downloads<br /></strong><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=3292&amp;active_menu=calendar" target="_blank" rel="noopener">Results by Competitor</a><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=3093&amp;active_menu=calendar" target="_blank" rel="noopener"><br /></a><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=medals&amp;vernr=3292&amp;active_menu=calendar" target="_blank" rel="noopener">Medals by Club</a></p>',
             'download_link' => 'https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=3292&amp;active_menu=calendar',
             'image_link' => 'phpENzAw3.jpg',
-            'date' => '2017-08-22 09:45 12:30',
+            'date' => '2017-08-22',
         ]);
 
         //10
@@ -244,7 +244,7 @@ Repechage - Lost to Taipei 1-4</p>
 <p><strong>Downloads<br /></strong><a href="https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=3277&amp;active_menu=calendar" target="_blank" rel="noopener">New Zealand National Championships 2017 - Results&nbsp;</a>&nbsp;</p>',
             'download_link' => 'https://www.sportdata.org/karate/set-online/popup_main.php?popup_action=results&amp;vernr=3277&amp;active_menu=calendar',
             'image_link' => 'phpkbgH2M.jpeg',
-            'date' => '2017-07-20 09:45 12:30',
+            'date' => '2017-07-20',
         ]);
     }
 }
