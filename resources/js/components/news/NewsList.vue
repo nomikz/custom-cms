@@ -16,7 +16,7 @@
 
                     <template v-slot:item.filename="{ item }">
                         <div>
-                            <v-img :src="'/' + item.filename" height="70" width="70"></v-img>
+                            <v-img :src="'/' + item.filename" max-width="150"  max-height="120" contain></v-img>
                         </div>
                     </template>
 

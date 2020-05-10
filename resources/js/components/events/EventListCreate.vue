@@ -120,14 +120,24 @@
 
                                 <!--heroimage-->
                                 <v-file-input
+                                        :rules="[rules.required]"
                                         ref="heroImage"
-                                        v-on:change="handleImage"
-                                        accept="image/png, image/jpeg, image/bmp"
                                         placeholder="Upload the Image"
                                         prepend-icon="mdi-camera"
                                         label="Hero image"
-                                        :rules="[rules.required]"
+                                        accept="image/png, image/jpeg, image/bmp"
+                                        v-on:change="handleImage"
+                                        v-on:click:clear="heroImageUrl = ''"
+                                        show-size
+                                        hint="Recommended image size: 180*80 or 360*160 pixels. File format: PNG or JPG."
+                                        persistent-hint
                                 ></v-file-input>
+
+                                <div style="color: #E53935;" v-text="this.uplaodMessage"></div>
+
+                                <div class="image-preview" v-if="heroImageUrl.length>0">
+                                    <v-img class="my-3" contain height="150" :src="heroImageUrl"></v-img>
+                                </div>
                             </v-card-text>
 
                             <v-divider class="mt-4"></v-divider>
@@ -160,6 +170,8 @@
 
             name: '',
             heroImage: null,
+            heroImageUrl: '',
+            uplaodMessage: '',
 
             datePicker: false,
             date: new Date().toISOString().substr(0, 10),
@@ -173,7 +185,14 @@
         }),
         methods: {
             handleImage(file) {
+                this.heroImageUrl = '';
+                if (file.size > 5 * 1024 * 1024) {
+                    this.uplaodMessage = 'Size of uploaded image is bigger than 5mb. Please upload another image.';
+                    return;
+                }
                 this.heroImage = file;
+                this.uplaodMessage = '';
+                this.heroImageUrl = URL.createObjectURL(this.heroImage);
             },
 
 

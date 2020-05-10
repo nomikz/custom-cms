@@ -14,7 +14,7 @@
                 >
                     <template v-slot:item.image_url="{ item }">
                         <div>
-                            <v-img :src="'/' + item.image_url" height="70" width="70"></v-img>
+                            <v-img :src="'/' + item.image_url" max-width="100"  max-height="100" contain></v-img>
                         </div>
                     </template>
 
@@ -72,6 +72,8 @@
                 { text: 'Actions', value: 'actions', sortable: false },
             ],
             regions: [],
+
+
         }),
         mounted() {
             axios.get('/api/governance-members').then(response => {
