@@ -1,100 +1,332 @@
 <template>
     <div>
         <v-container style="margin-left: 50px;">
-            <v-row>
-                <v-col>
-                    <p class="display-1">Edit "Governance" page</p>
-                </v-col>
-            </v-row>
+
+
+            <p class="display-2 text-center mt-6">Edit "Governance" page</p>
+
+
 
             <v-row>
                 <v-col cols="12">
+<!--                    <v-card>-->
+                        <v-tabs
+                                v-model="tab"
 
-                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6" width="60%">
-                        <p class="title">Short intro text</p>
-                        <p class="body-1">Location: Below the title of the page</p>
-
-                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                            <div v-html="governance_page_short_description"></div>
-                        </v-card-text>
-
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn
-                                    color="primary"
-                                    dark
-                                    @click="editDescription"
-                            >
-                                Edit text
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-
-
-
-
-                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6" width="60%">
-                        <p class="title">Policy</p>
-                        <p class="body-1">Location: Below the Council members sections</p>
-
-                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                            <div v-html="governance_page_policy"></div>
-                        </v-card-text>
-
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn
-                                    color="primary"
-                                    dark
-                                    @click="editPolicy"
-                            >
-                                Edit text
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-
-
-                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6" width="60%">
-                        <p class="title">Update policy document</p>
-
-                        <v-form
-                            ref="form"
-                            v-model="valid"
                         >
-                            <v-text-field
-                                    v-model="governance_page_policy_document"
-                                    label="Link text of the document"
-                                    prepend-icon="mdi-file"
-                                    :rules="[rules.required]"
-                            ></v-text-field>
-                            <v-card-text>
-                                <v-file-input
-                                        ref="resultDocument"
-                                        @change="handleDocument"
-                                        label="Document"
-                                        outlined
-                                        dense
-                                        :rules="[rules.required]"
-                                ></v-file-input>
-                            </v-card-text>
+                            <v-tab key="0">Executive Board</v-tab>
 
-                            <v-card-actions>
-                                <v-spacer></v-spacer>
-                                <v-btn
-                                        color="primary"
-                                        dark
-                                        @click="makeRequestToUpdateDocument"
-                                >
-                                    Edit text
-                                </v-btn>
-                            </v-card-actions>
-                        </v-form>
-                    </v-card>
+                            <v-tab key="1">Constitution and Bylaws</v-tab>
 
+                            <v-tab key="2">Dan Grade Council</v-tab>
+
+                            <v-tab key="3">Referees Council</v-tab>
+
+                            <v-tab key="4">Coaching Council</v-tab>
+
+                            <v-tab key="5">Governance Review</v-tab>
+
+                            <v-tab key="6">AGM Minutes</v-tab>
+                        </v-tabs>
+
+                        <v-tabs-items v-model="tab" class="pt-8 pb-8">
+                            <v-row>
+                                <v-col cols="2"></v-col>
+                                <v-col cols="8">
+
+
+                                    <v-tab-item :key="0">
+
+
+                                        <!-- PAGE SHORT DESCRIPTION -->
+                                        <!--                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6" width="60%">-->
+                                        <!--                        <p class="title">Short intro text</p>-->
+                                        <!--                        <p class="body-1">Location: Below the title of the page</p>-->
+
+                                        <!--                        <v-card-text class="text&#45;&#45;primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">-->
+                                        <!--                            <div v-html="governance_page_short_description"></div>-->
+                                        <!--                        </v-card-text>-->
+
+                                        <!--                        <v-card-actions>-->
+                                        <!--                            <v-spacer></v-spacer>-->
+                                        <!--                            <v-btn-->
+                                        <!--                                    color="primary"-->
+                                        <!--                                    dark-->
+                                        <!--                                    @click="editDescription"-->
+                                        <!--                            >-->
+                                        <!--                                Edit text-->
+                                        <!--                            </v-btn>-->
+                                        <!--                        </v-card-actions>-->
+                                        <!--                    </v-card>-->
+
+
+
+
+                                        <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                            <p class="title">Information</p>
+                                            <p class="body-1">Location: Above the Council members sections</p>
+
+                                            <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                <div v-html="governance_page_information"></div>
+                                            </v-card-text>
+
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn
+                                                        color="primary"
+                                                        dark
+                                                        @click="setDialog('governance_page_information')"
+                                                >
+                                                    Edit text
+                                                </v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+
+
+                                        <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                            <p class="title">Policy</p>
+                                            <p class="body-1">Location: Below the Council members sections</p>
+
+                                            <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                <div v-html="governance_page_policy"></div>
+                                            </v-card-text>
+
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn
+                                                        color="primary"
+                                                        dark
+                                                        @click="setDialog('governance_page_policy')"
+                                                >
+                                                    Edit text
+                                                </v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+
+
+                                        <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                            <p class="title">Update policy document</p>
+                                            <p class="body-1">Location: Right after policy text</p>
+
+                                            <v-form
+                                                    ref="form"
+                                                    v-model="valid"
+                                            >
+                                                <v-text-field
+                                                        v-model="governance_page_policy_document"
+                                                        label="Link text of the document"
+                                                        prepend-icon="mdi-file"
+                                                        :rules="[rules.required]"
+                                                ></v-text-field>
+                                                <v-file-input
+                                                        ref="resultDocument"
+                                                        @change="handleDocument"
+                                                        label="Document"
+                                                        outlined
+                                                        dense
+                                                        :rules="[rules.required]"
+                                                ></v-file-input>
+
+                                                <v-card-actions>
+                                                    <v-spacer></v-spacer>
+                                                    <v-btn
+                                                            color="primary"
+                                                            dark
+                                                            @click="makeRequestToUpdateDocument"
+                                                    >
+                                                        Edit text
+                                                    </v-btn>
+                                                </v-card-actions>
+                                            </v-form>
+                                        </v-card>
+
+
+                                        <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                            <p class="title">Contacts </p>
+                                            <p class="body-1">Location: At the bottom of the page</p>
+
+                                            <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                <div v-html="governance_page_contacts"></div>
+                                            </v-card-text>
+
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn
+                                                        color="primary"
+                                                        dark
+                                                        @click="setDialog('governance_page_contacts')"
+                                                >
+                                                    Edit text
+                                                </v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+
+
+                                    </v-tab-item>
+
+
+
+                                    <v-tab-item
+                                            :key="1"
+                                    >
+                                        <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                            <p class="title">Dan Grade Council</p>
+                                            <p class="body-1">Location: (Governanne page) Dan Grade Council</p>
+
+                                            <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                <div v-html="governance_page_constitution_and_bylaws"></div>
+                                            </v-card-text>
+
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn
+                                                        color="primary"
+                                                        dark
+                                                        @click="setDialog('governance_page_constitution_and_bylaws')"
+                                                >
+                                                    Edit text
+                                                </v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-tab-item>
+
+
+                                    <v-tab-item
+                                            :key="2"
+                                    >
+                                        <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                            <p class="title">Dan Grade Council</p>
+                                            <p class="body-1">Location: (Governance page) Dan Grade Council</p>
+
+                                            <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                <div v-html="governance_page_dan_grade_council"></div>
+                                            </v-card-text>
+
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn
+                                                        color="primary"
+                                                        dark
+                                                        @click="setDialog('governance_page_dan_grade_council')"
+                                                >
+                                                    Edit text
+                                                </v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-tab-item>
+
+
+
+
+                                    <v-tab-item
+                                            :key="3"
+                                    >
+                                        <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                            <p class="title">Referees Council</p>
+                                            <p class="body-1">Location: (Governance page) Referees Council</p>
+
+                                            <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                <div v-html="governance_page_referees_council"></div>
+                                            </v-card-text>
+
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn
+                                                        color="primary"
+                                                        dark
+                                                        @click="setDialog('governance_page_referees_council')"
+                                                >
+                                                    Edit text
+                                                </v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-tab-item>
+
+
+
+                                    <v-tab-item
+                                            :key="4"
+                                    >
+                                        <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                            <p class="title">Coaching Council</p>
+                                            <p class="body-1">Location: (Governance page) Coaching Council</p>
+
+                                            <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                <div v-html="governance_page_coaching_council"></div>
+                                            </v-card-text>
+
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn
+                                                        color="primary"
+                                                        dark
+                                                        @click="setDialog('governance_page_coaching_council')"
+                                                >
+                                                    Edit text
+                                                </v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-tab-item>
+
+
+
+                                    <v-tab-item
+                                            :key="5"
+                                    >
+                                        <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                            <p class="title">Governance Review</p>
+                                            <p class="body-1">Location: (Governance page) Governance Review</p>
+
+                                            <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                <div v-html="governance_page_governance_review"></div>
+                                            </v-card-text>
+
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn
+                                                        color="primary"
+                                                        dark
+                                                        @click="setDialog('governance_page_governance_review')"
+                                                >
+                                                    Edit text
+                                                </v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-tab-item>
+
+
+
+                                    <v-tab-item
+                                            :key="6"
+                                    >
+                                        <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                            <p class="title">AGM Minutes</p>
+                                            <p class="body-1">Location: (Governance page) AGM Minutes</p>
+
+                                            <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                <div v-html="governance_page_agm_council"></div>
+                                            </v-card-text>
+
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn
+                                                        color="primary"
+                                                        dark
+                                                        @click="setDialog('governance_page_agm_council')"
+                                                >
+                                                    Edit text
+                                                </v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-tab-item>
+
+                                </v-col>
+                            </v-row>
+                        </v-tabs-items>
+
+<!--                    </v-card>-->
                 </v-col>
             </v-row>
-
-
 
 
 
@@ -267,30 +499,82 @@
         created() {
             axios.get('/api/static').then(response => {
                 let data = response.data.data;
-                this.governance_page_short_description = data.governance_page_short_description;
+                // removed this.governance_page_short_description = data.governance_page_short_description;
+
+                // main
+                this.governance_page_contacts = data.governance_page_contacts;
                 this.governance_page_information = data.governance_page_information;
                 this.governance_page_policy = data.governance_page_policy;
                 this.governance_page_policy_document = data.governance_page_policy_document;
                 this.governance_page_policy_document_link_location = data.governance_page_policy_document_link_location;
 
+
+                // constitution and bylaws
+                this.governance_page_constitution_and_bylaws = data.governance_page_constitution_and_bylaws;
+
+                // dan grade council
+                this.governance_page_dan_grade_council = data.governance_page_dan_grade_council;
+
+
+                // referees council
+                this.governance_page_referees_council = data.governance_page_referees_council;
+
+
+                // coaching council
+                this.governance_page_coaching_council = data.governance_page_coaching_council;
+
+
+                // governance council
+                this.governance_page_governance_review = data.governance_page_governance_review;
+
+
+                // agm council
+                this.governance_page_agm_council = data.governance_page_agm_council;
             });
 
             window.editorHtmlContent = '';
 
             setTimeout( () => {
-                this.editor.setContent(''); // creat function set content
+                this.editor.setContent(''); // create function set content
                 window.editorHtmlContent = ''; //
             }, 700);
         },
         data() {
             return {
+
+                tab: null,
+
+
+
                 // dialog section
                 dialog: false,
                 parameter: '',
 
+                // removed governance_page_short_description: '',
+                // main
+                governance_page_information: '',
                 governance_page_policy: '',
-                governance_page_short_description: '',
                 governance_page_policy_document: '',
+                governance_page_contacts: '',
+
+
+                // constitution and bylaws
+                governance_page_constitution_and_bylaws: '',
+
+                // dan grade council
+                governance_page_dan_grade_council: '',
+
+                // referees council
+                governance_page_referees_council: '',
+
+                // coaching council
+                governance_page_coaching_council: '',
+
+                // governance council
+                governance_page_governance_review: '',
+
+                // agm council
+                governance_page_agm_council: '',
 
                 valid: true,
                 policyDocument: null,
@@ -325,30 +609,23 @@
             }
         },
         methods: {
-            editDescription() {
-                this.editor.setContent(this.governance_page_short_description);
-                window.editorHtmlContent = this.governance_page_short_description;
-                this.parameter = 'governance_page_short_description';
+            setDialog(modelName) {
+                this.editor.setContent(this[modelName]);
+                window.editorHtmlContent = this[modelName];
+                this.parameter = modelName;
                 this.dialog = true;
-            },
-
-
-
-            editPolicy() {
-                this.editor.setContent(this.governance_page_policy);
-                window.editorHtmlContent = this.governance_page_policy;
-                this.parameter = 'governance_page_policy';
-                this.dialog = true;
-            },
-
-
-            handleDocument(file) {
-                this.policyDocument = file;
             },
 
             closeDialog() {
                 this.dialog = false;
             },
+
+
+            // TO HANDLE FILE
+            handleDocument(file) {
+                this.policyDocument = file;
+            },
+            // TO HANDLE FILE UPDATE
             makeRequestToUpdateDocument() {
                 if(this.$refs.form.validate()) {
                     let formData = new FormData();
@@ -360,6 +637,7 @@
                     });
                 }
             },
+
             makeRequestToUpdateContent() {
                 let data = {
                     value: window.editorHtmlContent,
@@ -376,7 +654,7 @@
 
 
 
-            // editor related
+            // EDITOR RELATED
             showLinkMenu(attrs) {
                 this.linkUrl = attrs.href;
                 this.linkMenuIsActive = true;
@@ -393,7 +671,7 @@
                 this.hideLinkMenu()
             },
         },
-        beforeDestroy() {
+        beforeDestroy() { // lifecycle hook
             this.editor.destroy()
         },
     }

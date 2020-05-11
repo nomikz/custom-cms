@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Region;
 use Illuminate\Http\Request;
 use App\Http\Resources\ClubResource;
 use App\Club;
@@ -13,9 +14,15 @@ class ClubController extends Controller
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request, Club $club)
     {
-        return ClubResource::collection(Club::with('region')->get());
+        if ($request->has('region')) {
+            $clubs = Region::where('name', 'LIKE', '%'. $request->region .'%')->first()->clubs;
+        } else {
+            $clubs = Club::get();
+        }
+
+        return ClubResource::collection($clubs);
     }
 
     /**

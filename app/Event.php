@@ -17,7 +17,7 @@ class Event extends Model
 
     public function getSortedByDate()
     {
-        $events = Event::orderBy('date', 'desc')->all();
+        $events = Event::orderBy('date', 'desc')->get();
 
         $dates = $events->map(function ($event) {
             return $event->date;
@@ -28,7 +28,7 @@ class Event extends Model
         foreach ($dates as $date) {
             $response[] = [
                 'date' => $date,
-                'events' => EventResource::collection($events->where('date', $date)->all())
+                'events' => EventResource::collection($events->where('date', $date)->sortByDesc('date'))
             ];
         }
 

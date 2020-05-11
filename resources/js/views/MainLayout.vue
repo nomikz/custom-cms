@@ -137,7 +137,7 @@
                     children: [
                         {icon: 'mdi-pencil', text: 'Governance page', link: '/static-governance'},
                         {icon: 'mdi-pencil', text: 'About us page', link: '/static-about-us'},
-                        {icon: 'mdi-pencil', text: 'Regional page', link: '/static-regional'},
+                       // {icon: 'mdi-pencil', text: 'Regional page', link: '/static-regional'}, this page is not needed
                     ],
                 },
             ],

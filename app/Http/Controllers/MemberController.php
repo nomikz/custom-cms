@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\MemberResource;
 use App\Member;
+use App\Region;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
@@ -15,12 +16,18 @@ class MemberController extends Controller
      *
      * @return array
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('region')) {
+            $members = Region::where('name', 'LIKE', '%'. $request->region .'%')->first()->members;
+        } else {
+            $members = Member::get();
+        }
+
         return [
-            'data' => MemberResource::collection(Member::with('region')->get()),
-            'status' => true,
-            'message' => 'All results retrieved'
+            'data' => MemberResource::collection($members),
+            'status' => count($members) > 0,
+            'message' => count($members) > 0 ? 'All results retrieved' : 'No results',
         ];
     }
 

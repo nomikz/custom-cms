@@ -13,12 +13,19 @@ class StaticContentSeeder extends Seeder
     public function run()
     {
         // governance page
+
+
+        StaticContent::create([
+            'key' => 'governance_page_information',
+            'value' => '<p>The administration of the business of Karate New Zealand shall be vested in a National Executive Board of Management to be called the Executive Board.
+The Executive Board of Karate New Zealand works to ensure the best interests of all our members.</p> <p>The Executive Board consists of the following office bearers:</p> <ul><li>President who shall be the Chairperson</li><li>Secretary-General</li><li>Treasurer</li><li>Four Board members</li></ul><p>The full description of the Executive Board, including duties and powers are available in <a href="#">our Constitution</a> . They are further extended in <a href="#">our Bylaws</a>.</p>'
+        ]);
+
+
         StaticContent::create([
             'key' => 'governance_page_short_description',
             'value' => 'The organisation of Karate New Zealand is handled by the Board and by various specialist councils.'
         ]);
-
-
 
 
         StaticContent::create([
@@ -36,7 +43,59 @@ class StaticContentSeeder extends Seeder
             'value' => '#'
         ]);
 
+        StaticContent::create([
+            'key' => 'governance_page_contacts',
+            'value' => '<p>Karatenz administration - <a href="mailto:admin@karatenz.org.nz">admin@karatenz.org.nz</a></p>
+<p>Chris Bennett - Secretary General - <a href="mailto:cbennett@karatenz.org.nz">cbennett@karatenz.org.nz</a></p>
+<p>George Glausiuss - Treasurer - <a href="mailto:gglausiuss@karatenz.org.nz">gglausiuss@karatenz.org.nz</a></p>
+<p>Kevin Plaisted - Board Member - <a href="mailto:kplaisted@karatenz.org.nz">kplaisted@karatenz.org.nz</a></p>
+<p>Phil Laing - Board Member - <a href="mailto:plaing@karatenz.org.nz">plaing@karatenz.org.nz</a></p>
+<p>Rebecca Dobson - Board Member - <a href="mailto:admin@karatenz.org.nz">rmerrifield@karatenz.org.nz</a></p>
+<p>Grant Holland - Board Member - <a href="mailto:gholland@karatenz.org.nz">gholland@karatenz.org.nz</a></p>'
+        ]);
 
+
+        //constitution and bylaws
+        StaticContent::create([
+            'key' => 'governance_page_constitution_and_bylaws',
+            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
+        ]);
+
+
+
+        // dan grade council
+        StaticContent::create([
+            'key' => 'governance_page_dan_grade_council',
+            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
+        ]);
+
+
+        // referees council
+        StaticContent::create([
+            'key' => 'governance_page_referees_council',
+            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
+        ]);
+
+
+        // coaching council
+        StaticContent::create([
+            'key' => 'governance_page_coaching_council',
+            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
+        ]);
+
+
+        // governance council
+        StaticContent::create([
+            'key' => 'governance_page_governance_review',
+            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
+        ]);
+
+
+        // agm council
+        StaticContent::create([
+            'key' => 'governance_page_agm_council',
+            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
+        ]);
 
 
 

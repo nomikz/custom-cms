@@ -2,7 +2,10 @@
 
 namespace App;
 
+use App\Http\Resources\ClubResource;
+use DemeterChain\C;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Club extends Model
 {
@@ -15,6 +18,8 @@ class Club extends Model
         'longitude',
         'region_id',
     ];
+
+
 
     public function region()
     {
