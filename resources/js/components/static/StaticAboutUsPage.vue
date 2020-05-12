@@ -1,128 +1,127 @@
 <template>
     <div>
         <v-container style="margin-left: 50px;">
+
+            <p class="display-2 text-center mt-6">Edit "Regional" page</p>
+
+
+
+
+
             <v-row>
-                <v-col>
-                    <p class="display-1">Edit "Regional" page</p>
+                <v-col cols="12">
+                    <v-tabs
+                            v-model="tab"
+                            background-color="primary"
+                            dark
+                            centered
+
+                    >
+                        <v-tab key="0">What we do</v-tab>
+
+                        <v-tab key="1">Contact us</v-tab>
+
+                        <v-tab key="2">Club membership</v-tab>
+
+
+                    </v-tabs>
+
+                    <v-tabs-items v-model="tab" class="pt-8 pb-8">
+                        <v-row>
+                            <v-col cols="2"></v-col>
+                            <v-col cols="8">
+
+
+
+                                <v-tab-item :key="0">
+
+
+
+
+
+                                    <v-card
+                                            color="rgba(223, 223, 223, 0.53)"
+                                            class="px-8 py-4 mb-8"
+                                    >
+                                        <p class="title">Short intro text</p>
+                                        <p class="body-1">Location: Below the title of the page</p>
+
+                                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                            <div v-html="about_page_short_description"></div>
+                                        </v-card-text>
+
+                                        <v-card-actions>
+                                            <v-spacer></v-spacer>
+                                            <v-btn
+                                                    color="primary"
+                                                    dark
+                                                    @click="editShortDescription"
+                                            >
+                                                Edit text
+                                            </v-btn>
+                                        </v-card-actions>
+                                    </v-card>
+
+
+
+                                    <v-card
+                                            color="rgba(223, 223, 223, 0.53)"
+                                            class="px-8 py-4"
+                                    >
+                                        <p class="title">What we do text</p>
+                                        <p class="body-1">Location: Main content of the page</p>
+
+                                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                            <div v-html="about_page_what_we_do"></div>
+                                        </v-card-text>
+
+                                        <v-card-actions>
+                                            <v-spacer></v-spacer>
+                                            <v-btn
+                                                    color="primary"
+                                                    dark
+                                                    @click="editWhatWeDo"
+                                            >
+                                                Edit text
+                                            </v-btn>
+                                        </v-card-actions>
+                                    </v-card>
+
+
+
+
+
+
+
+
+
+                                </v-tab-item>
+
+
+
+                                <v-tab-item
+                                        :key="1"
+                                >
+                                    // in proccess
+                                </v-tab-item>
+
+
+                                <v-tab-item
+                                        :key="2"
+                                >
+                                    // in proccess
+                                </v-tab-item>
+
+
+
+
+                            </v-col>
+                        </v-row>
+                    </v-tabs-items>
                 </v-col>
             </v-row>
 
 
-            <v-row>
-                <v-col cols="6">
-
-                    <v-card
-                            color="rgba(223, 223, 223, 0.53)"
-                            class="px-8 py-4"
-                    >
-                        <p class="title">What we do text</p>
-                        <p class="body-1">Location: Main content of the page</p>
-
-                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                            <div v-html="about_page_what_we_do"></div>
-                        </v-card-text>
-
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn
-                                    color="primary"
-                                    dark
-                                    @click="editWhatWeDo"
-                            >
-                                Edit text
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-
-                </v-col>
-
-
-
-                <v-col cols="6">
-
-                    <v-card
-                            color="rgba(223, 223, 223, 0.53)"
-                            class="px-8 py-4 mb-8"
-                    >
-                        <p class="title">Short intro text</p>
-                        <p class="body-1">Location: Below the title of the page</p>
-
-                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                            <div v-html="about_page_short_description"></div>
-                        </v-card-text>
-
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn
-                                    color="primary"
-                                    dark
-                                    @click="editShortDescription"
-                            >
-                                Edit text
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-
-
-                    <v-card
-                            color="rgba(223, 223, 223, 0.53)"
-                            class="px-8 py-4 mb-8"
-                    >
-                        <p class="title">Contact us section</p>
-                        <p class="body-1">Location: Contact us section</p>
-
-                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                            <div v-html="about_page_contact_us"></div>
-                        </v-card-text>
-
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn
-                                    color="primary"
-                                    dark
-                                    @click="editContactUs"
-                            >
-                                Edit text
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-
-
-
-                    <v-card
-                            color="rgba(223, 223, 223, 0.53)"
-                            class="px-8 py-4"
-                    >
-                        <p class="title">Club membership section</p>
-                        <p class="body-1">Location: Club membership section</p>
-
-                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                            <div v-html="about_page_club_membership"></div>
-                        </v-card-text>
-
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn
-                                    color="primary"
-                                    dark
-                                    @click="editClubMembership"
-                            >
-                                Edit text
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-
-                </v-col>
-
-
-
-
-
-
-
-
-
-            </v-row>
 
 
 
@@ -298,15 +297,13 @@
             axios.get('/api/static').then(response => {
                 let data = response.data.data;
                 this.about_page_short_description = data.about_page_short_description;
-                this.about_page_what_we_do = data.about_page_what_we_do
-                this.about_page_contact_us = data.about_page_contact_us
-                this.about_page_club_membership = data.about_page_club_membership
+                this.about_page_what_we_do = data.about_page_what_we_do;
             });
 
             window.editorHtmlContent = '';
 
             setTimeout( () => {
-                this.editor.setContent(''); // creat function set content
+                this.editor.setContent(''); // create function set content
                 window.editorHtmlContent = ''; //
             }, 700);
         },
@@ -316,12 +313,10 @@
                 dialog: false,
                 parameter: '',
 
+                tab: 0,
+
                 about_page_short_description: '',
                 about_page_what_we_do: '',
-                about_page_contact_us: '',
-                about_page_club_membership: '',
-
-
 
 
                 // editor related
@@ -343,10 +338,7 @@
                         new Italic(),
                     ],
                     content: '', // edited content
-
-
                 }),
-
             }
         },
         methods: {
@@ -363,23 +355,6 @@
                 this.parameter = 'about_page_what_we_do';
                 this.dialog = true;
             },
-            editContactUs() {
-                this.editor.setContent(this.about_page_contact_us);
-                window.editorHtmlContent = this.about_page_contact_us;
-                this.parameter = 'about_page_contact_us';
-                this.dialog = true;
-            },
-            editClubMembership() {
-                this.editor.setContent(this.about_page_club_membership);
-                window.editorHtmlContent = this.about_page_club_membership;
-                this.parameter = 'about_page_club_membership';
-                this.dialog = true;
-            },
-
-
-
-
-
 
             closeDialog() {
                 this.dialog = false;
@@ -400,10 +375,6 @@
                         }
                     })
             },
-
-
-
-
 
             // editor related
             showLinkMenu(attrs) {

@@ -19,7 +19,7 @@ class ArticleResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'body' => $this->content,
-            'filename' => $this->image_link,
+            'filename' => env('APP_URL'). '/' . $this->image_link,
             'date' => (string) $this->date,
             'tag' => $this->tag,
         ];

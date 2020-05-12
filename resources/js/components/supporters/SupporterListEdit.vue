@@ -80,7 +80,7 @@
                 let data = response.data.data;
                 this.name = data.title;
                 this.link = data.link;
-                this.heroImageUrl = '/' + data.filename;
+                this.heroImageUrl = data.filename;
             });
         },
         data: () => ({

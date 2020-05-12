@@ -17,7 +17,7 @@ class SupporterResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'filename' => $this->filename,
+            'filename' => env('APP_URL'). '/' . $this->filename,
             'link' => $this->link,
         ];
     }

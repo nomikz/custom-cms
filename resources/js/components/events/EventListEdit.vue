@@ -169,7 +169,7 @@
                 this.date = data.date.substr(0, 10);
                 this.startTime = data.date.substr(11, 5);
                 this.finishTime = data.date.substr(17, 5);
-                this.heroImageUrl = '/' + data.filename;
+                this.heroImageUrl = data.filename;
             });
         },
         data: () => ({

@@ -104,7 +104,7 @@
                 this.title = data.title;
                 this.description = data.description;
                 this.region = data.region.id;
-                this.heroImageUrl = '/' + data.image_url;
+                this.heroImageUrl = data.image_url;
 
             });
         },

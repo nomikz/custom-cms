@@ -14,16 +14,31 @@ class ResultController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return array
+     * @param Request $request
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return [
-            'data' => ResultResource::collection(Result::orderBy('date', 'desc')->get()),
-            'status' => true,
-            'message' => 'All results retrieved'
-        ];
+        $paginationCount = 12;
+        if ($request->has('paginationCount')) {
+            $paginationCount = $request->paginationCount;
+        }
+
+        if ($request->has('count')) {
+            $results = Result::orderBy('date', 'desc')->limit($request->count)->get();
+        } else {
+            $results = Result::orderBy('date', 'desc')->paginate($paginationCount);
+        }
+
+        return ResultResource::collection($results);
     }
+
+    //return [
+    //'data' => ResultResource::collection(Result::orderBy('date', 'desc')->get()),
+    //'status' => true,
+    //'message' => 'All results retrieved'
+    //];
+
 
     /**
      * Store a newly created resource in storage.

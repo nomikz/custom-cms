@@ -8,23 +8,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 // result routes
 Route::post('results/{result}', 'ResultController@update');
 Route::apiResource('results', 'ResultController');
-
 
 // result routes
 Route::post('articles/{article}', 'ArticleController@update');
 Route::apiResource('articles', 'ArticleController');
 
-
 // event routes
 Route::post('events/{event}', 'EventController@update');
 Route::apiResource('events', 'EventController');
 Route::get('events-by-date', 'EventController@getSortedByDate');
-
-
 
 // supporter routes
 Route::post('supporters/{supporter}', 'SupporterController@update');
@@ -52,3 +47,5 @@ Route::get('/static', 'StaticContentController@get');
 Route::post('/static', 'StaticContentController@update');
 Route::post('/static-policy-document', 'StaticContentController@updateDocument');
 
+// static sections
+Route::get('/static-section', 'StaticController@getSection');

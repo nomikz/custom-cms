@@ -246,7 +246,7 @@
                 this.title = data.title;
                 this.date = data.date.substr(0, 10);
                 this.body = data.body;
-                this.heroImageUrl = '/' + data.filename;
+                this.heroImageUrl = data.filename;
             });
 
             setTimeout( () => {

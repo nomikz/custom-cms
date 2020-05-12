@@ -3,7 +3,6 @@
         <v-row justfiy="center">
             <v-col cols="8">
 
-
                 <v-data-table
                         :headers="headers"
                         :items="clubs"

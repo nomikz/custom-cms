@@ -17,9 +17,15 @@ class EventController extends Controller
      *
      * @return AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return EventResource::collection(Event::orderBy('date', 'desc')->get());
+        $events = Event::orderBy('date', 'desc')
+            ->when($request->has('month'), function ($q) use ($request) {
+                $q->where('date', 'LIKE', $request->month . '%');
+            })
+            ->get();
+
+        return EventResource::collection($events);
     }
 
     public function getSortedByDate(Event $event)

@@ -15,22 +15,29 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return array
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index(Request $request)
     {
-        $aricles = Article::orderBy('date', 'desc')
-            ->when($request->count > 0, function($q) use ($request) {
-                $q->limit($request->count);
-            })
-            ->get();
+        $paginationCount = 12;
+        if ($request->has('paginationCount')) {
+            $paginationCount = $request->paginationCount;
+        }
 
-        return [
-            'data' => ArticleResource::collection($aricles),
-            'status' => true,
-            'message' => 'All results retrieved'
-        ];
+        if ($request->has('count')) {
+            $aricles = Article::orderBy('date', 'desc')->limit($request->count)->get();
+        } else {
+            $aricles = Article::orderBy('date', 'desc')->paginate($paginationCount);
+        }
+
+
+        return ArticleResource::collection($aricles);
     }
+    //return [
+    //'data' => ArticleResource::collection($aricles),
+    //'status' => true,
+    //'message' => 'All results retrieved'
+    //];
 
     /**
      * Store a newly created resource in storage.

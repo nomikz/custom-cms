@@ -12,9 +12,7 @@ class StaticContentSeeder extends Seeder
      */
     public function run()
     {
-        // governance page
-
-
+        // governance  MAIN
         StaticContent::create([
             'key' => 'governance_page_information',
             'value' => '<p>The administration of the business of Karate New Zealand shall be vested in a National Executive Board of Management to be called the Executive Board.
@@ -55,55 +53,249 @@ The Executive Board of Karate New Zealand works to ensure the best interests of 
         ]);
 
 
-        //constitution and bylaws
+
+
+        // governance   constitution and bylaws
         StaticContent::create([
-            'key' => 'governance_page_constitution_and_bylaws',
-            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
+            'key' => 'constitution_and_bylaws_title',
+            'value' => 'Constitution and Bylaws'
+        ]);
+
+        StaticContent::create([
+            'key' => 'constitution_and_bylaws_text',
+            'value' => '<p>Orci sagittis eu volutpat odio facilisis mauris sit amet. Ullamcorper morbi tincidunt ornare massa. Diam maecenas sed enim ut sem viverra aliquet. Non tellus orci ac auctor augue mauris. Aliquam etiam erat velit scelerisque in dictum non consectetur. Iaculis at erat pellentesque adipiscing commodo. Sit amet venenatis urna cursus. Molestie a iaculis at erat pellentesque. Sollicitudin tempor id eu nisl nunc mi ipsum faucibus vitae. Eget arcu dictum varius duis.<p>
+<p>Morbi tincidunt augue interdum velit euismod in pellentesque massa placerat. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Interdum varius sit amet mattis vulputate enim nulla aliquet porttitor. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Quisque sagittis purus sit amet volutpat consequat mauris nunc congue. Vitae et leo duis ut diam quam nulla porttitor. Sem nulla pharetra diam sit amet nisl. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Dui sapien eget mi proin sed libero. Cursus risus at ultrices mi tempus. Urna nunc id cursus metus aliquam.</p>'
+        ]);
+
+        StaticContent::create([
+            'key' => 'constitution_and_bylaws_email',
+            'value' => 'admin@karatenz.org.nz'
+        ]);
+
+
+        StaticContent::create([
+            'key' => 'constitution_and_bylaws_phone',
+            'value' => '021 778 640'
+        ]);
+
+
+        StaticContent::create([
+            'key' => 'constitution_and_bylaws_document_name',
+            'value' => 'Constitution and Bylaws'
+        ]);
+
+        StaticContent::create([
+            'key' => 'constitution_and_bylaws_download_link',
+            'value' => '#'
         ]);
 
 
 
-        // dan grade council
+
+        // governance  dan grade council
         StaticContent::create([
-            'key' => 'governance_page_dan_grade_council',
-            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
+            'key' => 'dan_grade_council_title',
+            'value' => 'Dan Grade Council'
+        ]);
+
+        StaticContent::create([
+            'key' => 'dan_grade_council_text',
+            'value' => '<p>Orci sagittis eu volutpat odio facilisis mauris sit amet. Ullamcorper morbi tincidunt ornare massa. Diam maecenas sed enim ut sem viverra aliquet. Non tellus orci ac auctor augue mauris. Aliquam etiam erat velit scelerisque in dictum non consectetur. Iaculis at erat pellentesque adipiscing commodo. Sit amet venenatis urna cursus. Molestie a iaculis at erat pellentesque. Sollicitudin tempor id eu nisl nunc mi ipsum faucibus vitae. Eget arcu dictum varius duis.<p>
+<p>Morbi tincidunt augue interdum velit euismod in pellentesque massa placerat. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Interdum varius sit amet mattis vulputate enim nulla aliquet porttitor. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Quisque sagittis purus sit amet volutpat consequat mauris nunc congue. Vitae et leo duis ut diam quam nulla porttitor. Sem nulla pharetra diam sit amet nisl. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Dui sapien eget mi proin sed libero. Cursus risus at ultrices mi tempus. Urna nunc id cursus metus aliquam.</p>'
+        ]);
+
+        StaticContent::create([
+            'key' => 'dan_grade_council_email',
+            'value' => 'admin@karatenz.org.nz'
         ]);
 
 
-        // referees council
         StaticContent::create([
-            'key' => 'governance_page_referees_council',
-            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
+            'key' => 'dan_grade_council_phone',
+            'value' => '021 778 640'
         ]);
 
 
-        // coaching council
         StaticContent::create([
-            'key' => 'governance_page_coaching_council',
-            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
+            'key' => 'dan_grade_council_document_name',
+            'value' => 'Dan Grade Council'
         ]);
 
-
-        // governance council
         StaticContent::create([
-            'key' => 'governance_page_governance_review',
-            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
-        ]);
-
-
-        // agm council
-        StaticContent::create([
-            'key' => 'governance_page_agm_council',
-            'value' => '<p>Please find below the list of policies from the Executive Board of Karate New Zealand.</p><p>Policy for the handling of complaints 22nd November, 2017.</p>'
+            'key' => 'dan_grade_council_download_link',
+            'value' => '#'
         ]);
 
 
 
-        // about us page
+
+
+        // governance  referees council
+        StaticContent::create([
+            'key' => 'referees_council_title',
+            'value' => 'Referees Council'
+        ]);
+
+        StaticContent::create([
+            'key' => 'referees_council_text',
+            'value' => '<p>Orci sagittis eu volutpat odio facilisis mauris sit amet. Ullamcorper morbi tincidunt ornare massa. Diam maecenas sed enim ut sem viverra aliquet. Non tellus orci ac auctor augue mauris. Aliquam etiam erat velit scelerisque in dictum non consectetur. Iaculis at erat pellentesque adipiscing commodo. Sit amet venenatis urna cursus. Molestie a iaculis at erat pellentesque. Sollicitudin tempor id eu nisl nunc mi ipsum faucibus vitae. Eget arcu dictum varius duis.<p>
+<p>Morbi tincidunt augue interdum velit euismod in pellentesque massa placerat. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Interdum varius sit amet mattis vulputate enim nulla aliquet porttitor. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Quisque sagittis purus sit amet volutpat consequat mauris nunc congue. Vitae et leo duis ut diam quam nulla porttitor. Sem nulla pharetra diam sit amet nisl. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Dui sapien eget mi proin sed libero. Cursus risus at ultrices mi tempus. Urna nunc id cursus metus aliquam.</p>'
+        ]);
+
+        StaticContent::create([
+            'key' => 'referees_council_email',
+            'value' => 'admin@karatenz.org.nz'
+        ]);
+
+
+        StaticContent::create([
+            'key' => 'referees_council_phone',
+            'value' => '021 778 640'
+        ]);
+
+
+        StaticContent::create([
+            'key' => 'referees_council_document_name',
+            'value' => 'Referees Council'
+        ]);
+
+        StaticContent::create([
+            'key' => 'referees_council_download_link',
+            'value' => '#'
+        ]);
+
+
+
+
+
+
+
+
+
+        // governance  coaching council
+        StaticContent::create([
+            'key' => 'coaching_council_title',
+            'value' => 'Coaching Council'
+        ]);
+
+        StaticContent::create([
+            'key' => 'coaching_council_text',
+            'value' => '<p>Orci sagittis eu volutpat odio facilisis mauris sit amet. Ullamcorper morbi tincidunt ornare massa. Diam maecenas sed enim ut sem viverra aliquet. Non tellus orci ac auctor augue mauris. Aliquam etiam erat velit scelerisque in dictum non consectetur. Iaculis at erat pellentesque adipiscing commodo. Sit amet venenatis urna cursus. Molestie a iaculis at erat pellentesque. Sollicitudin tempor id eu nisl nunc mi ipsum faucibus vitae. Eget arcu dictum varius duis.<p>
+<p>Morbi tincidunt augue interdum velit euismod in pellentesque massa placerat. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Interdum varius sit amet mattis vulputate enim nulla aliquet porttitor. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Quisque sagittis purus sit amet volutpat consequat mauris nunc congue. Vitae et leo duis ut diam quam nulla porttitor. Sem nulla pharetra diam sit amet nisl. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Dui sapien eget mi proin sed libero. Cursus risus at ultrices mi tempus. Urna nunc id cursus metus aliquam.</p>'
+        ]);
+
+        StaticContent::create([
+            'key' => 'coaching_council_email',
+            'value' => 'admin@karatenz.org.nz'
+        ]);
+
+
+        StaticContent::create([
+            'key' => 'coaching_council_phone',
+            'value' => '021 778 640'
+        ]);
+
+
+        StaticContent::create([
+            'key' => 'coaching_council_document_name',
+            'value' => 'Coaching Council'
+        ]);
+
+        StaticContent::create([
+            'key' => 'coaching_council_download_link',
+            'value' => '#'
+        ]);
+
+
+
+
+
+
+        // governance governance review
+        StaticContent::create([
+            'key' => 'governance_review_title',
+            'value' => 'Governance Review'
+        ]);
+
+        StaticContent::create([
+            'key' => 'governance_review_text',
+            'value' => '<p>Orci sagittis eu volutpat odio facilisis mauris sit amet. Ullamcorper morbi tincidunt ornare massa. Diam maecenas sed enim ut sem viverra aliquet. Non tellus orci ac auctor augue mauris. Aliquam etiam erat velit scelerisque in dictum non consectetur. Iaculis at erat pellentesque adipiscing commodo. Sit amet venenatis urna cursus. Molestie a iaculis at erat pellentesque. Sollicitudin tempor id eu nisl nunc mi ipsum faucibus vitae. Eget arcu dictum varius duis.<p>
+<p>Morbi tincidunt augue interdum velit euismod in pellentesque massa placerat. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Interdum varius sit amet mattis vulputate enim nulla aliquet porttitor. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Quisque sagittis purus sit amet volutpat consequat mauris nunc congue. Vitae et leo duis ut diam quam nulla porttitor. Sem nulla pharetra diam sit amet nisl. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Dui sapien eget mi proin sed libero. Cursus risus at ultrices mi tempus. Urna nunc id cursus metus aliquam.</p>'
+        ]);
+
+        StaticContent::create([
+            'key' => 'governance_review_email',
+            'value' => 'admin@karatenz.org.nz'
+        ]);
+
+
+        StaticContent::create([
+            'key' => 'governance_review_phone',
+            'value' => '021 778 640'
+        ]);
+
+
+        StaticContent::create([
+            'key' => 'governance_review_document_name',
+            'value' => 'Governance Review'
+        ]);
+
+        StaticContent::create([
+            'key' => 'governance_review_download_link',
+            'value' => '#'
+        ]);
+
+
+
+
+
+
+
+        // governance  agm council
+        StaticContent::create([
+            'key' => 'agm_title',
+            'value' => 'Governance Review'
+        ]);
+
+        StaticContent::create([
+            'key' => 'agm_text',
+            'value' => '<p>Orci sagittis eu volutpat odio facilisis mauris sit amet. Ullamcorper morbi tincidunt ornare massa. Diam maecenas sed enim ut sem viverra aliquet. Non tellus orci ac auctor augue mauris. Aliquam etiam erat velit scelerisque in dictum non consectetur. Iaculis at erat pellentesque adipiscing commodo. Sit amet venenatis urna cursus. Molestie a iaculis at erat pellentesque. Sollicitudin tempor id eu nisl nunc mi ipsum faucibus vitae. Eget arcu dictum varius duis.<p>
+<p>Morbi tincidunt augue interdum velit euismod in pellentesque massa placerat. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Interdum varius sit amet mattis vulputate enim nulla aliquet porttitor. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Quisque sagittis purus sit amet volutpat consequat mauris nunc congue. Vitae et leo duis ut diam quam nulla porttitor. Sem nulla pharetra diam sit amet nisl. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Dui sapien eget mi proin sed libero. Cursus risus at ultrices mi tempus. Urna nunc id cursus metus aliquam.</p>'
+        ]);
+
+        StaticContent::create([
+            'key' => 'agm_email',
+            'value' => 'admin@karatenz.org.nz'
+        ]);
+
+
+        StaticContent::create([
+            'key' => 'agm_phone',
+            'value' => '021 778 640'
+        ]);
+
+
+        StaticContent::create([
+            'key' => 'agm_document_name',
+            'value' => 'Agm Council'
+        ]);
+
+        StaticContent::create([
+            'key' => 'agm_download_link',
+            'value' => '#'
+        ]);
+
+
+
+
+
+
+        // about us MAIN
         StaticContent::create([
             'key' => 'about_page_short_description',
             'value' => 'Karate NZ is a voluntary, non profit organization committed to fostering and developing opportunities'
         ]);
+
 
         StaticContent::create([
             'key' => 'about_page_what_we_do',
@@ -129,6 +321,9 @@ The Executive Board of Karate New Zealand works to ensure the best interests of 
 <p>Karate NZ aims at financial self sufficiency. It does not seek to accumulate profit, but only to have it\'s activities meet their cost with sufficient resources to ensure adequate working capital and financial stability through time.</p>'
         ]);
 
+
+
+        // about us contact us
         StaticContent::create([
             'key' => 'about_page_contact_us',
             'value' => '<p>This is the text for contact us section of about us page</p>'
@@ -140,6 +335,7 @@ The Executive Board of Karate New Zealand works to ensure the best interests of 
         ]);
 
 
+        // about us contact us
 
 
         // regional information

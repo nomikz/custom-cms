@@ -21,6 +21,7 @@ class StaticContentController extends Controller
         return response()->json(['data' => $data]);
     }
 
+
     public function update(Request $request)
     {
         $row = StaticContent::where('key', $request->parameter)->first();
@@ -29,6 +30,8 @@ class StaticContentController extends Controller
 
         return response()->json(['success' => true]);
     }
+
+
 
     public function updateDocument(Request $request)
     {
@@ -44,5 +47,11 @@ class StaticContentController extends Controller
         $policyDomumentText->save();
 
     }
+
+
+
+
+
+
 
 }

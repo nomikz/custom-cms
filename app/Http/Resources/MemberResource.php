@@ -21,7 +21,7 @@ class MemberResource extends JsonResource
             'title' => $this->title,
             'name' => $this->name,
             'description' => $this->description,
-            'image_url' => $this->image_url,
+            'image_url' => env('APP_URL'). '/' . $this->image_url,
             'region' => new RegionResource($this->whenLoaded('region'))
         ];
     }

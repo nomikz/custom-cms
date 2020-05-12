@@ -14,7 +14,7 @@
                 >
                     <template v-slot:item.image_url="{ item }">
                         <div>
-                            <v-img :src="'/' + item.image_url" max-width="100"  max-height="100" contain></v-img>
+                            <v-img :src="item.image_url" max-width="100"  max-height="100" contain></v-img>
                         </div>
                     </template>
 

@@ -102,7 +102,7 @@
                 this.title = data.title;
                 this.email = data.email;
                 this.description = data.description;
-                this.heroImageUrl = '/' + data.image_url;
+                this.heroImageUrl = data.image_url;
             });
         },
         data: () => ({

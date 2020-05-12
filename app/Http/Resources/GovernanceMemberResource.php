@@ -20,7 +20,7 @@ class GovernanceMemberResource extends JsonResource
             'name' => $this->name,
             'order_number' => $this->order_number,
             'description' => $this->description,
-            'image_url' => $this->image_url,
+            'image_url' => env('APP_URL'). '/' . $this->image_url,
             'email' => $this->email,
         ];
     }

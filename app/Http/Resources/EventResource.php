@@ -18,7 +18,7 @@ class EventResource extends JsonResource
             'id' => $this->id,
             'title' => $this->name,
             'date' => $this->date,
-            'filename' => $this->image_link,
+            'filename' => env('APP_URL'). '/' . $this->image_link,
         ];
     }
 }

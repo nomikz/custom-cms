@@ -18,10 +18,9 @@ class ResultResource extends JsonResource
             'id' => $this->id,
             'slug' => $this->slug,
             'title' => $this->title,
-            'category' => 1,
             'body' => $this->content,
-            'download_link' => $this->download_link,
-            'filename' => $this->image_link,
+            'download_link' => env('APP_URL'). '/' . $this->download_link,
+            'filename' => env('APP_URL'). '/' . $this->image_link,
             'date' => $this->date,
         ];
     }
