@@ -53,11 +53,12 @@ import MemberListCreate from '../components/members/MemberListCreate'
 import MemberListEdit from '../components/members/MemberListEdit'
 
 
-// members
+// governance members
 import GovernancePage from './../components/governance-members/GovernanceMembersPage'
 import GovernanceMemberList from '../components/governance-members/GovernanceMemberList'
 import GovernanceMemberListCreate from '../components/governance-members/GovernanceMemberListCreate'
 import GovernanceMemberListEdit from '../components/governance-members/GovernanceMemberListEdit'
+import GovernanceMemberListEditOrder from '../components/governance-members/GovernanceMemberListEditOrder'
 
 import MainDashboard from './../components/MainDashboard'
 
@@ -261,6 +262,11 @@ const routes = [
                         name: 'governance-member-edit',
                         path: ':id/edit',
                         component: GovernanceMemberListEdit
+                    },
+                    {
+                        name: 'governance-member-edit-order',
+                        path: 'edit-order',
+                        component: GovernanceMemberListEditOrder
                     },
                 ]
             },

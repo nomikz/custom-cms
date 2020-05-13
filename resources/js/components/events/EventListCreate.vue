@@ -3,7 +3,7 @@
         <v-container class="fill-height">
             <v-row justfiy="center">
 
-                <v-col cols="9">
+                <v-col cols="11">
                     <v-card color="rgba(242, 242, 242, 0.53)">
                         <v-form
                                 ref="form"
@@ -22,8 +22,7 @@
 
                                 <!-- date time-start time-finish -->
                                 <v-row>
-                                    <v-col>
-
+                                    <v-col cols="3">
                                         <!--date-->
                                         <v-menu
                                                 v-model="datePicker"
@@ -48,7 +47,13 @@
                                     </v-col>
 
 
-                                    <v-col>
+                                    <v-col cols="2">
+                                        <v-checkbox
+                                                v-model="isAllDay"
+                                                label="All day"
+                                        ></v-checkbox>
+                                    </v-col>
+                                    <v-col cols="3">
                                         <!--time start-->
                                         <v-menu
                                                 ref="startTime"
@@ -67,10 +72,12 @@
                                                         v-model="startTime"
                                                         label="Start time"
                                                         prepend-icon="mdi-watch"
-                                                        readonly
                                                         v-on="on"
+                                                        readonly
+                                                        :disabled="isAllDay"
                                                         :rules="[rules.required]"
                                                 ></v-text-field>
+
                                             </template>
                                             <v-time-picker
                                                     v-if="startTimePicker"
@@ -83,7 +90,7 @@
 
 
 
-                                    <v-col>
+                                    <v-col cols="3">
                                         <!--time finish-->
                                         <v-menu
                                                 ref="finishTime"
@@ -103,8 +110,10 @@
                                                         prepend-icon="mdi-watch"
                                                         readonly
                                                         v-on="on"
+                                                        :disabled="isAllDay"
                                                         :rules="[rules.required]"
                                                 ></v-text-field>
+
                                             </template>
                                             <v-time-picker
                                                     v-if="finishTimePicker"
@@ -164,9 +173,12 @@
     export default {
         data: () => ({
             rules: {
-                required: value => !!value || 'Required.'
+                required: value => !!value || 'Required.',
+                notRequired: value => false,
             },
             valid: true,
+
+
 
             name: '',
             heroImage: null,
@@ -175,6 +187,8 @@
 
             datePicker: false,
             date: new Date().toISOString().substr(0, 10),
+
+            isAllDay: false,
 
             startTime: null,
             startTimePicker: false,
@@ -195,14 +209,14 @@
                 this.heroImageUrl = URL.createObjectURL(this.heroImage);
             },
 
-
             submit() {
                 if(this.$refs.form.validate()) {
 
                     let date = this.date;
-                    date += ' ' + this.startTime;
-                    date += ' ' + this.finishTime;
-
+                    if (!this.isAllDay) {
+                        date += ' ' + this.startTime;
+                        date += ' ' + this.finishTime;
+                    }
 
                     let formData = new FormData();
                     formData.append('name', this.name);
@@ -219,6 +233,17 @@
                 }
             },
         },
+        watch: {
+            isAllDay: function (isTrue) {
+                if (isTrue) {
+                    this.startTime = 'All day';
+                    this.finishTime = 'All day';
+                } else {
+                    this.startTime = '';
+                    this.finishTime = '';
+                }
+            }
+        }
     }
 </script>
 

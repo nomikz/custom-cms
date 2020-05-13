@@ -9,9 +9,10 @@
                         :items="news"
                         class="elevation-2"
                         @click:row="showItem"
-                        :items-per-page="16"
+                        :items-per-page="12"
                         sort-by="date"
                         sort-desc
+                        hide-default-footer
                 >
 
                     <template v-slot:item.filename="{ item }">
@@ -51,6 +52,16 @@
                     </template>
 
                 </v-data-table>
+                <div class="text-center pt-2">
+                    <v-pagination
+                            @input="getItems"
+                            v-model="page"
+                            total-visible="10"
+                            :length="pageCount"
+                    >
+
+                    </v-pagination>
+                </div>
 
 
             </v-col>
@@ -61,7 +72,18 @@
 
 <script>
     export default {
+        created() {
+            this.page = 1;
+            this.getItems(this.page);
+        },
         data: () => ({
+
+            page: null,
+            pageCount: null,
+
+
+
+
             news: [],
             headers: [
                 {
@@ -80,12 +102,15 @@
                 date: '',
             },
         }),
-        mounted() {
-            axios.get('/api/articles').then(response => {
-                this.news = response.data.data;
-            });
-        },
         methods: {
+            getItems(page) {
+                axios.get('/api/articles?page=' + page).then(response => {
+                    let resp = response.data;
+                    this.news = resp.data;
+                    this.page = resp.meta.current_page;
+                    this.pageCount = resp.meta.last_page;
+                });
+            },
             showItem (row) {
                 this.$router.push({ name: 'news-edit', params: { id: row.id } })
             },

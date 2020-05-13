@@ -18,10 +18,5 @@
 <script>
     export default {
         name: 'MainDashboard',
-        mounted() {
-            axios.get('api/articles').then(response => {
-                console.log(response.data);
-            });
-        }
     }
 </script>

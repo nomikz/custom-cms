@@ -18,10 +18,12 @@ class RegionController extends Controller
      */
     public function index()
     {
+        $regions = Region::get();
+
         return [
-            'data' => RegionResource::collection(Region::get()),
-            'status' => true,
-            'message' => 'All results retrieved'
+            'data' => RegionResource::collection($regions),
+            'status' => count($regions) > 0,
+            'message' => count($regions) > 0 ? 'All results retrieved' : 'No results',
         ];
     }
 
@@ -47,7 +49,7 @@ class RegionController extends Controller
     {
         $region->name = $request->title;
         $region->slug = Str::slug($request->title, '-');
-        $region->description = $request->description;
+        $region->description = 'not needed yet'; // to remove to do
         $region->content = $request->content;
         $region->save();
 

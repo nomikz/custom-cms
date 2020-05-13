@@ -15,17 +15,26 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return AnonymousResourceCollection
+     * @return array
      */
     public function index(Request $request)
     {
         $events = Event::orderBy('date', 'desc')
             ->when($request->has('month'), function ($q) use ($request) {
                 $q->where('date', 'LIKE', $request->month . '%');
+            })->when($request->has('count'), function ($q) use ($request) {
+                $q->limit($request->count);
             })
             ->get();
 
-        return EventResource::collection($events);
+        return [
+            'data' => EventResource::collection($events),
+            'status' => count($events) > 0,
+            'message' => count($events) > 0 ? 'All results retrieved' : 'No results',
+        ];
+
+
+
     }
 
     public function getSortedByDate(Event $event)

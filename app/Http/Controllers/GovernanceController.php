@@ -17,10 +17,12 @@ class GovernanceController extends Controller
      */
     public function index()
     {
+        $governanceMembers = GovernanceMember::get();
+
         return [
-            'data' => GovernanceMemberResource::collection(GovernanceMember::get()),
-            'status' => true,
-            'message' => 'All results retrived'
+            'data' => GovernanceMemberResource::collection($governanceMembers),
+            'status' => count($governanceMembers) > 0,
+            'message' => count($governanceMembers) > 0 ? 'All results retrieved' : 'No results',
         ];
     }
 

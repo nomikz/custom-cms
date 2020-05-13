@@ -3,10 +3,8 @@
         <v-container class="fill-height">
             <v-row justfiy="center">
 
-                <v-col cols="9">
-                    <v-card
-                            color="rgba(242, 242, 242, 0.53)"
-                    >
+                <v-col cols="11">
+                    <v-card color="rgba(242, 242, 242, 0.53)">
                         <v-form
                                 ref="form"
                                 v-model="valid"
@@ -24,7 +22,7 @@
 
                                 <!-- date time-start time-finish -->
                                 <v-row>
-                                    <v-col>
+                                    <v-col cols="3">
 
                                         <!--date-->
                                         <v-menu
@@ -49,8 +47,14 @@
                                         </v-menu>
                                     </v-col>
 
+                                    <v-col cols="2">
+                                        <v-checkbox
+                                                v-model="isAllDay"
+                                                label="All day"
+                                        ></v-checkbox>
+                                    </v-col>
 
-                                    <v-col>
+                                    <v-col cols="3">
                                         <!--time start-->
                                         <v-menu
                                                 ref="startTime"
@@ -70,6 +74,7 @@
                                                         prepend-icon="mdi-watch"
                                                         readonly
                                                         v-on="on"
+                                                        :disabled="isAllDay"
                                                         :rules="[rules.required]"
                                                 ></v-text-field>
                                             </template>
@@ -84,7 +89,7 @@
 
 
 
-                                    <v-col>
+                                    <v-col cols="3">
                                         <!--time finish-->
                                         <v-menu
                                                 ref="finishTime"
@@ -104,6 +109,7 @@
                                                         prepend-icon="mdi-watch"
                                                         readonly
                                                         v-on="on"
+                                                        :disabled="isAllDay"
                                                         :rules="[rules.required]"
                                                 ></v-text-field>
                                             </template>
@@ -163,13 +169,20 @@
     export default {
         created() {
             axios.get('/api/events/' + this.$route.params.id).then(response => {
-
                 let data = response.data.data;
                 this.name = data.title;
-                this.date = data.date.substr(0, 10);
-                this.startTime = data.date.substr(11, 5);
-                this.finishTime = data.date.substr(17, 5);
                 this.heroImageUrl = data.filename;
+
+                let datesArr = data.date.split(' ');
+                this.date = datesArr[0];
+                if (datesArr.length < 2) {
+                    this.isAllDay = true;
+                    this.startTime = '';
+                    this.finishTime = '';
+                } else {
+                    this.startTime = datesArr[1];
+                    this.finishTime = datesArr[2];
+                }
             });
         },
         data: () => ({
@@ -183,6 +196,8 @@
             heroImage: null,
             heroImageUrl: '',
             uplaodMessage: '',
+
+            isAllDay: false,
 
             datePicker: false,
             date: new Date().toISOString().substr(0, 10),
@@ -207,12 +222,23 @@
             },
 
 
+            isAllDayRules() {
+                if (this.isAllDay) {
+                    return [this.rules.notRequired];
+                } else {
+                    return [this.rules.required];
+                }
+            },
+
+
             submit() {
                 if(this.$refs.form.validate()) {
 
                     let date = this.date;
-                    date += ' ' + this.finishTime;
-                    date += ' ' + this.startTime;
+                    if (!this.isAllDay) {
+                        date += ' ' + this.startTime;
+                        date += ' ' + this.finishTime;
+                    }
 
                     let formData = new FormData();
                     formData.append('name', this.name);
@@ -230,6 +256,17 @@
                 }
             },
         },
+        watch: {
+            isAllDay: function (isTrue) {
+                if (isTrue) {
+                    this.startTime = 'All day';
+                    this.finishTime = 'All day';
+                } else {
+                    this.startTime = '';
+                    this.finishTime = '';
+                }
+            }
+        }
     }
 </script>
 

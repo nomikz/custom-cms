@@ -9,9 +9,11 @@
                         :items="results"
                         class="elevation-2"
                         @click:row="showItem"
-                        :items-per-page="15"
+                        :items-per-page="12"
                         sort-by="date"
                         :sortDesc="true"
+                        hide-default-footer
+
                 >
 
                     <template v-slot:item.filename="{ item }">
@@ -49,8 +51,17 @@
                             <v-icon>mdi-delete</v-icon>
                         </v-btn>
                     </template>
-
                 </v-data-table>
+                <div class="text-center pt-2">
+                    <v-pagination
+                            @input="getItems"
+                            v-model="page"
+                            total-visible="10"
+                            :length="pageCount"
+                    >
+
+                    </v-pagination>
+                </div>
 
             </v-col>
         </v-row>
@@ -60,7 +71,16 @@
 
 <script>
     export default {
+        mounted() {
+            this.page = 1;
+            this.getItems(this.page);
+        },
         data: () => ({
+
+            page: null,
+            pageCount: null,
+
+
             results: [],
             headers: [
                 {
@@ -79,12 +99,17 @@
                 date: '',
             },
         }),
-        mounted() {
-            axios.get('/api/results').then(response => {
-                this.results = response.data.data;
-            });
-        },
         methods: {
+            getItems(page) {
+                axios.get('/api/results?page=' + page).then(response => {
+
+                    let resp = response.data;
+                    console.log(resp);
+                    this.results = resp.data;
+                    this.page = resp.meta.current_page;
+                    this.pageCount = resp.meta.last_page;
+                });
+            },
             showItem (row) {
                 this.$router.push({ name: 'result-edit', params: { id: row.id } })
             },

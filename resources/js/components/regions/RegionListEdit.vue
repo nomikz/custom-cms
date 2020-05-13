@@ -27,13 +27,13 @@
 
 
                                 <!--description-->
-                                <v-text-field
-                                        ref="description"
-                                        v-model="description"
-                                        label="Description"
-                                        placeholder="Short description text"
-                                        :rules="[rules.required]"
-                                ></v-text-field>
+<!--                                <v-text-field-->
+<!--                                        ref="description"-->
+<!--                                        v-model="description"-->
+<!--                                        label="Description"-->
+<!--                                        placeholder="Short description text"-->
+<!--                                        :rules="[rules.required]"-->
+<!--                                ></v-text-field>-->
 
 
 
@@ -203,7 +203,7 @@
 
                 let data = response.data.data;
                 this.title = data.title;
-                this.description = data.description;
+                // this.description = data.description;
                 this.content = data.content;
             });
 
@@ -215,7 +215,7 @@
         data: () => ({
 
             title: '',
-            description: '',
+            // description: '',
             content: '',
 
             valid: true,
@@ -269,7 +269,7 @@
 
                     let formData = new FormData();
                     formData.append('title', this.title);
-                    formData.append('description', this.description);
+                    // formData.append('description', this.description);
                     formData.append('content', window.editorHtmlContent);
 
 

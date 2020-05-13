@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\SupporterResource;
+use App\Result;
 use Illuminate\Http\Request;
 use App\Supporter;
 use Illuminate\Http\Response;
@@ -15,20 +16,16 @@ class SupporterController extends Controller
      *
      * @return array
      */
-    public function index()
+    public function index(Request $request)
     {
-        $supporters = Supporter::all();
-        if ($num = request()->get('count')) {
-            return [
-                'data' => SupporterResource::collection($supporters->take($num)),
-                'status' => true,
-                'message' => 'All results retrived'
-            ];
-        }
+        $supporters = Supporter::when($request->has('count'), function($q) use ($request) {
+            $q->limit($request->count);
+        })->get();
+
         return [
             'data' => SupporterResource::collection($supporters),
-            'status' => true,
-            'message' => 'All results retrived'
+            'status' => count($supporters) > 0,
+            'message' => count($supporters) > 0 ? 'All results retrieved' : 'No results',
         ];
     }
 

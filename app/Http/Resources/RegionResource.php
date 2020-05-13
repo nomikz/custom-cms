@@ -19,7 +19,7 @@ class RegionResource extends JsonResource
             'slug' => $this->slug,
             'title' => $this->name,
             'content' => $this->content,
-            'description' => $this->description,
+//            'description' => $this->description,
         ];
     }
 }
