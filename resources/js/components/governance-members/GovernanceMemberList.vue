@@ -98,7 +98,7 @@
                 }
             },
             newItem () {
-                this.$router.push({ name: 'governance-member-create' });
+                this.$router.push({ name: 'governance-members' });
             }
 
         },

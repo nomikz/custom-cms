@@ -51,6 +51,7 @@ import MembersPage from './../components/members/MembersPage'
 import MemberList from '../components/members/MemberList'
 import MemberListCreate from '../components/members/MemberListCreate'
 import MemberListEdit from '../components/members/MemberListEdit'
+import MemberListEditOrder from '../components/members/MemberListEditOrder'
 
 
 // governance members
@@ -241,6 +242,11 @@ const routes = [
                         name: 'member-edit',
                         path: ':id/edit',
                         component: MemberListEdit
+                    },
+                    {
+                        name: 'member-edit-order',
+                        path: 'edit-order',
+                        component: MemberListEditOrder
                     },
                 ]
             },

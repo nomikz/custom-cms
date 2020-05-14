@@ -3,7 +3,7 @@
         <v-row justfiy="center">
             <v-col cols="9">
 
-
+<!--                member-edit-order-->
                 <v-data-table
                         :headers="headers"
                         :items="members"
@@ -27,6 +27,7 @@
                                     vertical
                             ></v-divider>
                             <v-spacer></v-spacer>
+                            <v-btn  text class="mb-2 mr-2" @click="editOrder">Edit order of appearance</v-btn>
                             <v-btn color="primary" dark class="mb-2" @click="newItem">Add new member</v-btn>
                         </v-toolbar>
                     </template>
@@ -60,6 +61,7 @@
     export default {
         created() {
             axios.get('/api/regions').then(response => {
+                console.log(response.data.data);
                 this.regions = response.data.data;
             });
         },
@@ -85,6 +87,9 @@
             regions: [],
         }),
         methods: {
+            editOrder() {
+                this.$router.push({ name: 'member-edit-order'});
+            },
             showItem (row) {
                 this.$router.push({ name: 'member-edit', params: { id: row.id } })
             },

@@ -47,11 +47,4 @@ class StaticContentController extends Controller
         $policyDomumentText->save();
 
     }
-
-
-
-
-
-
-
 }

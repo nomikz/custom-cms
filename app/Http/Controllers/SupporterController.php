@@ -24,7 +24,7 @@ class SupporterController extends Controller
 
         return [
             'data' => SupporterResource::collection($supporters),
-            'status' => count($supporters) > 0,
+            'status' => true,
             'message' => count($supporters) > 0 ? 'All results retrieved' : 'No results',
         ];
     }

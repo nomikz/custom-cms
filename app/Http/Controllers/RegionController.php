@@ -22,7 +22,7 @@ class RegionController extends Controller
 
         return [
             'data' => RegionResource::collection($regions),
-            'status' => count($regions) > 0,
+            'status' => true,
             'message' => count($regions) > 0 ? 'All results retrieved' : 'No results',
         ];
     }

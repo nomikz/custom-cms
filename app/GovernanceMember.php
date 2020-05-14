@@ -12,5 +12,6 @@ class GovernanceMember extends Model
         'description',
         'image_url',
         'email',
+        'order_number'
     ];
 }

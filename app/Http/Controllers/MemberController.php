@@ -21,12 +21,12 @@ class MemberController extends Controller
         if ($request->has('region')) {
             $members = Region::where('name', 'LIKE', '%'. $request->region .'%')->first()->members;
         } else {
-            $members = Member::get();
+            $members = Member::with('region')->get();
         }
 
         return [
             'data' => MemberResource::collection($members),
-            'status' => count($members) > 0,
+            'status' => true,
             'message' => count($members) > 0 ? 'All results retrieved' : 'No results',
         ];
     }

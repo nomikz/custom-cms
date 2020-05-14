@@ -29,7 +29,7 @@ class EventController extends Controller
 
         return [
             'data' => EventResource::collection($events),
-            'status' => count($events) > 0,
+            'status' => true,
             'message' => count($events) > 0 ? 'All results retrieved' : 'No results',
         ];
 

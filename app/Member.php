@@ -12,6 +12,7 @@ class Member extends Model
         'description',
         'image_url',
         'regional_id',
+        'order_number'
     ];
 
     public function region()

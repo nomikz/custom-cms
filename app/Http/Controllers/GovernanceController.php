@@ -21,7 +21,7 @@ class GovernanceController extends Controller
 
         return [
             'data' => GovernanceMemberResource::collection($governanceMembers),
-            'status' => count($governanceMembers) > 0,
+            'status' => true,
             'message' => count($governanceMembers) > 0 ? 'All results retrieved' : 'No results',
         ];
     }
@@ -76,7 +76,6 @@ class GovernanceController extends Controller
         $governanceMember->name = $request->name;
         $governanceMember->title = $request->title;
         $governanceMember->email = $request->email;
-        $governanceMember->order_number = 2;
         $governanceMember->description = $request->description;
 
         if($governanceMember->save()) {
