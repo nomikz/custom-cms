@@ -10,7 +10,12 @@ class StaticContentController extends Controller
 {
     public function get(Request $request)
     {
-        $collection = StaticContent::all();
+        if($request->page === 'governance') {
+            $page = 'governance';
+        } elseif ($request->page === 'about_us') {
+            $page = 'about';
+        }
+        $collection = StaticContent::where('key', 'LIKE', $page . '%')->get();
 
         $data = [];
 

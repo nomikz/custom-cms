@@ -167,7 +167,7 @@
                 this.newText = htmlText;
             },
             initialize(section) {
-                axios('/api/static-sections?page' + this.page + '&section=' + section)
+                axios('/api/static-sections?page=' + this.page + '&section=' + section)
                     .then(response => {
                         let data = response.data.data;
 

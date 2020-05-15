@@ -34,7 +34,7 @@ class StaticPageController extends Controller
     {
         $sectionNames = StaticPage::where('page', 'LIKE', '%' . $request->page . '%')
             ->where('is_visible', true)
-            ->get(['is_visible', 'section']);
+            ->get(['is_visible', 'title', 'section']);
 
         return [
             'data' => $sectionNames,
