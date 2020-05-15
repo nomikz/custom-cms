@@ -19,7 +19,7 @@ class ClubController extends Controller
         if ($request->has('region')) {
             $clubs = Region::where('name', 'LIKE', '%'. $request->region .'%')->first()->clubs;
         } else {
-            $clubs = Club::get();
+            $clubs = Club::with('region')->get();
         }
 
         return ClubResource::collection($clubs);

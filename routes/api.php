@@ -45,10 +45,19 @@ Route::post('governance-members/{governanceMember}', 'GovernanceController@updat
 Route::apiResource('governance-members', 'GovernanceController');
 
 
-
+// static governance and about us
 Route::get('/static', 'StaticContentController@get');
 Route::post('/static', 'StaticContentController@update');
 Route::post('/static-policy-document', 'StaticContentController@updateDocument');
 
 // static sections
-Route::get('/static-section', 'StaticController@getSection');
+// ?page= &section
+Route::get('/static-sections', 'StaticPageController@show');
+
+// ?page= &section
+Route::post('static-sections', 'StaticPageController@update');
+
+
+// ?page=
+Route::get('/static-sections/available', 'StaticPageController@getAvailable');
+

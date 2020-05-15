@@ -2,194 +2,100 @@
     <div>
         <v-container style="margin-left: 50px;">
 
-            <p class="display-2 text-center mt-6">Edit "Governance" page</p>
+            <p class="display-2 text-center mt-6">About us page</p>
+
 
             <v-row>
                 <v-col cols="12">
-
                     <v-tabs
                             v-model="tab"
                             background-color="primary"
                             dark
                             centered
                     >
-                        <v-tab key="0">Executive Board</v-tab>
+                        <v-tab key="0">What we do</v-tab>
 
-                        <v-tab key="1">Constitution and Bylaws</v-tab>
+                        <v-tab key="1">Other sections</v-tab>
 
-                        <v-tab key="2">Dan Grade Council</v-tab>
-
-                        <v-tab key="3">Referees Council</v-tab>
-
-                        <v-tab key="4">Coaching Council</v-tab>
-
-                        <v-tab key="5">Governance Review</v-tab>
-
-                        <v-tab key="6">AGM Minutes</v-tab>
                     </v-tabs>
 
                     <v-tabs-items v-model="tab" class="pt-8 pb-8">
-                        <v-row>
-                            <v-col cols="2"></v-col>
-                            <v-col cols="8">
 
 
-                                <v-tab-item :key="0">
-                                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
-                                        <p class="title">Information</p>
-                                        <p class="body-1">Location: Above the Council members sections</p>
-
-                                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                                            <div v-html="governance_page_information"></div>
-                                        </v-card-text>
-
-                                        <v-card-actions>
-                                            <v-spacer></v-spacer>
-                                            <v-btn
-                                                    color="primary"
-                                                    dark
-                                                    @click="setDialog('governance_page_information')"
-                                            >
-                                                Edit text
-                                            </v-btn>
-                                        </v-card-actions>
-                                    </v-card>
 
 
-                                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
-                                        <p class="title">Policy</p>
-                                        <p class="body-1">Location: Below the Council members sections</p>
+                            <v-tab-item :key="0">
+                                <v-row>
 
-                                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                                            <div v-html="governance_page_policy"></div>
-                                        </v-card-text>
-
-                                        <v-card-actions>
-                                            <v-spacer></v-spacer>
-                                            <v-btn
-                                                    color="primary"
-                                                    dark
-                                                    @click="setDialog('governance_page_policy')"
-                                            >
-                                                Edit text
-                                            </v-btn>
-                                        </v-card-actions>
-                                    </v-card>
-
-
-                                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
-                                        <p class="title">Update policy document</p>
-                                        <p class="body-1">Location: Right after policy text</p>
-
-                                        <v-form
-                                                ref="form"
-                                                v-model="valid"
+                                    <v-col cols="2"></v-col>
+                                    <v-col cols="8">
+                                        <v-card
+                                                color="rgba(223, 223, 223, 0.53)"
+                                                class="px-8 py-4"
                                         >
-                                            <v-text-field
-                                                    v-model="governance_page_policy_document"
-                                                    label="Link text of the document"
-                                                    prepend-icon="mdi-file"
-                                                    :rules="[rules.required]"
-                                            ></v-text-field>
-                                            <v-file-input
-                                                    ref="resultDocument"
-                                                    @change="handleDocument"
-                                                    label="Document"
-                                                    outlined
-                                                    dense
-                                                    :rules="[rules.required]"
-                                            ></v-file-input>
+                                            <p class="title">What we do</p>
+                                            <p class="body-1">Location: Main content of the page</p>
+
+                                            <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                <div v-html="about_page_what_we_do"></div>
+                                            </v-card-text>
 
                                             <v-card-actions>
                                                 <v-spacer></v-spacer>
                                                 <v-btn
                                                         color="primary"
                                                         dark
-                                                        @click="makeRequestToUpdateDocument"
+                                                        @click="editWhatWeDo"
                                                 >
                                                     Edit text
                                                 </v-btn>
                                             </v-card-actions>
-                                        </v-form>
-                                    </v-card>
+                                        </v-card>
+                                    </v-col>
 
-
-                                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
-                                        <p class="title">Contacts </p>
-                                        <p class="body-1">Location: At the bottom of the page</p>
-
-                                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                                            <div v-html="governance_page_contacts"></div>
-                                        </v-card-text>
-
-                                        <v-card-actions>
-                                            <v-spacer></v-spacer>
-                                            <v-btn
-                                                    color="primary"
-                                                    dark
-                                                    @click="setDialog('governance_page_contacts')"
-                                            >
-                                                Edit text
-                                            </v-btn>
-                                        </v-card-actions>
-                                    </v-card>
-
-
-                                </v-tab-item>
+                                </v-row>
+                            </v-tab-item>
 
 
 
-                                <v-tab-item
-                                        :key="1"
+                            <v-tab-item
+                                    :key="1"
+                            >
+                                <v-card
+                                        outlined
                                 >
-                                    // empty
-                                </v-tab-item>
+                                    <v-card-actions>
+                                        <v-spacer></v-spacer>
 
-
-                                <v-tab-item
-                                        :key="2"
-                                >
-                                    // empty
-                                </v-tab-item>
-
-
-
-
-                                <v-tab-item
-                                        :key="3"
-                                >
-                                    // empty
-                                </v-tab-item>
+                                        <v-btn
+                                                v-for="sectionItem in sections"
+                                                @click="section = sectionItem.parameter"
+                                                v-text="sectionItem.text"
+                                                class="my-2 ml-1 mr-1"
+                                                :color="section === sectionItem.parameter ? 'primary' : 'secondary'"
+                                        ></v-btn>
+                                        <v-spacer></v-spacer>
+                                    </v-card-actions>
 
 
 
-                                <v-tab-item
-                                        :key="4"
-                                >
-                                    // empty
-                                </v-tab-item>
+                                    <static-section-editor
+                                            :page="page"
+                                            :section="section"
+                                    ></static-section-editor>
+
+                                </v-card>
+                            </v-tab-item>
 
 
 
-                                <v-tab-item
-                                        :key="5"
-                                >
-                                    // empty
-                                </v-tab-item>
-
-
-
-                                <v-tab-item
-                                        :key="6"
-                                >
-                                    // empty
-                                </v-tab-item>
-
-                            </v-col>
-                        </v-row>
                     </v-tabs-items>
                 </v-col>
             </v-row>
+
+
+
+
 
 
 
@@ -350,101 +256,55 @@
         Italic,
         Link,
     } from 'tiptap-extensions';
+    import StaticSectionEditor from './../StaticSectionEditor'
+
 
 
     export default {
-        name: 'StaticGovernancePage',
+        name: 'StaticAboutUsPage',
         components: {
             EditorContent,
             EditorMenuBar,
-            EditorMenuBubble
+            EditorMenuBubble,
+            StaticSectionEditor
         },
         created() {
             axios.get('/api/static').then(response => {
                 let data = response.data.data;
-                // removed this.governance_page_short_description = data.governance_page_short_description;
-
-                // main
-                this.governance_page_contacts = data.governance_page_contacts;
-                this.governance_page_information = data.governance_page_information;
-                this.governance_page_policy = data.governance_page_policy;
-                this.governance_page_policy_document = data.governance_page_policy_document;
-                this.governance_page_policy_document_link_location = data.governance_page_policy_document_link_location;
-
-
-                // // constitution and bylaws
-                // this.governance_page_constitution_and_bylaws = data.governance_page_constitution_and_bylaws;
-                //
-                // // dan grade council
-                // this.governance_page_dan_grade_council = data.governance_page_dan_grade_council;
-                //
-                //
-                // // referees council
-                // this.governance_page_referees_council = data.governance_page_referees_council;
-                //
-                //
-                // // coaching council
-                // this.governance_page_coaching_council = data.governance_page_coaching_council;
-                //
-                //
-                // // governance council
-                // this.governance_page_governance_review = data.governance_page_governance_review;
-                //
-                //
-                // // agm council
-                // this.governance_page_agm_council = data.governance_page_agm_council;
+                this.about_page_what_we_do = data.about_page_what_we_do;
             });
 
             window.editorHtmlContent = '';
-
             setTimeout( () => {
                 this.editor.setContent(''); // create function set content
                 window.editorHtmlContent = ''; //
             }, 700);
+            this.section = this.sections[0].parameter;
         },
         data() {
             return {
 
-                tab: null,
+                page: 'about_us',
+                section: '',
+                sections: [
+                    {
+                        parameter: 'contact_us',
+                        text: "Contact us",
+                    },
+                    {
+                        parameter: 'club_membership',
+                        text: "Club membership",
+                    },
+                ],
 
 
                 // dialog section
                 dialog: false,
                 parameter: '',
 
-                // removed governance_page_short_description: '',
-                // main
-                governance_page_information: '',
-                governance_page_policy: '',
-                governance_page_policy_document: '',
-                governance_page_contacts: '',
-                policyDocument: null,
+                tab: 0,
 
-
-                // constitution and bylaws
-                // governance_page_constitution_and_bylaws: '',
-
-                // dan grade council
-                // governance_page_dan_grade_council: '',
-
-                // referees council
-                // governance_page_referees_council: '',
-
-                // coaching council
-                // governance_page_coaching_council: '',
-
-                // governance council
-                // governance_page_governance_review: '',
-
-                // agm council
-                // governance_page_agm_council: '',
-
-
-
-                valid: true,
-                rules: {
-                    required: value => !!value || 'Required.'
-                },
+                about_page_what_we_do: '',
 
 
                 // editor related
@@ -467,38 +327,19 @@
                     ],
                     content: '', // edited content
                 }),
-
             }
         },
         methods: {
-            setDialog(modelName) {
-                this.editor.setContent(this[modelName]);
-                window.editorHtmlContent = this[modelName];
-                this.parameter = modelName;
+            editWhatWeDo() {
+                this.editor.setContent(this.about_page_what_we_do);
+                window.editorHtmlContent = this.about_page_what_we_do;
+                this.parameter = 'about_page_what_we_do';
                 this.dialog = true;
             },
 
             closeDialog() {
                 this.dialog = false;
             },
-
-            // TO HANDLE FILE
-            handleDocument(file) {
-                this.policyDocument = file;
-            },
-            // TO HANDLE FILE UPDATE
-            makeRequestToUpdateDocument() {
-                if(this.$refs.form.validate()) {
-                    let formData = new FormData();
-                    formData.append('document', this.policyDocument);
-                    formData.append('governance_page_policy_document', this.governance_page_policy_document);
-
-                    axios.post('/api/static-policy-document', formData, {
-                        headers: {'Content-Type': 'multipart/form-data'}
-                    });
-                }
-            },
-
             makeRequestToUpdateContent() {
                 let data = {
                     value: window.editorHtmlContent,
@@ -507,15 +348,16 @@
                 axios.post('/api/static?parameter=' + this.parameter, data)
                     .then(response => {
                         if (response.data.success) {
-                            this[this.parameter] = window.editorHtmlContent;
+                            if (response.data.success) {
+                                this[this.parameter] = window.editorHtmlContent;
+                                this.dialog = false;
+                            }
                             this.dialog = false;
                         }
                     })
             },
 
-
-
-            // EDITOR RELATED
+            // editor related
             showLinkMenu(attrs) {
                 this.linkUrl = attrs.href;
                 this.linkMenuIsActive = true;
@@ -532,7 +374,7 @@
                 this.hideLinkMenu()
             },
         },
-        beforeDestroy() { // lifecycle hook
+        beforeDestroy() {
             this.editor.destroy()
         },
     }

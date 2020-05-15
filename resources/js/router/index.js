@@ -64,9 +64,9 @@ import GovernanceMemberListEditOrder from '../components/governance-members/Gove
 import MainDashboard from './../components/MainDashboard'
 
 // static
-import StaticGovernancePage from '../components/static/StaticGovernancePage'
-import StaticAboutUsPage from '../components/static/StaticAboutUsPage'
-import StaticRegionalPage from '../components/static/StaticRegionalPage'
+import StaticGovernancePage from '../components/static/GovernancePage'
+import StaticAboutUsPage from '../components/static/AboutUsPage'
+import StaticResultsPage from '../components/static/ResultsPage'
 
 
 Vue.use(VueRouter);
@@ -91,10 +91,10 @@ const routes = [
                 path: '/static-about-us',
                 component: StaticAboutUsPage
             },
-            { // static regional page
-                name: 'static-regional',
-                path: '/static-regional',
-                component: StaticRegionalPage
+            {  // StaticResultsPage
+                name: 'static-results',
+                path: '/static-results',
+                component: StaticResultsPage
             },
             { // dashboard
                 name: 'dash',

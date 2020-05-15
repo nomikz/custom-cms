@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RegionalMemberSeeder::class);
         $this->call(SupporterSeeder::class);
         $this->call(StaticContentSeeder::class);
+        $this->call(StaticPageSeeder::class);
     }
 }

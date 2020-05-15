@@ -316,7 +316,7 @@
                 this.linkMenuIsActive = false;
             },
             setLinkUrl(command, url) {
-                command({ href: url })
+                command({ href: url });
                 this.hideLinkMenu()
             },
 

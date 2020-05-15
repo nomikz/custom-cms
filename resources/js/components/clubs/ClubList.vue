@@ -78,7 +78,6 @@
         methods: {
             shortenText(text) {
                 let index = text.indexOf('>', 4) + 1;
-                console.log(text, index);
                 return text.slice(0, index);
             },
             showItem (row) {
