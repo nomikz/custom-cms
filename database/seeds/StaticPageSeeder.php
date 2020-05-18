@@ -20,6 +20,17 @@ class StaticPageSeeder extends Seeder
         // about us sections
 
         StaticPage::create([
+            'is_visible' => true,
+            'page' => 'about_us',
+            'section' => 'what_we_do',
+            'title' => 'What we do',
+            'text' => '<p></p>',
+            'email' => '',
+            'phone' => '',
+            'document_name' => '',
+        ]);
+
+        StaticPage::create([
             'page' => 'about_us',
             'section' => 'contact_us',
             'title' => 'Contacts',
@@ -45,6 +56,19 @@ class StaticPageSeeder extends Seeder
 
 
         // tournament results sections
+
+
+        StaticPage::create([
+            'is_visible' => true,
+            'page' => 'tournament_results',
+            'section' => 'tournament_results',
+            'title' => 'Tournament results',
+            'text' => '<p></p>',
+            'email' => '',
+            'phone' => '',
+            'document_name' => '',
+        ]);
+
 
         StaticPage::create([
             'page' => 'tournament_results',
@@ -95,6 +119,18 @@ class StaticPageSeeder extends Seeder
 
 
         // governance sections
+
+        StaticPage::create([
+            'is_visible' => true,
+            'page' => 'governance',
+            'section' => 'executive_board',
+            'title' => 'Executive board',
+            'text' => '<p></p>',
+            'email' => '',
+            'phone' => '',
+            'document_name' => '',
+        ]);
+
 
         StaticPage::create([
             'page' => 'governance',

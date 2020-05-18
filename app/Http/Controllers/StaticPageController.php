@@ -34,8 +34,8 @@ class StaticPageController extends Controller
     {
         $sectionNames = StaticPage::where('page', 'LIKE', '%' . $request->page . '%')
             ->where('is_visible', true)
+            ->orderBy('created_at', 'ASC')
             ->get(['is_visible', 'title', 'section']);
-
 
 
         return [
