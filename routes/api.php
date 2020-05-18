@@ -9,6 +9,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+// push notification : events news results
+Route::post('notification', 'NotificationController');
 
 // result routes
 Route::post('results/{result}', 'ResultController@update');

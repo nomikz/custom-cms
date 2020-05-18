@@ -35,6 +35,16 @@
                         </v-toolbar>
                     </template>
 
+                    <template v-slot:item.notification="{ item }">
+                        <v-btn
+                                small
+                                color="green"
+                                @click.stop="sendNotification(item)"
+                        >
+                            <v-icon>mdi-bell-plus-outline</v-icon>
+                        </v-btn>
+                    </template>
+
                     <template v-slot:item.actions="{ item }">
                         <v-btn
                             small
@@ -90,6 +100,7 @@
                     value: 'filename',
                 },
                 { text: 'Title', value: 'title'},
+                { text: 'Notification', value: 'notification'},
                 { text: 'Date', value: 'date' },
                 { text: 'Actions', value: 'actions', sortable: false },
             ],
@@ -115,6 +126,14 @@
             },
             editItem (item) {
                 this.$router.push({ name: 'result-edit', params: { id: item.id}})
+            },
+            sendNotification(item) {
+                const data = {
+                    id: item.id,
+                    title: item.title,
+                    type: 'news',
+                };
+                axios.post('/api/notification', data);
             },
             deleteItem (item) {
                 const index = this.results.indexOf(item);

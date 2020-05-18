@@ -34,13 +34,23 @@
                         </v-toolbar>
                     </template>
 
+                    <template v-slot:item.notification="{ item }">
+                        <v-btn
+                                small
+                                color="green"
+                                @click.stop="sendNotification(item)"
+                        >
+                            <v-icon>mdi-bell-plus-outline</v-icon>
+                        </v-btn>
+                    </template>
+
                     <template v-slot:item.actions="{ item }">
                         <v-btn
                             small
-                            color="orange lighten-3"
+                            color="orange lighten-3 mr-2"
                             @click.stop="editItem(item)"
                         >
-                            <v-icon class="mr-2">mdi-pencil</v-icon>
+                            <v-icon>mdi-pencil</v-icon>
                         </v-btn>
                         <v-btn
                                 @click.stop="deleteItem(item)"
@@ -93,6 +103,7 @@
                     value: 'filename',
                 },
                 { text: 'Title', value: 'title'},
+                { text: 'Notification', value: 'notification'},
                 { text: 'Date', value: 'date' },
                 { text: 'Actions', value: 'actions', sortable: false },
             ],
@@ -110,6 +121,14 @@
                     this.page = resp.meta.current_page;
                     this.pageCount = resp.meta.last_page;
                 });
+            },
+            sendNotification(item) {
+                const data = {
+                    id: item.id,
+                    title: item.title,
+                    type: 'news',
+                };
+                axios.post('/api/notification', data);
             },
             showItem (row) {
                 this.$router.push({ name: 'news-edit', params: { id: row.id } })
