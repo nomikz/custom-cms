@@ -85,13 +85,48 @@
                         Logout
                 </v-btn>
             </a>
+<!--            <div style="position: absolute; top: 80px; right: 40px;">-->
+<!--                <v-snackbar-->
+<!--                        style="position: relative"-->
+<!--                        class="mb-2"-->
+<!--                        value="true"-->
+<!--                        color="primary"-->
+<!--                        timeout="3000"-->
+<!--                        bottom right-->
+<!--                >-->
+<!--                    <div>-->
+<!--                        <v-icon-->
+<!--                                color="white"-->
+<!--                        >-->
+<!--                            mdi-progress-check-->
+<!--                        </v-icon>-->
+<!--                        I am a text-->
+<!--                    </div>-->
+<!--                </v-snackbar>-->
+<!--                <v-snackbar-->
+<!--                        style="position: relative"-->
+<!--                        class="mb-2"-->
+<!--                        value="true"-->
+<!--                        color="primary"-->
+<!--                        timeout="2500"-->
+<!--                        bottom right-->
+<!--                >-->
+<!--                    <div>-->
+<!--                        <v-icon-->
+<!--                                color="white"-->
+<!--                        >-->
+<!--                            mdi-progress-check-->
+<!--                        </v-icon>-->
+<!--                        I am a text-->
+<!--                    </div>-->
+<!--                </v-snackbar>-->
+<!--            </div>-->
         </v-app-bar>
         <v-content>
 
             <v-expand-transition>
                 <router-view></router-view>
             </v-expand-transition>
-
         </v-content>
 
     </v-app>

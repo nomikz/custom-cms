@@ -8,7 +8,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::put('edit-order/{id}', 'OrderController@updateOrder');
 
 
 // result routes
@@ -35,6 +34,9 @@ Route::apiResource('regions', 'RegionController');
 // cLub routes
 Route::post('clubs/{club}', 'ClubController@update');
 Route::apiResource('clubs', 'ClubController');
+
+// edit order for members and governance member
+Route::put('edit-order/{id}', 'OrderController@updateOrder');
 
 // member routes
 Route::post('members/{member}', 'MemberController@update');

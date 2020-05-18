@@ -21,7 +21,8 @@
 
                     <v-tabs-items v-model="tab" class="pt-8 pb-8">
                         <v-row>
-                            <v-col cols="12">
+                            <v-col cols="2"></v-col>
+                            <v-col cols="8">
 
 
                                 <v-tab-item :key="0">
@@ -337,7 +338,7 @@
             EditorMenuBubble
         },
         created() {
-            axios.get('/api/static').then(response => {
+            axios.get('/api/static?page=governance').then(response => {
                 let data = response.data.data;
 
                 // main

@@ -32,9 +32,19 @@ class StaticPageController extends Controller
 
     public function getAvailable(Request $request)
     {
-        $sectionNames = StaticPage::where('page', 'LIKE', '%' . $request->page . '%')
+        $page = $request->page;
+
+        if ($page == 'what_we_do') {
+            $page = 'about_us';
+        } elseif ($page == 'executive_board') {
+            $page = 'governance';
+        }
+
+        $sectionNames = StaticPage::where('page', 'LIKE', '%' . $page . '%')
             ->where('is_visible', true)
             ->get(['is_visible', 'title', 'section']);
+
+
 
         return [
             'data' => $sectionNames,
@@ -48,6 +58,7 @@ class StaticPageController extends Controller
     {
         $page = $request->page;
         $section = $request->section;
+
 
         $staticPage = StaticPage::where('page', $page)
             ->where('section', $section)

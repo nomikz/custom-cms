@@ -269,7 +269,7 @@
             StaticSectionEditor
         },
         created() {
-            axios.get('/api/static').then(response => {
+            axios.get('/api/static?page=about_us').then(response => {
                 let data = response.data.data;
                 this.about_page_what_we_do = data.about_page_what_we_do;
             });
