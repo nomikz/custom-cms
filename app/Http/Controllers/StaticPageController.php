@@ -32,15 +32,7 @@ class StaticPageController extends Controller
 
     public function getAvailable(Request $request)
     {
-        $page = $request->page;
-
-        if ($page == 'what_we_do') {
-            $page = 'about_us';
-        } elseif ($page == 'executive_board') {
-            $page = 'governance';
-        }
-
-        $sectionNames = StaticPage::where('page', 'LIKE', '%' . $page . '%')
+        $sectionNames = StaticPage::where('page', 'LIKE', '%' . $request->page . '%')
             ->where('is_visible', true)
             ->get(['is_visible', 'title', 'section']);
 
