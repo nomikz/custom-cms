@@ -131,7 +131,7 @@
                 const data = {
                     id: item.id,
                     title: item.title,
-                    type: 'news',
+                    type: 'result',
                 };
                 axios.post('/api/notification', data);
             },

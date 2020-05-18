@@ -103,7 +103,7 @@
                 const data = {
                     id: item.id,
                     title: item.title,
-                    type: 'news',
+                    type: 'event',
                 };
                 axios.post('/api/notification', data);
             },
