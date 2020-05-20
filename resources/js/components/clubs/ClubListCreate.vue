@@ -349,6 +349,7 @@
                     }).then(response => {
                         if (response.data.success) {
                             this.$router.push({ name: 'clubs' });
+                            this.$store.dispatch('setAlert', {type: 'create', name: 'club'});
                         }
                     });
                 }

@@ -71,30 +71,6 @@
 
 
                             <v-row>
-                                <v-col cols="5">
-                                    <v-text-field
-                                            ref="document-name"
-                                            :disabled="documentNotNeeded"
-                                            v-model="document_name"
-                                            label="Document name"
-                                            placeholder="Document name"
-                                    ></v-text-field>
-                                </v-col>
-                                <v-col cols="5">
-                                    <v-file-input
-                                            ref="document"
-                                            :disabled="documentNotNeeded"
-                                            placeholder="Document"
-                                            v-on:change="handleDocument"
-                                            v-on:click:clear="docValidationText = ''"
-                                            show-size
-                                            hint="Document"
-                                            persistent-hint
-                                            prepend-icon="mdi-file"
-                                    ></v-file-input>
-                                    <div style="color: #E53935;" v-text="docValidationText"></div>
-                                </v-col>
-
                                 <v-col cols="2">
                                     <v-checkbox
                                             v-model="documentNotNeeded"
@@ -102,6 +78,30 @@
                                             color="info"
                                             hide-details
                                     ></v-checkbox>
+                                </v-col>
+                                <v-col cols="5">
+<!--                                    :rules="documentNotNeeded ? [] : [rules.required]"-->
+                                    <v-file-input
+                                            ref="document"
+                                            :disabled="documentNotNeeded"
+                                            :placeholder="!!document_name ? 'File name: ' + document_name : 'Select document'"
+                                            v-on:change="handleDocument"
+                                            v-on:click:clear="docValidationText = ''"
+                                            show-size
+                                            prepend-icon="mdi-file"
+                                    ></v-file-input>
+                                    <div style="color: #E53935;" v-text="docValidationText"></div>
+                                </v-col>
+                                <v-col cols="5">
+                                    <v-text-field
+                                            ref="document-name"
+                                            :disabled="documentNotNeeded"
+                                            :rules="documentNotNeeded ? [] : [rules.required]"
+                                            v-model="document_name"
+                                            :required="!documentNotNeeded"
+                                            label="Document name"
+                                            placeholder="Document name"
+                                    ></v-text-field>
                                 </v-col>
                             </v-row>
                         </v-form>
@@ -151,7 +151,7 @@
                 is_visible: false,
                 phone: "",
                 email: "",
-                download_name: "#",
+                document_name: "",
             }
         },
         methods: {
@@ -174,9 +174,14 @@
                         this.is_visible = data.is_visible;
                         this.title = data.title;
                         this.text = data.text;
-                        this.phone = data.phone;
-                        this.email = data.email;
+                        this.phone = data.phone ?? '';
+                        this.email = data.email ?? '';
                         this.document_name = data.document_name;
+                        if (!this.document_name) {
+                            this.documentNotNeeded = true;
+                        }
+                        console.log('before send ' + 'phone' + this.phone + 'email'+  this.email);
+
                     });
             },
             submit() {
@@ -193,8 +198,8 @@
                     formData.append('email', this.email);
                     formData.append('is_visible', this.is_visible);
                     formData.append('documentNotNeeded', this.documentNotNeeded);
-
-                    if (!this.documentNotNeeded) {
+                    console.log('before send ' + 'phone' + this.phone + 'email'+  this.email);
+                    if (!this.documentNotNeeded && this.uploadedDocument) {
                         formData.append('uploadedDocument', this.uploadedDocument); // document
                         formData.append('document_name', this.document_name); // document
                     }
@@ -204,7 +209,7 @@
                         headers: {'Content-Type': 'multipart/form-data'}
                     })
                         .then(response => {
-                            console.log(response.data.success);
+                            this.$store.dispatch('setAlert', {type: 'edit', name: 'content'});
                         });
                 }
             }
@@ -217,3 +222,12 @@
         name: 'StaticSectionEditor',
     }
 </script>
+<style>
+    .menububble {
+        display: inline-block;
+    }
+    .editor__content {
+        border: 1px solid grey;
+        padding: 10px;
+    }
+</style>

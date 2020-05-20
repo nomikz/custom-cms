@@ -122,6 +122,7 @@
                     }).then(response => {
                         if (response.data.success) {
                             this.$router.push({name: 'supporters'});
+                            this.$store.dispatch('setAlert', {type: 'edit', name: 'supporter'});
                         }
                     });
                 }

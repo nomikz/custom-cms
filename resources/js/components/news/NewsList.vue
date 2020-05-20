@@ -129,6 +129,7 @@
                     type: 'news',
                 };
                 axios.post('/api/notification', data);
+                this.$store.dispatch('setAlert', {type: 'notification', name: 'article'});
             },
             showItem (row) {
                 this.$router.push({ name: 'news-edit', params: { id: row.id } })
@@ -142,6 +143,7 @@
                     axios.delete('/api/articles/' + item.id).then(response => {
                         if (response.data.success) {
                             this.news.splice(index, 1);
+                            this.$store.dispatch('setAlert', {type: 'delete', name: 'article'});
                         }
                     });
                 }

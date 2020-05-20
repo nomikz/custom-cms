@@ -1,282 +1,208 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-
-import LoginPage from './../views/LoginPage'
 import MainLayout from './../views/MainLayout'
-
-
-// results
-import ResultsPage from '../components/results/ResultsPage'
-import ResultList from '../components/results/ResultList'
-import ResultListCreate from '../components/results/ResultListCreate'
-import ResultListEdit from '../components/results/ResultListEdit'
-
-
-// news
-import NewsPage from '../components/news/NewsPage'
-import NewsList from '../components/news/NewsList'
-import NewsListCreate from '../components/news/NewsListCreate'
-import NewsListEdit from '../components/news/NewsListEdit'
-
-
-// events
-import EventsPage from '../components/events/EventsPage'
-import EventList from '../components/events/EventList'
-import EventListCreate from '../components/events/EventListCreate'
-import EventListEdit from '../components/events/EventListEdit'
-
-
-// supporters
-import SupportersPage from '../components/supporters/SupportersPage'
-import SupporterList from '../components/supporters/SupporterList'
-import SupporterListCreate from '../components/supporters/SupporterListCreate'
-import SupporterListEdit from '../components/supporters/SupporterListEdit'
-
-
-// regions
-import RegionsPage from '../components/regions/RegionsPage'
-import RegionList from '../components/regions/RegionsList'
-import RegionListEdit from '../components/regions/RegionListEdit'
-
-// clubs
-import ClubsPage from './../components/clubs/ClubsPage'
-import ClubList from '../components/clubs/ClubList'
-import ClubListCreate from '../components/clubs/ClubListCreate'
-import ClubListEdit from '../components/clubs/ClubListEdit'
-
-
-// members
-import MembersPage from './../components/members/MembersPage'
-import MemberList from '../components/members/MemberList'
-import MemberListCreate from '../components/members/MemberListCreate'
-import MemberListEdit from '../components/members/MemberListEdit'
-import MemberListEditOrder from '../components/members/MemberListEditOrder'
-
-
-// governance members
-import GovernancePage from './../components/governance-members/GovernanceMembersPage'
-import GovernanceMemberList from '../components/governance-members/GovernanceMemberList'
-import GovernanceMemberListCreate from '../components/governance-members/GovernanceMemberListCreate'
-import GovernanceMemberListEdit from '../components/governance-members/GovernanceMemberListEdit'
-import GovernanceMemberListEditOrder from '../components/governance-members/GovernanceMemberListEditOrder'
-
-import MainDashboard from './../components/MainDashboard'
-
-// static
-import StaticGovernancePage from '../components/static/GovernancePage'
-import StaticAboutUsPage from '../components/static/AboutUsPage'
-import StaticResultsPage from '../components/static/ResultsPage'
-
 
 Vue.use(VueRouter);
 
 const routes = [
-    { // login
-        path: '/login',
-        name: 'login',
-        component: LoginPage
-    },
     { // main layout
         path: '/',
         component: MainLayout,
         children: [
-            { // static governance
-                name: 'static-governance',
-                path: '/static-governance',
-                component: StaticGovernancePage
-            },
-            { // static About us page
-                name: 'static-about-us',
-                path: '/static-about-us',
-                component: StaticAboutUsPage
-            },
-            {  // StaticResultsPage
-                name: 'static-results',
-                path: '/static-results',
-                component: StaticResultsPage
-            },
-            { // dashboard
-                name: 'dash',
-                path: '/',
-                component: MainDashboard
-            },
-            { // results
-                path: '/results',
-                component: ResultsPage,
+            {
+                path: '/members',
+                component: () => import ("./../components/members/MembersPage"),
                 children: [
                     {
-                        name: 'results',
+                        name: 'members',
                         path: '/',
-                        component: ResultList
+                        component: () => import ("./../components/members/MemberList"),
                     },
                     {
-                        name: 'result-create',
+                        name: 'member-create',
                         path: 'create',
-                        component: ResultListCreate
+                        component: () => import ("./../components/members/MemberListCreate"),
                     },
                     {
-                        name: 'result-edit',
+                        name: 'member-edit',
                         path: ':id/edit',
-                        component: ResultListEdit
-                    },
-                ]
-            },
-            { // news
-                path: '/news',
-                component: NewsPage,
-                children: [
-                    {
-                        name: 'news',
-                        path: '/',
-                        component: NewsList
+                        component: () => import ("./../components/members/MemberListEdit"),
                     },
                     {
-                        name: 'news-create',
-                        path: 'create',
-                        component: NewsListCreate
-                    },
-                    {
-                        name: 'news-edit',
-                        path: ':id/edit',
-                        component: NewsListEdit
-                    },
-                ]
-            },
-            { // events
-                path: '/events',
-                component: EventsPage,
-                children: [
-                    {
-                        name: 'events',
-                        path: '/',
-                        component: EventList
-                    },
-                    {
-                        name: 'event-create',
-                        path: 'create',
-                        component: EventListCreate
-                    },
-                    {
-                        name: 'event-edit',
-                        path: ':id/edit',
-                        component: EventListEdit
-                    },
-                ]
-            },
-            { // supporters
-                path: '/supporters',
-                component: SupportersPage,
-                children: [
-                    {
-                        name: 'supporters',
-                        path: '/',
-                        component: SupporterList
-                    },
-                    {
-                        name: 'supporter-create',
-                        path: 'create',
-                        component: SupporterListCreate
-                    },
-                    {
-                        name: 'supporter-edit',
-                        path: ':id/edit',
-                        component: SupporterListEdit
-                    },
-                ]
-            },
-            { // regions
-                path: '/regions',
-                component: RegionsPage,
-                children: [
-                    {
-                        name: 'regions',
-                        path: '/',
-                        component: RegionList
-                    },
-                    {
-                        name: 'region-edit',
-                        path: ':id/edit',
-                        component: RegionListEdit
+                        name: 'member-edit-order',
+                        path: 'edit-order',
+                        component: () => import ("./../components/members/MemberListEditOrder"),
                     },
                 ]
             },
             { // clubs
                 path: '/clubs',
-                component: ClubsPage,
+                component: () => import ("./../components/clubs/ClubsPage"),
                 children: [
                     {
                         name: 'clubs',
                         path: '/',
-                        component: ClubList
+                        component: () => import ("./../components/clubs/ClubList"),
                     },
                     {
                         name: 'club-create',
                         path: 'create',
-                        component: ClubListCreate
+                        component: () => import ("./../components/clubs/ClubListCreate"),
                     },
                     {
                         name: 'club-edit',
                         path: ':id/edit',
-                        component: ClubListEdit
-                    },
-                ]
-            },
-
-
-            {
-                path: '/members',
-                component: MembersPage,
-                children: [
-                    {
-                        name: 'members',
-                        path: '/',
-                        component: MemberList
-                    },
-                    {
-                        name: 'member-create',
-                        path: 'create',
-                        component: MemberListCreate
-                    },
-                    {
-                        name: 'member-edit',
-                        path: ':id/edit',
-                        component: MemberListEdit
-                    },
-                    {
-                        name: 'member-edit-order',
-                        path: 'edit-order',
-                        component: MemberListEditOrder
+                        component: () => import ("./../components/clubs/ClubListEdit"),
                     },
                 ]
             },
             {
                 path: '/governance-members',
-                component: GovernancePage,
+                component: () => import ("./../components/governance-members/GovernanceMembersPage"),
                 children: [
                     {
                         name: 'governance-members',
                         path: '/',
-                        component: GovernanceMemberList
+                        component: () => import ("./../components/governance-members/GovernanceMemberList"),
                     },
                     {
                         name: 'governance-member-create',
                         path: 'create',
-                        component: GovernanceMemberListCreate
+                        component: () => import ("./../components/governance-members/GovernanceMemberListCreate"),
                     },
                     {
                         name: 'governance-member-edit',
                         path: ':id/edit',
-                        component: GovernanceMemberListEdit
+                        component: () => import ("./../components/governance-members/GovernanceMemberListEdit"),
                     },
                     {
                         name: 'governance-member-edit-order',
                         path: 'edit-order',
-                        component: GovernanceMemberListEditOrder
+                        component: () => import ("./../components/governance-members/GovernanceMemberListEditOrder"),
                     },
                 ]
             },
-            // to do for each page
+            { // regions
+                path: '/regions',
+                component: () => import ("./../components/regions/RegionsPage"),
+                children: [
+                    {
+                        name: 'regions',
+                        path: '/',
+                        component: () => import ("./../components/regions/RegionsList"),
+                    },
+                    {
+                        name: 'region-edit',
+                        path: ':id/edit',
+                        component: () => import ("./../components/regions/RegionListEdit"),
+                    },
+                ]
+            },
+            { // supporters
+                path: '/supporters',
+                component: () => import ("./../components/supporters/SupportersPage"),
+                children: [
+                    {
+                        name: 'supporters',
+                        path: '/',
+                        component: () => import ("./../components/supporters/SupporterList"),
+                    },
+                    {
+                        name: 'supporter-create',
+                        path: 'create',
+                        component: () => import ("./../components/supporters/SupporterListCreate"),
+                    },
+                    {
+                        name: 'supporter-edit',
+                        path: ':id/edit',
+                        component: () => import ("./../components/supporters/SupporterListEdit"),
+                    },
+                ]
+            },
+            { // events
+                path: '/events',
+                component: () => import ("./../components/events/EventsPage"),
+                children: [
+                    {
+                        name: 'events',
+                        path: '/',
+                        component: () => import ("./../components/events/EventList")
+                    },
+                    {
+                        name: 'event-create',
+                        path: 'create',
+                        component: () => import ("./../components/events/EventListCreate")
+                    },
+                    {
+                        name: 'event-edit',
+                        path: ':id/edit',
+                        component: () => import ("./../components/events/EventListEdit")
+                    },
+                ]
+            },
+            { // static governance
+                name: 'static-governance',
+                path: '/static-governance',
+                component: () => import ("./../components/static/GovernancePage")
+            },
+            { // static About us page
+                name: 'static-about-us',
+                path: '/static-about-us',
+                component: () => import ("./../components/static/AboutUsPage")
+            },
+            {  // StaticResultsPage
+                name: 'static-results',
+                path: '/static-results',
+                component: () => import ("./../components/static/ResultsPage")
+            },
+            { // dashboard
+                name: 'dash',
+                path: '/',
+                component: () => import ("./../components/MainDashboard")
+            },
+            { // results
+                path: '/results',
+                component: () => import ("./../components/results/ResultsPage"),
+                children: [
+                    {
+                        name: 'results',
+                        path: '/',
+                        component: () => import ("./../components/results/ResultList")
+                    },
+                    {
+                        name: 'result-create',
+                        path: 'create',
+                        component: () => import ("./../components/results/ResultListCreate")
+                    },
+                    {
+                        name: 'result-edit',
+                        path: ':id/edit',
+                        component: () => import ("./../components/results/ResultListEdit")
+                    },
+                ]
+            },
+            { // news
+                path: '/news',
+                component: () => import ("./../components/news/NewsPage"),
+                children: [
+                    {
+                        name: 'news',
+                        path: '/',
+                        component: () => import ("./../components/news/NewsList")
+                    },
+                    {
+                        name: 'news-create',
+                        path: 'create',
+                        component: () => import ("./../components/news/NewsListCreate")
+                    },
+                    {
+                        name: 'news-edit',
+                        path: ':id/edit',
+                        component: () => import ("./../components/news/NewsListEdit")
+                    },
+                ]
+            },
         ]
     }
 ];

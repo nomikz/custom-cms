@@ -18,10 +18,10 @@ class StaticPageResource extends JsonResource
             'is_visible' => $this->is_visible,
             'title' => $this->title,
             'text' => $this->text,
-            'phone' => $this->phone,
-            'email' => $this->email,
-            'document_link' => $this->document_link,
-            'document_name' => $this->document_name,
+            'phone' => $this->phone ?? '',
+            'email' => $this->email ?? '',
+            'document_link' => env('APP_URL') . '/' . $this->document_link,
+            'document_name' => $this->document_name ?? '',
         ];
     }
 }

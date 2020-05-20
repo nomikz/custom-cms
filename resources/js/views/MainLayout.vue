@@ -1,5 +1,7 @@
 <template>
     <v-app :dark="goDark">
+
+
         <v-navigation-drawer
                 v-model="drawer"
                 :clipped="$vuetify.breakpoint.lgAndUp"
@@ -65,18 +67,25 @@
                 dark
         >
             <v-toolbar-title
-                    style="width: 250px"
-                    class="ml-0 pl-4"
+
+                    class="ml-0"
             >
                 <span class="hidden-sm-and-down">Karate New Zealand</span>
             </v-toolbar-title>
+
             <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+
             <v-spacer />
 
+
             <v-switch
+                    class="mr-4"
+                    style="height: 25px"
+                    inset
                     v-model="goDark"
                     color="secondary"
             ></v-switch>
+
             <a @click.prevent="logout" href="#">
                 <v-btn
                         medium
@@ -86,13 +95,39 @@
                 </v-btn>
             </a>
 
+            <v-progress-linear
+                    :color="sliderColor"
+                    bottom
+                    fixed
+                    height="3"
+                    style="z-index: 99999"
+                    v-model="sliderValue"
+                    background-color="rgba(0, 0, 0, 0)"
+            ></v-progress-linear>
         </v-app-bar>
         <v-content>
-
             <v-expand-transition>
                 <router-view></router-view>
             </v-expand-transition>
+
+
+            <div>
+                <v-snackbar
+                        style="bottom: 40px; right: 40px"
+                        :value="alertIsActive"
+                        :timeout="0"
+                        color="green"
+                        bottom right
+                >
+                    <!--                        bottom right-->
+                    <div class="title">
+                        <v-icon color="white">mdi-check-outline</v-icon>
+                        {{ alertMessage }}
+                    </div>
+                </v-snackbar>
+            </div>
         </v-content>
+
 
     </v-app>
 </template>
@@ -101,8 +136,17 @@
 
 <script>
     export default {
+
         props: {
             source: String,
+        },
+        computed: {
+            alertMessage() {
+                return this.$store.getters.alertMessage;
+            },
+            alertIsActive() {
+                return this.$store.getters.alertIsActive;
+            },
         },
         mounted() {
             this.$vuetify.theme.dark = false;
@@ -120,7 +164,6 @@
             goDark: false,
             drawer: null,
             items: [
-                {icon: 'mdi-view-dashboard', text: 'Dashboard', link: '/'},
                 {icon: 'mdi-newspaper', text: 'News', link: '/news'},
                 {icon: 'mdi-calendar-multiple', text: 'Events', link: '/events'},
                 {icon: 'mdi-podium-gold', text: 'Tournament Results', link: '/results'},
@@ -141,10 +184,27 @@
                     ],
                 },
             ],
+            sliderValue: 0,
+            sliderColor: 'transparent'
+
         }),
         watch: {
             goDark() {
                 this.$vuetify.theme.dark = this.goDark;
+            },
+            '$route.name': function (val) {
+                this.sliderValue = 0;
+                this.sliderColor = 'white';
+
+
+                setTimeout(() => {
+                    this.sliderValue = 70;
+                }, 190);
+
+                setTimeout(() => {
+                    this.sliderValue = 100;
+                    this.sliderColor = 'transparent';
+                }, 390);
             }
         }
     }

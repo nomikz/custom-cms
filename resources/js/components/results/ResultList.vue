@@ -134,12 +134,14 @@
                     type: 'result',
                 };
                 axios.post('/api/notification', data);
+                this.$store.dispatch('setAlert', {type: 'notification', name: 'tournament result'});
             },
             deleteItem (item) {
                 const index = this.results.indexOf(item);
                 if (confirm('Are you sure you want to delete this publication?')) {
                     axios.delete('/api/results/' + item.id).then(response => {
                         this.results.splice(index, 1);
+                        this.$store.dispatch('setAlert', {type: 'delete', name: 'tournament result'});
                     });
                 }
             },

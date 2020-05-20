@@ -6,7 +6,6 @@
 
             <v-row>
                 <v-col cols="12">
-
                     <v-tabs
                             v-model="tab"
                             background-color="primary"
@@ -20,112 +19,115 @@
                     </v-tabs>
 
                     <v-tabs-items v-model="tab" class="pt-8 pb-8">
-                        <v-row>
-                            <v-col cols="2"></v-col>
-                            <v-col cols="8">
+
 
 
                                 <v-tab-item :key="0">
-                                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
-                                        <p class="title">Information</p>
-                                        <p class="body-1">Location: Above the Council members sections</p>
 
-                                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                                            <div v-html="governance_page_information"></div>
-                                        </v-card-text>
+                                    <v-row>
+                                        <v-col cols="2"></v-col>
+                                        <v-col cols="8">
+                                            <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                                <p class="title">Information</p>
+                                                <p class="body-1">Location: Above the Council members sections</p>
 
-                                        <v-card-actions>
-                                            <v-spacer></v-spacer>
-                                            <v-btn
-                                                    color="primary"
-                                                    dark
-                                                    @click="setDialog('governance_page_information')"
-                                            >
-                                                Edit text
-                                            </v-btn>
-                                        </v-card-actions>
-                                    </v-card>
+                                                <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                    <div v-html="governance_page_information"></div>
+                                                </v-card-text>
 
-
-                                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
-                                        <p class="title">Executive board policies</p>
-                                        <p class="body-1">Location: Below the Council members sections</p>
-
-                                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                                            <div v-html="governance_page_policy"></div>
-                                        </v-card-text>
-
-                                        <v-card-actions>
-                                            <v-spacer></v-spacer>
-                                            <v-btn
-                                                    color="primary"
-                                                    dark
-                                                    @click="setDialog('governance_page_policy')"
-                                            >
-                                                Edit text
-                                            </v-btn>
-                                        </v-card-actions>
-                                    </v-card>
+                                                <v-card-actions>
+                                                    <v-spacer></v-spacer>
+                                                    <v-btn
+                                                            color="primary"
+                                                            dark
+                                                            @click="setDialog('governance_page_information')"
+                                                    >
+                                                        Edit text
+                                                    </v-btn>
+                                                </v-card-actions>
+                                            </v-card>
 
 
-                                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
-                                        <p class="title">Update policy document</p>
-                                        <p class="body-1">Location: Right after policy text</p>
+                                            <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                                <p class="title">Executive board policies</p>
+                                                <p class="body-1">Location: Below the Council members sections</p>
 
-                                        <v-form
-                                                ref="form"
-                                                v-model="valid"
-                                        >
-                                            <v-text-field
-                                                    v-model="governance_page_policy_document"
-                                                    label="Link text of the document"
-                                                    prepend-icon="mdi-file"
-                                                    :rules="[rules.required]"
-                                            ></v-text-field>
-                                            <v-file-input
-                                                    ref="resultDocument"
-                                                    @change="handleDocument"
-                                                    label="Document"
-                                                    outlined
-                                                    dense
-                                                    :rules="[rules.required]"
-                                            ></v-file-input>
+                                                <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                    <div v-html="governance_page_policy"></div>
+                                                </v-card-text>
 
-                                            <v-card-actions>
-                                                <v-spacer></v-spacer>
-                                                <v-btn
-                                                        color="primary"
-                                                        dark
-                                                        @click="makeRequestToUpdateDocument"
+                                                <v-card-actions>
+                                                    <v-spacer></v-spacer>
+                                                    <v-btn
+                                                            color="primary"
+                                                            dark
+                                                            @click="setDialog('governance_page_policy')"
+                                                    >
+                                                        Edit text
+                                                    </v-btn>
+                                                </v-card-actions>
+                                            </v-card>
+
+
+                                            <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                                <p class="title">Update policy document</p>
+                                                <p class="body-1">Location: Right after policy text</p>
+
+                                                <v-form
+                                                        ref="form"
+                                                        v-model="valid"
                                                 >
-                                                    Edit text
-                                                </v-btn>
-                                            </v-card-actions>
-                                        </v-form>
-                                    </v-card>
+                                                    <v-text-field
+                                                            v-model="governance_page_policy_document"
+                                                            label="Link text of the document"
+                                                            prepend-icon="mdi-file"
+                                                            :rules="[rules.required]"
+                                                    ></v-text-field>
+                                                    <v-file-input
+                                                            ref="resultDocument"
+                                                            @change="handleDocument"
+                                                            label="Document"
+                                                            outlined
+                                                            dense
+                                                            :rules="[rules.required]"
+                                                    ></v-file-input>
+
+                                                    <v-card-actions>
+                                                        <v-spacer></v-spacer>
+                                                        <v-btn
+                                                                color="primary"
+                                                                dark
+                                                                @click="makeRequestToUpdateDocument"
+                                                        >
+                                                            Edit text
+                                                        </v-btn>
+                                                    </v-card-actions>
+                                                </v-form>
+                                            </v-card>
 
 
-                                    <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
-                                        <p class="title">Contacts </p>
-                                        <p class="body-1">Location: At the bottom of the page</p>
+                                            <v-card color="rgba(223, 223, 223, 0.53)" class="px-8 py-4 mb-6">
+                                                <p class="title">Contacts </p>
+                                                <p class="body-1">Location: At the bottom of the page</p>
 
-                                        <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
-                                            <div v-html="governance_page_contacts"></div>
-                                        </v-card-text>
+                                                <v-card-text class="text--primary pa-4 mb-3 white" style="border: 1px solid grey; border-radius: 1px;">
+                                                    <div v-html="governance_page_contacts"></div>
+                                                </v-card-text>
 
-                                        <v-card-actions>
-                                            <v-spacer></v-spacer>
-                                            <v-btn
-                                                    color="primary"
-                                                    dark
-                                                    @click="setDialog('governance_page_contacts')"
-                                            >
-                                                Edit text
-                                            </v-btn>
-                                        </v-card-actions>
-                                    </v-card>
+                                                <v-card-actions>
+                                                    <v-spacer></v-spacer>
+                                                    <v-btn
+                                                            color="primary"
+                                                            dark
+                                                            @click="setDialog('governance_page_contacts')"
+                                                    >
+                                                        Edit text
+                                                    </v-btn>
+                                                </v-card-actions>
+                                            </v-card>
 
-
+                                        </v-col>
+                                    </v-row>
                                 </v-tab-item>
 
 
@@ -160,8 +162,7 @@
                                     </v-card>
                                 </v-tab-item>
 
-                            </v-col>
-                        </v-row>
+
                     </v-tabs-items>
                 </v-col>
             </v-row>
@@ -479,6 +480,7 @@
                         if (response.data.success) {
                             this[this.parameter] = window.editorHtmlContent;
                             this.dialog = false;
+                            this.$store.dispatch('setAlert', {type: 'edit', name: 'content'});
                         }
                     })
             },

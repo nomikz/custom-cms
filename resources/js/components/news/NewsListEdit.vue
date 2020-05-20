@@ -338,6 +338,7 @@
                     }).then(response => {
                         if (response.data.success) {
                             this.$router.push({name: 'news'});
+                            this.$store.dispatch('setAlert', {type: 'edit', name: 'article'});
                         }
                     });
                 }

@@ -146,6 +146,7 @@
                     }).then(response => {
                         if (response.data.success) {
                             this.$router.push({ name: 'members' });
+                            this.$store.dispatch('setAlert', {type: 'create', name: 'member'});
                         }
                     });
                 }

@@ -329,6 +329,7 @@
                     }).then(response => {
                         if (response.data.success) {
                             this.$router.push({name: 'results'});
+                            this.$store.dispatch('setAlert', {type: 'create', name: 'tournament result'});
                         }
                     });
                 }

@@ -14,8 +14,8 @@ class UserSeeder extends Seeder
     {
         \App\User::create([
             'name' => 'admin',
-            'email' => 'admin@karatenz.co.kr',
-            'password' => Hash::make('admin'),
+            'email' => 'admin@karate.co.nz',
+            'password' => Hash::make('SeJ-NkH-ruc-8gN'),
         ]);
     }
 }

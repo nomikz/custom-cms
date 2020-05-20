@@ -342,6 +342,7 @@
                     }).then(response => {
                         if (response.data.success) {
                             this.$router.push({name: 'results'});
+                            this.$store.dispatch('setAlert', {type: 'edit', name: 'tournament result'});
                         }
                     });
                 }

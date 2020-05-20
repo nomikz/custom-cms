@@ -92,6 +92,7 @@
                     axios.delete('/api/clubs/' + item.id).then(response => {
                         if (response.data.success) {
                             this.clubs.splice(index, 1);
+                            this.$store.dispatch('setAlert', {type: 'delete', name: 'club'});
                         }
                     });
                 }

@@ -94,6 +94,7 @@
                 if (confirm('Are you sure you want to delete this member?')) {
                     axios.delete('/api/governance-members/' + item.id).then(response => {
                         this.governanceMembers.splice(index, 1);
+                        this.$store.dispatch('setAlert', {type: 'delete', name: 'member'});
                     });
                 }
             },

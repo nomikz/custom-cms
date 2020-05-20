@@ -84,7 +84,7 @@
                     .then(response => {
                         if(response.status === 204) {
                             axios.get('/user').then(response => {
-                                window.location.href = '/';
+                                window.location.href = '/news';
                             });
                         }
                     })

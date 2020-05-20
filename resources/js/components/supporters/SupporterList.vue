@@ -94,6 +94,7 @@
                 if (confirm('Are you sure you want to delete this publication?')) {
                     axios.delete('/api/supporters/' + item.id).then(response => {
                         this.supporters.splice(index, 1);
+                        this.$store.dispatch('setAlert', {type: 'delete', name: 'supporter'});
                     });
                 }
             },

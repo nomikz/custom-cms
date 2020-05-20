@@ -276,6 +276,7 @@
                     axios.post('/api/regions/' + this.$route.params.id, formData).then(response => {
                         if (response.data.success) {
                             this.$router.push({name: 'regions'});
+                            this.$store.dispatch('setAlert', {type: 'edit', name: 'region'});
                         }
                     });
                 }

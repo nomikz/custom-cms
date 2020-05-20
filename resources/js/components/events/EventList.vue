@@ -106,6 +106,7 @@
                     type: 'event',
                 };
                 axios.post('/api/notification', data);
+                this.$store.dispatch('setAlert', {type: 'notification', name: 'event'});
             },
             editItem (item) {
                 this.$router.push({ name: 'event-edit', params: { id: item.id}})
@@ -115,6 +116,7 @@
                 if (confirm('Are you sure you want to delete this publication?')) {
                     axios.delete('/api/events/' + item.id).then(response => {
                         this.events.splice(index, 1);
+                        this.$store.dispatch('setAlert', {type: 'delete', name: 'event'});
                     });
                 }
             },

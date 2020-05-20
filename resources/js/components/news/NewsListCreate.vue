@@ -315,11 +315,11 @@
                 command({ href: url })
                 this.hideLinkMenu()
             },
+
             // editor related finish
 
             submit() {
                 if(this.$refs.form.validate()) {
-
                     let date = this.date;
 
                     let formData = new FormData();
@@ -334,6 +334,7 @@
                     }).then(response => {
                         if (response.data.success) {
                             this.$router.push({name: 'news'});
+                            this.$store.dispatch('setAlert', {type: 'create', name: 'article'});
                         }
                     });
                 }

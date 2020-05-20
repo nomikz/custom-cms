@@ -101,6 +101,7 @@
                 if (confirm('Are you sure you want to delete this publication?')) {
                     axios.delete('/api/members/' + item.id).then(response => {
                         this.members.splice(index, 1);
+                        this.$store.dispatch('setAlert', {type: 'delete', name: 'member'});
                     });
                 }
             },

@@ -351,6 +351,7 @@
                             if (response.data.success) {
                                 this[this.parameter] = window.editorHtmlContent;
                                 this.dialog = false;
+                                this.$store.dispatch('setAlert', {type: 'edit', name: 'content'});
                             }
                             this.dialog = false;
                         }
@@ -370,7 +371,7 @@
                 this.linkMenuIsActive = false;
             },
             setLinkUrl(command, url) {
-                command({ href: url })
+                command({ href: url });
                 this.hideLinkMenu()
             },
         },

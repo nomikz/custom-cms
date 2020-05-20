@@ -148,6 +148,7 @@
                     }).then(response => {
                         if (response.data.success) {
                             this.$router.push({ name: 'governance-members' });
+                            this.$store.dispatch('setAlert', {type: 'edit', name: 'member'});
                         }
                     });
 

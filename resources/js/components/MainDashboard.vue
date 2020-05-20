@@ -1,22 +1,16 @@
 <template>
     <div>
-        <v-container
-                class="fill-height"
-                fluid
-        >
-            <v-row
-                    align="center"
-                    justify="center"
-            >
-                <h1>Dashboard</h1>
-            </v-row>
-        </v-container>
-
+        <router-view>
+        </router-view>
     </div>
 </template>
 
 <script>
     export default {
         name: 'MainDashboard',
+        created() {
+            this.$router.push('/news');
+        }
     }
+
 </script>
