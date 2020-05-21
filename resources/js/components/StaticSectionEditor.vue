@@ -84,7 +84,7 @@
                                     <v-file-input
                                             ref="document"
                                             :disabled="documentNotNeeded"
-                                            :placeholder="!!document_name ? 'File name: ' + document_name : 'Select document'"
+                                            :placeholder="placeholderText"
                                             v-on:change="handleDocument"
                                             v-on:click:clear="docValidationText = ''"
                                             show-size
@@ -179,8 +179,8 @@
                         this.document_name = data.document_name;
                         if (!this.document_name) {
                             this.documentNotNeeded = true;
+                            this.document_name = data.document_name;
                         }
-                        console.log('before send ' + 'phone' + this.phone + 'email'+  this.email);
 
                     });
             },
@@ -217,6 +217,11 @@
         watch: {
             section(sectionValue) {
                 this.initialize(sectionValue);
+            }
+        },
+        computed: {
+            placeholderText() {
+                return !!this.document_name ? 'File name: ' + this.document_name : 'Select document'
             }
         },
         name: 'StaticSectionEditor',
