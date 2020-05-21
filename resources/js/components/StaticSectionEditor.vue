@@ -88,6 +88,7 @@
                                             v-on:change="handleDocument"
                                             v-on:click:clear="docValidationText = ''"
                                             show-size
+                                            v-model="uploadedDocument"
                                             prepend-icon="mdi-file"
                                     ></v-file-input>
                                     <div style="color: #E53935;" v-text="docValidationText"></div>
@@ -171,12 +172,15 @@
                     .then(response => {
                         let data = response.data.data;
 
+                        this.$refs.document.clearableCallback();
+
                         this.is_visible = data.is_visible;
                         this.title = data.title;
                         this.text = data.text;
                         this.phone = data.phone ?? '';
                         this.email = data.email ?? '';
                         this.document_name = data.document_name;
+                        this.documentNotNeeded = false;
                         if (!this.document_name) {
                             this.documentNotNeeded = true;
                             this.document_name = data.document_name;
@@ -198,12 +202,10 @@
                     formData.append('email', this.email);
                     formData.append('is_visible', this.is_visible);
                     formData.append('documentNotNeeded', this.documentNotNeeded);
-                    console.log('before send ' + 'phone' + this.phone + 'email'+  this.email);
                     if (!this.documentNotNeeded && this.uploadedDocument) {
                         formData.append('uploadedDocument', this.uploadedDocument); // document
                         formData.append('document_name', this.document_name); // document
                     }
-
 
                     axios.post('/api/static-sections?page=' + this.page + '&section=' + this.section, formData, {
                         headers: {'Content-Type': 'multipart/form-data'}
