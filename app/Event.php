@@ -20,12 +20,13 @@ class Event extends Model
         $events = Event::orderBy('date', 'desc')->get();
 
         $dates = $events->map(function ($event) {
-            return $event->date;
+            return explode(' ', $event->date)[0];
         })->unique();
 
         $response = [];
 
         foreach ($dates as $date) {
+            var_dump($date);
             $response[] = [
                 'date' => $date,
                 'events' => EventResource::collection($events->where('date', $date)->sortByDesc('date'))
