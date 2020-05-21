@@ -23,17 +23,20 @@ class Event extends Model
             return explode(' ', $event->date)[0];
         })->unique();
 
-        $response = [];
+        $evensByDate = [];
 
         foreach ($dates as $date) {
-            var_dump($date);
-            $response[] = [
+            $eventsOfTheDate = $events
+                ->where('date', '>=', $date . ' 00:00:00')
+                ->where('date', '<', $date . ' 23:59:59')
+                ->sortByDesc('date');
+
+            $evensByDate[] = [
                 'date' => $date,
-                'events' => EventResource::collection($events->where('date', $date)->sortByDesc('date'))
+                'events' => EventResource::collection($eventsOfTheDate)
             ];
         }
-
-        return response()->json(['data' => $response, 'success' => true]);
+        return response()->json(['data' => $evensByDate, 'success' => true]);
     }
 
 }
