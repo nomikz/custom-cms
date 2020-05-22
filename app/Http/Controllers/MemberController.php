@@ -45,6 +45,7 @@ class MemberController extends Controller
         $member->title = $request->title;
         $member->region_id = $request->region;
         $member->description = $request->description;
+        $member->order_number = ((int)Member::where('region_id', $request->region)->max('order_number') + 1);
 
         if ($member->save()) {
             return response()->json(['success' => true, 'message' => 'Success']);

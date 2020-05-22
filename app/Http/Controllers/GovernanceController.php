@@ -41,6 +41,7 @@ class GovernanceController extends Controller
         $governanceMember->title = $request->title;
         $governanceMember->email = $request->email;
         $governanceMember->description = $request->description;
+        $governanceMember->order_number = ((int)GovernanceMember::max('order_number') + 1);
 
         if ($governanceMember->save()) {
             return response()->json(['success' => true, 'message' => 'Success']);

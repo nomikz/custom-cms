@@ -211,10 +211,6 @@
                         headers: {'Content-Type': 'multipart/form-data'}
                     })
                         .then(response => {
-                            if (response) {
-                                console.log(response);
-                                return;
-                            }
                             this.$store.dispatch('setAlert', {type: 'edit', name: 'content'});
                         });
                 }
