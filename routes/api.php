@@ -3,12 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
 // push notification : events news results
 Route::post('notification', 'NotificationController');
 
@@ -48,7 +42,6 @@ Route::apiResource('members', 'MemberController');
 Route::post('governance-members/{governanceMember}', 'GovernanceController@update');
 Route::apiResource('governance-members', 'GovernanceController');
 
-
 // static governance and about us
 Route::get('/static', 'StaticContentController@get');
 Route::post('/static', 'StaticContentController@update');
@@ -64,4 +57,10 @@ Route::post('static-sections', 'StaticPageController@update');
 
 // ?page=
 Route::get('/static-sections/available', 'StaticPageController@getAvailable');
+
+
+
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 

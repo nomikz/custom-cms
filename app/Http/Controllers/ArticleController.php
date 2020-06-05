@@ -82,7 +82,12 @@ class ArticleController extends Controller
 
         if ($request->hasFile('image')) {
             File::delete(public_path($article->image_link));
-            $imageLink = 'uploads/'.$request->image->storeAs('articles/images', time().'.'.$request->image->getClientOriginalExtension());
+            $imageLink = 'uploads/' . $request
+                    ->image
+                    ->storeAs(
+                        'articles/images',
+                        time().'.'.$request->image->getClientOriginalExtension()
+                    );
             $article->image_link = $imageLink;
         }
 
